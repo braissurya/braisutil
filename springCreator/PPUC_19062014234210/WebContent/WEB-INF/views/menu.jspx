@@ -1,0 +1,122 @@
+<?xml version="1.0" encoding="UTF-8" standalone="no"?>
+<div xmlns:jsp="http://java.sun.com/JSP/Page" xmlns:menu="urn:jsptagdir:/WEB-INF/tags/menu" id="menu" version="2.0">
+    <jsp:directive.page contentType="text/html;charset=UTF-8"/>
+    <jsp:output omit-xml-declaration="yes"/>
+    <menu:menu id="_menu" >
+				<menu:category id="c_user" >
+            <menu:item id="i_user_new" messageCode="global_menu_new" url="/master/user?form" />
+            <menu:item id="i_user_list" messageCode="global_menu_list" url="/master/user" />
+        </menu:category>
+				<menu:category id="c_groupbiaya" >
+            <menu:item id="i_groupbiaya_new" messageCode="global_menu_new" url="/master/groupbiaya?form" />
+            <menu:item id="i_groupbiaya_list" messageCode="global_menu_list" url="/master/groupbiaya" />
+        </menu:category>
+				<menu:category id="c_divisi" >
+            <menu:item id="i_divisi_new" messageCode="global_menu_new" url="/master/divisi?form" />
+            <menu:item id="i_divisi_list" messageCode="global_menu_list" url="/master/divisi" />
+        </menu:category>
+				<menu:category id="c_ppuch" >
+            <menu:item id="i_ppuch_new" messageCode="global_menu_new" url="/master/ppuch?form" />
+            <menu:item id="i_ppuch_list" messageCode="global_menu_list" url="/master/ppuch" />
+        </menu:category>
+				<menu:category id="c_departmen" >
+            <menu:item id="i_departmen_new" messageCode="global_menu_new" url="/master/departmen?form" />
+            <menu:item id="i_departmen_list" messageCode="global_menu_list" url="/master/departmen" />
+        </menu:category>
+				<menu:category id="c_ppucd" >
+            <menu:item id="i_ppucd_new" messageCode="global_menu_new" url="/master/ppucd?form" />
+            <menu:item id="i_ppucd_list" messageCode="global_menu_list" url="/master/ppucd" />
+        </menu:category>
+				<menu:category id="c_audittraildetail" >
+            <menu:item id="i_audittraildetail_new" messageCode="global_menu_new" url="/master/audittraildetail?form" />
+            <menu:item id="i_audittraildetail_list" messageCode="global_menu_list" url="/master/audittraildetail" />
+        </menu:category>
+				<menu:category id="c_menu" >
+            <menu:item id="i_menu_new" messageCode="global_menu_new" url="/master/menu?form" />
+            <menu:item id="i_menu_list" messageCode="global_menu_list" url="/master/menu" />
+        </menu:category>
+				<menu:category id="c_lokasi" >
+            <menu:item id="i_lokasi_new" messageCode="global_menu_new" url="/master/lokasi?form" />
+            <menu:item id="i_lokasi_list" messageCode="global_menu_list" url="/master/lokasi" />
+        </menu:category>
+				<menu:category id="c_smsservercalls" >
+            <menu:item id="i_smsservercalls_new" messageCode="global_menu_new" url="/master/smsservercalls?form" />
+            <menu:item id="i_smsservercalls_list" messageCode="global_menu_list" url="/master/smsservercalls" />
+        </menu:category>
+				<menu:category id="c_detailbiaya" >
+            <menu:item id="i_detailbiaya_new" messageCode="global_menu_new" url="/master/detailbiaya?form" />
+            <menu:item id="i_detailbiaya_list" messageCode="global_menu_list" url="/master/detailbiaya" />
+        </menu:category>
+				<menu:category id="c_userdivisi" >
+            <menu:item id="i_userdivisi_new" messageCode="global_menu_new" url="/master/userdivisi?form" />
+            <menu:item id="i_userdivisi_list" messageCode="global_menu_list" url="/master/userdivisi" />
+        </menu:category>
+				<menu:category id="c_smsserverout" >
+            <menu:item id="i_smsserverout_new" messageCode="global_menu_new" url="/master/smsserverout?form" />
+            <menu:item id="i_smsserverout_list" messageCode="global_menu_list" url="/master/smsserverout" />
+        </menu:category>
+				<menu:category id="c_messagetemplate" >
+            <menu:item id="i_messagetemplate_new" messageCode="global_menu_new" url="/master/messagetemplate?form" />
+            <menu:item id="i_messagetemplate_list" messageCode="global_menu_list" url="/master/messagetemplate" />
+        </menu:category>
+				<menu:category id="c_logsms" >
+            <menu:item id="i_logsms_new" messageCode="global_menu_new" url="/master/logsms?form" />
+            <menu:item id="i_logsms_list" messageCode="global_menu_list" url="/master/logsms" />
+        </menu:category>
+				<menu:category id="c_smsserverin" >
+            <menu:item id="i_smsserverin_new" messageCode="global_menu_new" url="/master/smsserverin?form" />
+            <menu:item id="i_smsserverin_list" messageCode="global_menu_list" url="/master/smsserverin" />
+        </menu:category>
+				<menu:category id="c_counter" >
+            <menu:item id="i_counter_new" messageCode="global_menu_new" url="/master/counter?form" />
+            <menu:item id="i_counter_list" messageCode="global_menu_list" url="/master/counter" />
+        </menu:category>
+				<menu:category id="c_hakapprove" >
+            <menu:item id="i_hakapprove_new" messageCode="global_menu_new" url="/master/hakapprove?form" />
+            <menu:item id="i_hakapprove_list" messageCode="global_menu_list" url="/master/hakapprove" />
+        </menu:category>
+				<menu:category id="c_hakbiaya" >
+            <menu:item id="i_hakbiaya_new" messageCode="global_menu_new" url="/master/hakbiaya?form" />
+            <menu:item id="i_hakbiaya_list" messageCode="global_menu_list" url="/master/hakbiaya" />
+        </menu:category>
+				<menu:category id="c_subdivisi" >
+            <menu:item id="i_subdivisi_new" messageCode="global_menu_new" url="/master/subdivisi?form" />
+            <menu:item id="i_subdivisi_list" messageCode="global_menu_list" url="/master/subdivisi" />
+        </menu:category>
+				<menu:category id="c_logemail" >
+            <menu:item id="i_logemail_new" messageCode="global_menu_new" url="/master/logemail?form" />
+            <menu:item id="i_logemail_list" messageCode="global_menu_list" url="/master/logemail" />
+        </menu:category>
+				<menu:category id="c_messagetemplatedetail" >
+            <menu:item id="i_messagetemplatedetail_new" messageCode="global_menu_new" url="/master/messagetemplatedetail?form" />
+            <menu:item id="i_messagetemplatedetail_list" messageCode="global_menu_list" url="/master/messagetemplatedetail" />
+        </menu:category>
+				<menu:category id="c_audittrail" >
+            <menu:item id="i_audittrail_new" messageCode="global_menu_new" url="/master/audittrail?form" />
+            <menu:item id="i_audittrail_list" messageCode="global_menu_list" url="/master/audittrail" />
+        </menu:category>
+				<menu:category id="c_aksesmenu" >
+            <menu:item id="i_aksesmenu_new" messageCode="global_menu_new" url="/master/aksesmenu?form" />
+            <menu:item id="i_aksesmenu_list" messageCode="global_menu_list" url="/master/aksesmenu" />
+        </menu:category>
+				<menu:category id="c_groupuser" >
+            <menu:item id="i_groupuser_new" messageCode="global_menu_new" url="/master/groupuser?form" />
+            <menu:item id="i_groupuser_list" messageCode="global_menu_list" url="/master/groupuser" />
+        </menu:category>
+				<menu:category id="c_role" >
+            <menu:item id="i_role_new" messageCode="global_menu_new" url="/master/role?form" />
+            <menu:item id="i_role_list" messageCode="global_menu_list" url="/master/role" />
+        </menu:category>
+				<menu:category id="c_mfungsi" >
+            <menu:item id="i_mfungsi_new" messageCode="global_menu_new" url="/master/mfungsi?form" />
+            <menu:item id="i_mfungsi_list" messageCode="global_menu_list" url="/master/mfungsi" />
+        </menu:category>
+				<menu:category id="c_imgppuch" >
+            <menu:item id="i_imgppuch_new" messageCode="global_menu_new" url="/master/imgppuch?form" />
+            <menu:item id="i_imgppuch_list" messageCode="global_menu_list" url="/master/imgppuch" />
+        </menu:category>
+		        
+        
+    </menu:menu>
+</div>
+

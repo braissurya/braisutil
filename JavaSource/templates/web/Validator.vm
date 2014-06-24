@@ -1,0 +1,27 @@
+package $!{packageParent}.web.validator;
+
+import org.springframework.validation.Errors;
+import org.springframework.validation.ValidationUtils;
+import org.springframework.validation.Validator;
+
+import $!{packageParent}.model.$!{modelName};
+
+/**
+ * GENERATE BY BraisSpringMVCHelp
+ * @since		: $date.long 
+ * @Description	: Validator for table $!{modelName}
+ * @Revision	:
+ */
+public class $!{modelName}Validator implements Validator {
+
+	@Override
+	public boolean supports(Class cls) {
+		return $!{modelName}.class.equals(cls);
+	}
+
+	@Override
+	public void validate(Object obj, Errors e) {
+		// TODO Auto-generated method stub
+	}
+
+}

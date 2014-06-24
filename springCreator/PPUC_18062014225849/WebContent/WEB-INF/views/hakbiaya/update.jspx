@@ -1,0 +1,21 @@
+<?xml version="1.0" encoding="UTF-8" standalone="no"?>
+<div xmlns:field="urn:jsptagdir:/WEB-INF/tags/form/fields" xmlns:form="urn:jsptagdir:/WEB-INF/tags/form" xmlns:jsp="http://java.sun.com/JSP/Page" version="2.0">
+    <jsp:directive.page contentType="text/html;charset=UTF-8"/>
+    <jsp:output omit-xml-declaration="yes"/>
+    <form:update id="fu_com_melawai_ppuc_model_hakbiaya" modelAttribute="hakbiaya" path="/master/hakbiaya" idField="itemId" versionField="none" >
+       <field:input field="divisi_kd" label="Divisi Kd" id="c_com_melawai_ppuc_model_hakbiaya_divisi_kd" required="true" />
+       <field:input field="subdiv_kd" label="Subdiv Kd" id="c_com_melawai_ppuc_model_hakbiaya_subdiv_kd" required="true" />
+       <field:input field="kd_group" label="Kd Group" id="c_com_melawai_ppuc_model_hakbiaya_kd_group" required="true" />
+       <field:input field="kd_biaya" label="Kd Biaya" id="c_com_melawai_ppuc_model_hakbiaya_kd_biaya" required="true" />
+       <field:input field="f_aktif" label="F Aktif" id="c_com_melawai_ppuc_model_hakbiaya_f_aktif"  validationMessageCode="field_invalid_integer" />
+       <field:datetime field="drtgl" label="Drtgl" id="c_com_melawai_ppuc_model_hakbiaya_drtgl"  dateTimePattern="${hakbiaya_drtgl_date_format}" />
+       <field:datetime field="sptgl" label="Sptgl" id="c_com_melawai_ppuc_model_hakbiaya_sptgl"  dateTimePattern="${hakbiaya_sptgl_date_format}" />
+       <field:input field="user_create" label="User Create" id="c_com_melawai_ppuc_model_hakbiaya_user_create" readonly="true" validationMessageCode="field_invalid_number" />
+       <field:input field="tgl_create" label="Tgl Create" id="c_com_melawai_ppuc_model_hakbiaya_tgl_create" readonly="true" validationMessageCode="field_invalid_number" />
+       <field:input field="jam_create" label="Jam Create" id="c_com_melawai_ppuc_model_hakbiaya_jam_create" readonly="true" validationMessageCode="field_invalid_number" />
+       <field:input field="user_nonaktif" label="User Nonaktif" id="c_com_melawai_ppuc_model_hakbiaya_user_nonaktif" readonly="true" validationMessageCode="field_invalid_number" />
+       <field:input field="tgl_nonaktif" label="Tgl Nonaktif" id="c_com_melawai_ppuc_model_hakbiaya_tgl_nonaktif" readonly="true" validationMessageCode="field_invalid_number" />
+       <field:input field="jam_nonaktif" label="Jam Nonaktif" id="c_com_melawai_ppuc_model_hakbiaya_jam_nonaktif" readonly="true" validationMessageCode="field_invalid_number" />
+	</form:update>
+</div>
+

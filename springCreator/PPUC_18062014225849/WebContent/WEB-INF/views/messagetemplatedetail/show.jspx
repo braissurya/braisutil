@@ -1,0 +1,20 @@
+<?xml version="1.0" encoding="UTF-8" standalone="no"?>
+<div xmlns:field="urn:jsptagdir:/WEB-INF/tags/form/fields" xmlns:jsp="http://java.sun.com/JSP/Page" xmlns:page="urn:jsptagdir:/WEB-INF/tags/form" version="2.0">
+    <jsp:directive.page contentType="text/html;charset=UTF-8"/>
+    <jsp:output omit-xml-declaration="yes"/>
+    <page:show id="ps_com_melawai_ppuc_model_messagetemplatedetail" object="${messagetemplatedetail}" path="/master/messagetemplatedetail">
+       <field:display field="id_template_detail" label="Id Template Detail" id="c_com_melawai_ppuc_model_messagetemplatedetail_id_template_detail"  object="${messagetemplatedetail}" />
+       <field:display field="id_template" label="Id Template" id="c_com_melawai_ppuc_model_messagetemplatedetail_id_template"  object="${messagetemplatedetail}" />
+       <field:display field="keterangan" label="Keterangan" id="c_com_melawai_ppuc_model_messagetemplatedetail_keterangan"  object="${messagetemplatedetail}" />
+       <field:display field="template_sms" label="Template Sms" id="c_com_melawai_ppuc_model_messagetemplatedetail_template_sms"  object="${messagetemplatedetail}" />
+       <field:display field="template_web" label="Template Web" id="c_com_melawai_ppuc_model_messagetemplatedetail_template_web"  object="${messagetemplatedetail}" />
+       <field:display field="template_subject" label="Template Subject" id="c_com_melawai_ppuc_model_messagetemplatedetail_template_subject"  object="${messagetemplatedetail}" />
+       <field:display field="template_email" label="Template Email" id="c_com_melawai_ppuc_model_messagetemplatedetail_template_email"  object="${messagetemplatedetail}" />
+       <field:display field="f_aktif" label="F Aktif" id="c_com_melawai_ppuc_model_messagetemplatedetail_f_aktif"  object="${messagetemplatedetail}" />
+       <field:display field="user_create" label="User Create" id="c_com_melawai_ppuc_model_messagetemplatedetail_user_create"  object="${messagetemplatedetail}" />
+       <field:display field="tgl_create" label="Tgl Create" id="c_com_melawai_ppuc_model_messagetemplatedetail_tgl_create"  object="${messagetemplatedetail}"  date="true" dateTimePattern="${messagetemplatedetail_tgl_create_date_format}"/>
+       <field:display field="user_update" label="User Update" id="c_com_melawai_ppuc_model_messagetemplatedetail_user_update"  object="${messagetemplatedetail}" />
+       <field:display field="tgl_update" label="Tgl Update" id="c_com_melawai_ppuc_model_messagetemplatedetail_tgl_update"  object="${messagetemplatedetail}"  date="true" dateTimePattern="${messagetemplatedetail_tgl_update_date_format}"/>
+    </page:show>
+</div>
+

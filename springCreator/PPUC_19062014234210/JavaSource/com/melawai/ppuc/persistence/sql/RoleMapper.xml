@@ -1,0 +1,113 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+"http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.melawai.ppuc.persistence.RoleMapper">
+
+	<cache />
+
+	<!-- result map-->
+	<resultMap type="Role" id="RoleMap">
+		<id property="id_role" column="id_role"  />  
+		<result property="id_role" column="id_role" />
+		<result property="role_name" column="role_name" />
+	</resultMap>
+
+	<!-- nama kolom yang ingin ditampilkan -->
+	<sql id="defaultColoumn">
+		C.ID_ROLE as id_role,
+		C.ROLE_NAME as role_name
+	</sql>
+
+	<!-- query select, dengan kolom yang default di atas, apabila mau ditambahkan join juga bisa disini
+	perubahan query ini akan mempengaruhi select paging dan get di bawah  -->
+	<sql id="selectQuery">
+		select * from (
+			select <include refid="defaultColoumn" /> from role C
+		)T
+	</sql>
+
+	<!-- kolom apa aja yang mau disearching -->
+	<sql id="searchTambahan">
+		Where 1=1
+			<!--!!TAMBAHAN parameter untuk search-->
+	</sql>
+
+	<!-- kolom apa aja yang mau disearching -->
+	<sql id="search">
+		WHERE 1=1 AND (
+			 role_name like  CONCAT('%', #{search}, '%')
+		)
+	</sql>
+
+	<!-- insert query untuk table ini -->
+	<insert id="insert" parameterType="Role">
+		INSERT INTO role (
+			ID_ROLE,
+			ROLE_NAME
+		) values (
+			#{id_role},
+			#{role_name}
+		)
+	</insert>
+
+	<!-- update query untuk table ini -->
+	<update id="update" parameterType="Role">
+		UPDATE role
+		<set>
+			<if test="id_role != null">ID_ROLE = #{id_role}, </if>
+			<if test="role_name != null">ROLE_NAME = #{role_name} </if>
+		</set>
+		WHERE  
+			ID_ROLE= #{id_role} 
+	</update>
+
+	<!-- remove query untuk table ini -->
+	<delete id="remove" parameterType="Long">
+		delete from role where ID_ROLE=#{value}
+	</delete>
+
+	<!-- get berdasarkan primary key -->
+	<select id="get" parameterType="Long" resultMap="RoleMap">
+		<include refid="selectQuery" />	where T.id_role=#{value}
+	</select>
+
+	<!-- get ALL row -->
+	<select id="getAll" resultMap="RoleMap">
+		<include refid="selectQuery" />
+	</select>
+
+	<!-- select berdasarkan paging parameter -->
+	<select id="selectPagingList" parameterType="Role" resultMap="RoleMap">
+			SELECT x.* from (
+				select * from (
+					<include refid="selectQuery" />
+					<include refid="searchTambahan" />
+				) y
+				<if test="search != null">
+					<include refid="search" />
+				</if>
+				<if test="sort != null">
+					order by ${sort}
+				</if>
+				 LIMIT #{page} , #{rowcount}
+			)x
+	</select>
+
+	<!-- select jumlah seluruh data yang akan di paging -->
+	<select id="selectPagingCount" parameterType="Role" resultType="Integer">
+		select count(*) from(
+			SELECT x.* from (
+				select * from (
+					<include refid="selectQuery" />
+					<include refid="searchTambahan" />
+				) y
+				<if test="search != null">
+					<include refid="search" />
+				</if>
+			)x
+		) z
+	</select>
+
+	<!-- QUERY CUSTOM LAIN-LAIN bisa dimasukkan dibawah ini -->
+
+</mapper>

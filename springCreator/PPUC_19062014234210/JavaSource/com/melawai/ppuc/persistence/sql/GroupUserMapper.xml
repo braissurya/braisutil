@@ -1,0 +1,136 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+"http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.melawai.ppuc.persistence.GroupUserMapper">
+
+	<cache />
+
+	<!-- result map-->
+	<resultMap type="GroupUser" id="GroupUserMap">
+		<id property="group_kd" column="group_kd"  />  
+		<result property="group_kd" column="group_kd" />
+		<result property="group_nm" column="group_nm" />
+		<result property="id_role" column="id_role" />
+		<result property="user_create" column="user_create" />
+		<result property="tgl_create" column="tgl_create" />
+		<result property="jam_create" column="jam_create" />
+	</resultMap>
+
+	<!-- nama kolom yang ingin ditampilkan -->
+	<sql id="defaultColoumn">
+		C.GROUP_KD as group_kd,
+		C.GROUP_NM as group_nm,
+		C.ID_ROLE as id_role,
+		C.SYS_USER_CREATE as user_create,
+		C.SYS_TGL_CREATE as tgl_create,
+		C.SYS_JAM_CREATE as jam_create
+	</sql>
+
+	<!-- query select, dengan kolom yang default di atas, apabila mau ditambahkan join juga bisa disini
+	perubahan query ini akan mempengaruhi select paging dan get di bawah  -->
+	<sql id="selectQuery">
+		select * from (
+			select <include refid="defaultColoumn" /> from group_user C
+		)T
+	</sql>
+
+	<!-- kolom apa aja yang mau disearching -->
+	<sql id="searchTambahan">
+		Where 1=1
+			<!--!!TAMBAHAN parameter untuk search-->
+	</sql>
+
+	<!-- kolom apa aja yang mau disearching -->
+	<sql id="search">
+		WHERE 1=1 AND (
+			 group_kd like  CONCAT('%', #{search}, '%')
+			 OR group_nm like  CONCAT('%', #{search}, '%')
+			 OR user_create like  CONCAT('%', #{search}, '%')
+			 OR jam_create like  CONCAT('%', #{search}, '%')
+		)
+	</sql>
+
+	<!-- insert query untuk table ini -->
+	<insert id="insert" parameterType="GroupUser">
+		INSERT INTO group_user (
+			GROUP_KD,
+			GROUP_NM,
+			ID_ROLE,
+			SYS_USER_CREATE,
+			SYS_TGL_CREATE,
+			SYS_JAM_CREATE
+		) values (
+			#{group_kd},
+			#{group_nm},
+			#{id_role},
+			#{user_create},
+			#{tgl_create},
+			#{jam_create}
+		)
+	</insert>
+
+	<!-- update query untuk table ini -->
+	<update id="update" parameterType="GroupUser">
+		UPDATE group_user
+		<set>
+			<if test="group_kd != null">GROUP_KD = #{group_kd}, </if>
+			<if test="group_nm != null">GROUP_NM = #{group_nm}, </if>
+			<if test="id_role != null">ID_ROLE = #{id_role}, </if>
+			<if test="user_create != null">SYS_USER_CREATE = #{user_create}, </if>
+			<if test="tgl_create != null">SYS_TGL_CREATE = #{tgl_create}, </if>
+			<if test="jam_create != null">SYS_JAM_CREATE = #{jam_create} </if>
+		</set>
+		WHERE  
+			GROUP_KD= #{group_kd} 
+	</update>
+
+	<!-- remove query untuk table ini -->
+	<delete id="remove" parameterType="String">
+		delete from group_user where GROUP_KD=#{value}
+	</delete>
+
+	<!-- get berdasarkan primary key -->
+	<select id="get" parameterType="String" resultMap="GroupUserMap">
+		<include refid="selectQuery" />	where T.group_kd=#{value}
+	</select>
+
+	<!-- get ALL row -->
+	<select id="getAll" resultMap="GroupUserMap">
+		<include refid="selectQuery" />
+	</select>
+
+	<!-- select berdasarkan paging parameter -->
+	<select id="selectPagingList" parameterType="GroupUser" resultMap="GroupUserMap">
+			SELECT x.* from (
+				select * from (
+					<include refid="selectQuery" />
+					<include refid="searchTambahan" />
+				) y
+				<if test="search != null">
+					<include refid="search" />
+				</if>
+				<if test="sort != null">
+					order by ${sort}
+				</if>
+				 LIMIT #{page} , #{rowcount}
+			)x
+	</select>
+
+	<!-- select jumlah seluruh data yang akan di paging -->
+	<select id="selectPagingCount" parameterType="GroupUser" resultType="Integer">
+		select count(*) from(
+			SELECT x.* from (
+				select * from (
+					<include refid="selectQuery" />
+					<include refid="searchTambahan" />
+				) y
+				<if test="search != null">
+					<include refid="search" />
+				</if>
+			)x
+		) z
+	</select>
+
+	<!-- QUERY CUSTOM LAIN-LAIN bisa dimasukkan dibawah ini -->
+
+</mapper>

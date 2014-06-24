@@ -1,0 +1,229 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+"http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.melawai.ppuc.persistence.ImgPpucHMapper">
+
+	<cache />
+
+	<!-- result map-->
+	<resultMap type="ImgPpucH" id="ImgPpucHMap">
+		<id property="no_ppuc" column="no_ppuc"  />  
+		<id property="tgl_ppuc" column="tgl_ppuc"  />  
+		<id property="divisi_kd" column="divisi_kd"  />  
+		<id property="subdiv_kd" column="subdiv_kd"  />  
+		<id property="dept_kd" column="dept_kd"  />  
+		<id property="lok_kd" column="lok_kd"  />  
+		<result property="no_ppuc" column="no_ppuc" />
+		<result property="tgl_ppuc" column="tgl_ppuc" />
+		<result property="divisi_kd" column="divisi_kd" />
+		<result property="subdiv_kd" column="subdiv_kd" />
+		<result property="dept_kd" column="dept_kd" />
+		<result property="lok_kd" column="lok_kd" />
+		<result property="no_realisasi" column="no_realisasi" />
+		<result property="tgl_realisasi" column="tgl_realisasi" />
+		<result property="user_entry" column="user_entry" />
+		<result property="tgl_entry" column="tgl_entry" />
+		<result property="jam_entry" column="jam_entry" />
+		<result property="f_confirm" column="f_confirm" />
+		<result property="user_confirm" column="user_confirm" />
+		<result property="tgl_confirm" column="tgl_confirm" />
+		<result property="jam_confirm" column="jam_confirm" />
+		<result property="file_image" column="file_image" />
+		<result property="user_create" column="user_create" />
+		<result property="tgl_create" column="tgl_create" />
+	</resultMap>
+
+	<!-- nama kolom yang ingin ditampilkan -->
+	<sql id="defaultColoumn">
+		C.NO_PPUC as no_ppuc,
+		C.TGL_PPUC as tgl_ppuc,
+		C.DIVISI_KD as divisi_kd,
+		C.SUBDIV_KD as subdiv_kd,
+		C.DEPT_KD as dept_kd,
+		C.LOK_KD as lok_kd,
+		C.NO_REALISASI as no_realisasi,
+		C.TGL_REALISASI as tgl_realisasi,
+		C.USER_ENTRY as user_entry,
+		C.TGL_ENTRY as tgl_entry,
+		C.JAM_ENTRY as jam_entry,
+		C.F_CONFIRM as f_confirm,
+		C.USER_CONFIRM as user_confirm,
+		C.TGL_CONFIRM as tgl_confirm,
+		C.JAM_CONFIRM as jam_confirm,
+		C.FILE_IMAGE as file_image,
+		C.USER_CREATE as user_create,
+		C.TGL_CREATE as tgl_create
+	</sql>
+
+	<!-- query select, dengan kolom yang default di atas, apabila mau ditambahkan join juga bisa disini
+	perubahan query ini akan mempengaruhi select paging dan get di bawah  -->
+	<sql id="selectQuery">
+		select * from (
+			select <include refid="defaultColoumn" /> from img_ppuc_h C
+		)T
+	</sql>
+
+	<!-- kolom apa aja yang mau disearching -->
+	<sql id="searchTambahan">
+		Where 1=1
+			<!--!!TAMBAHAN parameter untuk search-->
+	</sql>
+
+	<!-- kolom apa aja yang mau disearching -->
+	<sql id="search">
+		WHERE 1=1 AND (
+			 no_ppuc like  CONCAT('%', #{search}, '%')
+			 OR divisi_kd like  CONCAT('%', #{search}, '%')
+			 OR subdiv_kd like  CONCAT('%', #{search}, '%')
+			 OR dept_kd like  CONCAT('%', #{search}, '%')
+			 OR lok_kd like  CONCAT('%', #{search}, '%')
+			 OR no_realisasi like  CONCAT('%', #{search}, '%')
+			 OR user_entry like  CONCAT('%', #{search}, '%')
+			 OR jam_entry like  CONCAT('%', #{search}, '%')
+			 OR user_confirm like  CONCAT('%', #{search}, '%')
+			 OR jam_confirm like  CONCAT('%', #{search}, '%')
+			 OR user_create like  CONCAT('%', #{search}, '%')
+		)
+	</sql>
+
+	<!-- insert query untuk table ini -->
+	<insert id="insert" parameterType="ImgPpucH">
+		INSERT INTO img_ppuc_h (
+			NO_PPUC,
+			TGL_PPUC,
+			DIVISI_KD,
+			SUBDIV_KD,
+			DEPT_KD,
+			LOK_KD,
+			NO_REALISASI,
+			TGL_REALISASI,
+			USER_ENTRY,
+			TGL_ENTRY,
+			JAM_ENTRY,
+			F_CONFIRM,
+			USER_CONFIRM,
+			TGL_CONFIRM,
+			JAM_CONFIRM,
+			FILE_IMAGE,
+			USER_CREATE,
+			TGL_CREATE
+		) values (
+			#{no_ppuc},
+			#{tgl_ppuc},
+			#{divisi_kd},
+			#{subdiv_kd},
+			#{dept_kd},
+			#{lok_kd},
+			#{no_realisasi},
+			#{tgl_realisasi},
+			#{user_entry},
+			#{tgl_entry},
+			#{jam_entry},
+			#{f_confirm, JDBCTYPE=INTEGER},
+			#{user_confirm},
+			#{tgl_confirm},
+			#{jam_confirm},
+			#{file_image},
+			#{user_create},
+			#{tgl_create}
+		)
+	</insert>
+
+	<!-- update query untuk table ini -->
+	<update id="update" parameterType="ImgPpucH">
+		UPDATE img_ppuc_h
+		<set>
+			<if test="no_ppuc != null">NO_PPUC = #{no_ppuc}, </if>
+			<if test="tgl_ppuc != null">TGL_PPUC = #{tgl_ppuc}, </if>
+			<if test="divisi_kd != null">DIVISI_KD = #{divisi_kd}, </if>
+			<if test="subdiv_kd != null">SUBDIV_KD = #{subdiv_kd}, </if>
+			<if test="dept_kd != null">DEPT_KD = #{dept_kd}, </if>
+			<if test="lok_kd != null">LOK_KD = #{lok_kd}, </if>
+			<if test="no_realisasi != null">NO_REALISASI = #{no_realisasi}, </if>
+			<if test="tgl_realisasi != null">TGL_REALISASI = #{tgl_realisasi}, </if>
+			<if test="user_entry != null">USER_ENTRY = #{user_entry}, </if>
+			<if test="tgl_entry != null">TGL_ENTRY = #{tgl_entry}, </if>
+			<if test="jam_entry != null">JAM_ENTRY = #{jam_entry}, </if>
+			<if test="f_confirm != null">F_CONFIRM = #{f_confirm}, </if>
+			<if test="user_confirm != null">USER_CONFIRM = #{user_confirm}, </if>
+			<if test="tgl_confirm != null">TGL_CONFIRM = #{tgl_confirm}, </if>
+			<if test="jam_confirm != null">JAM_CONFIRM = #{jam_confirm}, </if>
+			<if test="file_image != null">FILE_IMAGE = #{file_image}, </if>
+			<if test="user_create != null">USER_CREATE = #{user_create}, </if>
+			<if test="tgl_create != null">TGL_CREATE = #{tgl_create} </if>
+		</set>
+		WHERE  
+			no_ppuc= #{no_ppuc} 
+			AND tgl_ppuc= #{tgl_ppuc}
+			AND divisi_kd= #{divisi_kd}
+			AND subdiv_kd= #{subdiv_kd}
+			AND dept_kd= #{dept_kd}
+			AND lok_kd= #{lok_kd}
+	</update>
+
+	<!-- remove query untuk table ini -->
+	<delete id="remove" parameterType="HashMap">
+		delete from img_ppuc_h
+		 <where> 
+			<if test="no_ppuc != null">no_ppuc= #{no_ppuc} </if>
+			<if test="tgl_ppuc != null"> AND tgl_ppuc= #{tgl_ppuc} </if>
+			<if test="divisi_kd != null"> AND divisi_kd= #{divisi_kd} </if>
+			<if test="subdiv_kd != null"> AND subdiv_kd= #{subdiv_kd} </if>
+			<if test="dept_kd != null"> AND dept_kd= #{dept_kd} </if>
+			<if test="lok_kd != null"> AND lok_kd= #{lok_kd} </if>
+		 </where> 
+	</delete>
+
+	<!-- get berdasarkan primary key -->
+	<select id="get" parameterType="HashMap" resultMap="ImgPpucHMap">
+		<include refid="selectQuery" />
+		 <where> 
+			<if test="no_ppuc != null"> T.no_ppuc= #{no_ppuc} </if>
+			<if test="tgl_ppuc != null"> AND T.tgl_ppuc= #{tgl_ppuc} </if>
+			<if test="divisi_kd != null"> AND T.divisi_kd= #{divisi_kd} </if>
+			<if test="subdiv_kd != null"> AND T.subdiv_kd= #{subdiv_kd} </if>
+			<if test="dept_kd != null"> AND T.dept_kd= #{dept_kd} </if>
+			<if test="lok_kd != null"> AND T.lok_kd= #{lok_kd} </if>
+		 </where> 
+	</select>
+
+	<!-- get ALL row -->
+	<select id="getAll" resultMap="ImgPpucHMap">
+		<include refid="selectQuery" />
+	</select>
+
+	<!-- select berdasarkan paging parameter -->
+	<select id="selectPagingList" parameterType="ImgPpucH" resultMap="ImgPpucHMap">
+			SELECT x.* from (
+				select * from (
+					<include refid="selectQuery" />
+					<include refid="searchTambahan" />
+				) y
+				<if test="search != null">
+					<include refid="search" />
+				</if>
+				<if test="sort != null">
+					order by ${sort}
+				</if>
+				 LIMIT #{page} , #{rowcount}
+			)x
+	</select>
+
+	<!-- select jumlah seluruh data yang akan di paging -->
+	<select id="selectPagingCount" parameterType="ImgPpucH" resultType="Integer">
+		select count(*) from(
+			SELECT x.* from (
+				select * from (
+					<include refid="selectQuery" />
+					<include refid="searchTambahan" />
+				) y
+				<if test="search != null">
+					<include refid="search" />
+				</if>
+			)x
+		) z
+	</select>
+
+	<!-- QUERY CUSTOM LAIN-LAIN bisa dimasukkan dibawah ini -->
+
+</mapper>

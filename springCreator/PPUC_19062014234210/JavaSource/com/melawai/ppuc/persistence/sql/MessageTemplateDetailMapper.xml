@@ -1,0 +1,169 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+"http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.melawai.ppuc.persistence.MessageTemplateDetailMapper">
+
+	<cache />
+
+	<!-- result map-->
+	<resultMap type="MessageTemplateDetail" id="MessageTemplateDetailMap">
+		<id property="id_template_detail" column="id_template_detail"  />  
+		<result property="id_template_detail" column="id_template_detail" />
+		<result property="id_template" column="id_template" />
+		<result property="keterangan" column="keterangan" />
+		<result property="template_sms" column="template_sms" />
+		<result property="template_web" column="template_web" />
+		<result property="template_subject" column="template_subject" />
+		<result property="template_email" column="template_email" />
+		<result property="f_aktif" column="f_aktif" />
+		<result property="user_create" column="user_create" />
+		<result property="tgl_create" column="tgl_create" />
+		<result property="user_update" column="user_update" />
+		<result property="tgl_update" column="tgl_update" />
+	</resultMap>
+
+	<!-- nama kolom yang ingin ditampilkan -->
+	<sql id="defaultColoumn">
+		C.SYS_ID_TEMPLATE_DETAIL as id_template_detail,
+		C.ID_TEMPLATE as id_template,
+		C.KETERANGAN as keterangan,
+		C.TEMPLATE_SMS as template_sms,
+		C.TEMPLATE_WEB as template_web,
+		C.TEMPLATE_SUBJECT as template_subject,
+		C.TEMPLATE_EMAIL as template_email,
+		C.F_AKTIF as f_aktif,
+		C.SYS_USER_CREATE as user_create,
+		C.SYS_TGL_CREATE as tgl_create,
+		C.SYS_USER_UPDATE as user_update,
+		C.SYS_TGL_UPDATE as tgl_update
+	</sql>
+
+	<!-- query select, dengan kolom yang default di atas, apabila mau ditambahkan join juga bisa disini
+	perubahan query ini akan mempengaruhi select paging dan get di bawah  -->
+	<sql id="selectQuery">
+		select * from (
+			select <include refid="defaultColoumn" /> from message_template_detail C
+		)T
+	</sql>
+
+	<!-- kolom apa aja yang mau disearching -->
+	<sql id="searchTambahan">
+		Where 1=1
+			<!--!!TAMBAHAN parameter untuk search-->
+	</sql>
+
+	<!-- kolom apa aja yang mau disearching -->
+	<sql id="search">
+		WHERE 1=1 AND (
+			 keterangan like  CONCAT('%', #{search}, '%')
+			 OR template_sms like  CONCAT('%', #{search}, '%')
+			 OR template_web like  CONCAT('%', #{search}, '%')
+			 OR template_subject like  CONCAT('%', #{search}, '%')
+			 OR template_email like  CONCAT('%', #{search}, '%')
+			 OR user_create like  CONCAT('%', #{search}, '%')
+			 OR user_update like  CONCAT('%', #{search}, '%')
+		)
+	</sql>
+
+	<!-- insert query untuk table ini -->
+	<insert id="insert" parameterType="MessageTemplateDetail" useGeneratedKeys="true" keyColumn="SYS_ID_TEMPLATE_DETAIL" keyProperty="id_template_detail">
+		INSERT INTO message_template_detail (
+			SYS_ID_TEMPLATE_DETAIL,
+			ID_TEMPLATE,
+			KETERANGAN,
+			TEMPLATE_SMS,
+			TEMPLATE_WEB,
+			TEMPLATE_SUBJECT,
+			TEMPLATE_EMAIL,
+			F_AKTIF,
+			SYS_USER_CREATE,
+			SYS_TGL_CREATE,
+			SYS_USER_UPDATE,
+			SYS_TGL_UPDATE
+		) values (
+			#{id_template_detail},
+			#{id_template},
+			#{keterangan},
+			#{template_sms},
+			#{template_web},
+			#{template_subject},
+			#{template_email},
+			#{f_aktif},
+			#{user_create},
+			#{tgl_create},
+			#{user_update},
+			#{tgl_update}
+		)
+	</insert>
+
+	<!-- update query untuk table ini -->
+	<update id="update" parameterType="MessageTemplateDetail">
+		UPDATE message_template_detail
+		<set>
+			<if test="id_template_detail != null">SYS_ID_TEMPLATE_DETAIL = #{id_template_detail}, </if>
+			<if test="id_template != null">ID_TEMPLATE = #{id_template}, </if>
+			<if test="keterangan != null">KETERANGAN = #{keterangan}, </if>
+			<if test="template_sms != null">TEMPLATE_SMS = #{template_sms}, </if>
+			<if test="template_web != null">TEMPLATE_WEB = #{template_web}, </if>
+			<if test="template_subject != null">TEMPLATE_SUBJECT = #{template_subject}, </if>
+			<if test="template_email != null">TEMPLATE_EMAIL = #{template_email}, </if>
+			<if test="f_aktif != null">F_AKTIF = #{f_aktif}, </if>
+			<if test="user_create != null">SYS_USER_CREATE = #{user_create}, </if>
+			<if test="tgl_create != null">SYS_TGL_CREATE = #{tgl_create}, </if>
+			<if test="user_update != null">SYS_USER_UPDATE = #{user_update}, </if>
+			<if test="tgl_update != null">SYS_TGL_UPDATE = #{tgl_update} </if>
+		</set>
+		WHERE  
+			SYS_ID_TEMPLATE_DETAIL= #{id_template_detail} 
+	</update>
+
+	<!-- remove query untuk table ini -->
+	<delete id="remove" parameterType="Long">
+		delete from message_template_detail where SYS_ID_TEMPLATE_DETAIL=#{value}
+	</delete>
+
+	<!-- get berdasarkan primary key -->
+	<select id="get" parameterType="Long" resultMap="MessageTemplateDetailMap">
+		<include refid="selectQuery" />	where T.id_template_detail=#{value}
+	</select>
+
+	<!-- get ALL row -->
+	<select id="getAll" resultMap="MessageTemplateDetailMap">
+		<include refid="selectQuery" />
+	</select>
+
+	<!-- select berdasarkan paging parameter -->
+	<select id="selectPagingList" parameterType="MessageTemplateDetail" resultMap="MessageTemplateDetailMap">
+			SELECT x.* from (
+				select * from (
+					<include refid="selectQuery" />
+					<include refid="searchTambahan" />
+				) y
+				<if test="search != null">
+					<include refid="search" />
+				</if>
+				<if test="sort != null">
+					order by ${sort}
+				</if>
+				 LIMIT #{page} , #{rowcount}
+			)x
+	</select>
+
+	<!-- select jumlah seluruh data yang akan di paging -->
+	<select id="selectPagingCount" parameterType="MessageTemplateDetail" resultType="Integer">
+		select count(*) from(
+			SELECT x.* from (
+				select * from (
+					<include refid="selectQuery" />
+					<include refid="searchTambahan" />
+				) y
+				<if test="search != null">
+					<include refid="search" />
+				</if>
+			)x
+		) z
+	</select>
+
+	<!-- QUERY CUSTOM LAIN-LAIN bisa dimasukkan dibawah ini -->
+
+</mapper>

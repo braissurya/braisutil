@@ -1,0 +1,14 @@
+<?xml version="1.0" encoding="UTF-8" standalone="no"?>
+<div xmlns:field="urn:jsptagdir:/WEB-INF/tags/form/fields" xmlns:jsp="http://java.sun.com/JSP/Page" xmlns:page="urn:jsptagdir:/WEB-INF/tags/form" version="2.0">
+    <jsp:directive.page contentType="text/html;charset=UTF-8"/>
+    <jsp:output omit-xml-declaration="yes"/>
+    <page:show id="ps_com_melawai_ppuc_model_mfungsi" object="${mfungsi}" path="/master/mfungsi">
+       <field:display field="kd_fungsi" label="Kd Fungsi" id="c_com_melawai_ppuc_model_mfungsi_kd_fungsi"  object="${mfungsi}" />
+       <field:display field="nm_fungsi" label="Nm Fungsi" id="c_com_melawai_ppuc_model_mfungsi_nm_fungsi"  object="${mfungsi}" />
+       <field:display field="mail_seq" label="Mail Seq" id="c_com_melawai_ppuc_model_mfungsi_mail_seq"  object="${mfungsi}" />
+       <field:display field="user_create" label="User Create" id="c_com_melawai_ppuc_model_mfungsi_user_create"  object="${mfungsi}" />
+       <field:display field="tgl_create" label="Tgl Create" id="c_com_melawai_ppuc_model_mfungsi_tgl_create"  object="${mfungsi}"  date="true" dateTimePattern="${mfungsi_tgl_create_date_format}"/>
+       <field:display field="jam_create" label="Jam Create" id="c_com_melawai_ppuc_model_mfungsi_jam_create"  object="${mfungsi}" />
+    </page:show>
+</div>
+

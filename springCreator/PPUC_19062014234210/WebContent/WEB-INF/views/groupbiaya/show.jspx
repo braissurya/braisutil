@@ -1,0 +1,13 @@
+<?xml version="1.0" encoding="UTF-8" standalone="no"?>
+<div xmlns:field="urn:jsptagdir:/WEB-INF/tags/form/fields" xmlns:jsp="http://java.sun.com/JSP/Page" xmlns:page="urn:jsptagdir:/WEB-INF/tags/form" version="2.0">
+    <jsp:directive.page contentType="text/html;charset=UTF-8"/>
+    <jsp:output omit-xml-declaration="yes"/>
+    <page:show id="ps_com_melawai_ppuc_model_groupbiaya" object="${groupbiaya}" path="/master/groupbiaya">
+       <field:display field="kd_group" label="Kd Group" id="c_com_melawai_ppuc_model_groupbiaya_kd_group"  object="${groupbiaya}" />
+       <field:display field="nm_group" label="Nm Group" id="c_com_melawai_ppuc_model_groupbiaya_nm_group"  object="${groupbiaya}" />
+       <field:display field="user_create" label="User Create" id="c_com_melawai_ppuc_model_groupbiaya_user_create"  object="${groupbiaya}" />
+       <field:display field="tgl_create" label="Tgl Create" id="c_com_melawai_ppuc_model_groupbiaya_tgl_create"  object="${groupbiaya}"  date="true" dateTimePattern="${groupbiaya_tgl_create_date_format}"/>
+       <field:display field="jam_create" label="Jam Create" id="c_com_melawai_ppuc_model_groupbiaya_jam_create"  object="${groupbiaya}" />
+    </page:show>
+</div>
+

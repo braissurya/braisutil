@@ -1,0 +1,15 @@
+<?xml version="1.0" encoding="UTF-8" standalone="no"?>
+<div xmlns:field="urn:jsptagdir:/WEB-INF/tags/form/fields" xmlns:jsp="http://java.sun.com/JSP/Page" xmlns:page="urn:jsptagdir:/WEB-INF/tags/form" version="2.0">
+    <jsp:directive.page contentType="text/html;charset=UTF-8"/>
+    <jsp:output omit-xml-declaration="yes"/>
+    <page:show id="ps_com_melawai_ppuc_model_audittraildetail" object="${audittraildetail}" path="/master/audittraildetail">
+       <field:display field="id_audittrail_detail" label="Id Audittrail Detail" id="c_com_melawai_ppuc_model_audittraildetail_id_audittrail_detail"  object="${audittraildetail}" />
+       <field:display field="id_audittrail" label="Id Audittrail" id="c_com_melawai_ppuc_model_audittraildetail_id_audittrail"  object="${audittraildetail}" />
+       <field:display field="field" label="Field" id="c_com_melawai_ppuc_model_audittraildetail_field"  object="${audittraildetail}" />
+       <field:display field="before" label="Before" id="c_com_melawai_ppuc_model_audittraildetail_before"  object="${audittraildetail}" />
+       <field:display field="after" label="After" id="c_com_melawai_ppuc_model_audittraildetail_after"  object="${audittraildetail}" />
+       <field:display field="user_create" label="User Create" id="c_com_melawai_ppuc_model_audittraildetail_user_create"  object="${audittraildetail}" />
+       <field:display field="tgl_create" label="Tgl Create" id="c_com_melawai_ppuc_model_audittraildetail_tgl_create"  object="${audittraildetail}"  date="true" dateTimePattern="${audittraildetail_tgl_create_date_format}"/>
+    </page:show>
+</div>
+

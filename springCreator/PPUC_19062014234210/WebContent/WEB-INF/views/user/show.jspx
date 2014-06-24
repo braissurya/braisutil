@@ -1,0 +1,25 @@
+<?xml version="1.0" encoding="UTF-8" standalone="no"?>
+<div xmlns:field="urn:jsptagdir:/WEB-INF/tags/form/fields" xmlns:jsp="http://java.sun.com/JSP/Page" xmlns:page="urn:jsptagdir:/WEB-INF/tags/form" version="2.0">
+    <jsp:directive.page contentType="text/html;charset=UTF-8"/>
+    <jsp:output omit-xml-declaration="yes"/>
+    <page:show id="ps_com_melawai_ppuc_model_user" object="${user}" path="/master/user">
+       <field:display field="user_id" label="User Id" id="c_com_melawai_ppuc_model_user_user_id"  object="${user}" />
+       <field:display field="password" label="Password" id="c_com_melawai_ppuc_model_user_password"  object="${user}" />
+       <field:display field="user_name" label="User Name" id="c_com_melawai_ppuc_model_user_user_name"  object="${user}" />
+       <field:display field="no_hp" label="No Hp" id="c_com_melawai_ppuc_model_user_no_hp"  object="${user}" />
+       <field:display field="email" label="Email" id="c_com_melawai_ppuc_model_user_email"  object="${user}" />
+       <field:display field="kd_fungsi" label="Kd Fungsi" id="c_com_melawai_ppuc_model_user_kd_fungsi"  object="${user}" />
+       <field:display field="group_kd" label="Group Kd" id="c_com_melawai_ppuc_model_user_group_kd"  object="${user}" />
+       <field:display field="f_aktif" label="F Aktif" id="c_com_melawai_ppuc_model_user_f_aktif"  object="${user}" />
+       <field:display field="user_create" label="User Create" id="c_com_melawai_ppuc_model_user_user_create"  object="${user}" />
+       <field:display field="tgl_create" label="Tgl Create" id="c_com_melawai_ppuc_model_user_tgl_create"  object="${user}"  date="true" dateTimePattern="${user_tgl_create_date_format}"/>
+       <field:display field="jam_create" label="Jam Create" id="c_com_melawai_ppuc_model_user_jam_create"  object="${user}" />
+       <field:display field="user_update" label="User Update" id="c_com_melawai_ppuc_model_user_user_update"  object="${user}" />
+       <field:display field="tgl_update" label="Tgl Update" id="c_com_melawai_ppuc_model_user_tgl_update"  object="${user}"  date="true" dateTimePattern="${user_tgl_update_date_format}"/>
+       <field:display field="jam_update" label="Jam Update" id="c_com_melawai_ppuc_model_user_jam_update"  object="${user}" />
+       <field:display field="user_nonaktif" label="User Nonaktif" id="c_com_melawai_ppuc_model_user_user_nonaktif"  object="${user}" />
+       <field:display field="tgl_nonaktif" label="Tgl Nonaktif" id="c_com_melawai_ppuc_model_user_tgl_nonaktif"  object="${user}"  date="true" dateTimePattern="${user_tgl_nonaktif_date_format}"/>
+       <field:display field="jam_nonaktif" label="Jam Nonaktif" id="c_com_melawai_ppuc_model_user_jam_nonaktif"  object="${user}" />
+    </page:show>
+</div>
+

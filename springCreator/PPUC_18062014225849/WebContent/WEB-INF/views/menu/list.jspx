@@ -1,0 +1,17 @@
+<?xml version="1.0" encoding="UTF-8" standalone="no"?>
+<div xmlns:jsp="http://java.sun.com/JSP/Page" xmlns:page="urn:jsptagdir:/WEB-INF/tags/form" xmlns:table="urn:jsptagdir:/WEB-INF/tags/form/fields" version="2.0">
+    <jsp:directive.page contentType="text/html;charset=UTF-8"/>
+    <jsp:output omit-xml-declaration="yes"/>
+    <page:list id="pl_com_melawai_ppuc_model_menu"  items="${menuList}" >
+        <table:table data="${menuList}" id="l_com_melawai_ppuc_model_Menu" typeIdFieldName="itemId" path="/master/menu" >
+       <table:column id="c_com_melawai_ppuc_model_menu_nama" property="nama" label="Nama" />
+       <table:column id="c_com_melawai_ppuc_model_menu_link" property="link" label="Link" />
+       <table:column id="c_com_melawai_ppuc_model_menu_path" property="path" label="Path" />
+       <table:column id="c_com_melawai_ppuc_model_menu_user_create" property="user_create" label="User Create" />
+       <table:column id="c_com_melawai_ppuc_model_menu_jam_create" property="jam_create" label="Jam Create" />
+       <table:column id="c_com_melawai_ppuc_model_menu_user_nonaktif" property="user_nonaktif" label="User Nonaktif" />
+       <table:column id="c_com_melawai_ppuc_model_menu_jam_nonaktif" property="jam_nonaktif" label="Jam Nonaktif" />
+        </table:table>
+    </page:list>
+</div>
+

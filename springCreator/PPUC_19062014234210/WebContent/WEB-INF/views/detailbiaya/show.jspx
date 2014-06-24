@@ -1,0 +1,17 @@
+<?xml version="1.0" encoding="UTF-8" standalone="no"?>
+<div xmlns:field="urn:jsptagdir:/WEB-INF/tags/form/fields" xmlns:jsp="http://java.sun.com/JSP/Page" xmlns:page="urn:jsptagdir:/WEB-INF/tags/form" version="2.0">
+    <jsp:directive.page contentType="text/html;charset=UTF-8"/>
+    <jsp:output omit-xml-declaration="yes"/>
+    <page:show id="ps_com_melawai_ppuc_model_detailbiaya" object="${detailbiaya}" path="/master/detailbiaya">
+       <field:display field="kd_biaya" label="Kd Biaya" id="c_com_melawai_ppuc_model_detailbiaya_kd_biaya"  object="${detailbiaya}" />
+       <field:display field="kd_group" label="Kd Group" id="c_com_melawai_ppuc_model_detailbiaya_kd_group"  object="${detailbiaya}" />
+       <field:display field="biaya_description" label="Biaya Description" id="c_com_melawai_ppuc_model_detailbiaya_biaya_description"  object="${detailbiaya}" />
+       <field:display field="f_putus" label="F Putus" id="c_com_melawai_ppuc_model_detailbiaya_f_putus"  object="${detailbiaya}" />
+       <field:display field="f_used" label="F Used" id="c_com_melawai_ppuc_model_detailbiaya_f_used"  object="${detailbiaya}" />
+       <field:display field="acc_no" label="Acc No" id="c_com_melawai_ppuc_model_detailbiaya_acc_no"  object="${detailbiaya}" />
+       <field:display field="user_create" label="User Create" id="c_com_melawai_ppuc_model_detailbiaya_user_create"  object="${detailbiaya}" />
+       <field:display field="tgl_create" label="Tgl Create" id="c_com_melawai_ppuc_model_detailbiaya_tgl_create"  object="${detailbiaya}"  date="true" dateTimePattern="${detailbiaya_tgl_create_date_format}"/>
+       <field:display field="jam_create" label="Jam Create" id="c_com_melawai_ppuc_model_detailbiaya_jam_create"  object="${detailbiaya}" />
+    </page:show>
+</div>
+

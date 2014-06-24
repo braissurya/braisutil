@@ -1,0 +1,193 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+"http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.melawai.ppuc.persistence.HakBiayaMapper">
+
+	<cache />
+
+	<!-- result map-->
+	<resultMap type="HakBiaya" id="HakBiayaMap">
+		<id property="divisi_kd" column="divisi_kd"  />  
+		<id property="subdiv_kd" column="subdiv_kd"  />  
+		<id property="kd_group" column="kd_group"  />  
+		<id property="kd_biaya" column="kd_biaya"  />  
+		<result property="divisi_kd" column="divisi_kd" />
+		<result property="subdiv_kd" column="subdiv_kd" />
+		<result property="kd_group" column="kd_group" />
+		<result property="kd_biaya" column="kd_biaya" />
+		<result property="f_aktif" column="f_aktif" />
+		<result property="drtgl" column="drtgl" />
+		<result property="sptgl" column="sptgl" />
+		<result property="user_create" column="user_create" />
+		<result property="tgl_create" column="tgl_create" />
+		<result property="jam_create" column="jam_create" />
+		<result property="user_nonaktif" column="user_nonaktif" />
+		<result property="tgl_nonaktif" column="tgl_nonaktif" />
+		<result property="jam_nonaktif" column="jam_nonaktif" />
+	</resultMap>
+
+	<!-- nama kolom yang ingin ditampilkan -->
+	<sql id="defaultColoumn">
+		C.DIVISI_KD as divisi_kd,
+		C.SUBDIV_KD as subdiv_kd,
+		C.KD_GROUP as kd_group,
+		C.KD_BIAYA as kd_biaya,
+		C.F_AKTIF as f_aktif,
+		C.DRTGL as drtgl,
+		C.SPTGL as sptgl,
+		C.SYS_USER_CREATE as user_create,
+		C.SYS_TGL_CREATE as tgl_create,
+		C.SYS_JAM_CREATE as jam_create,
+		C.SYS_USER_NONAKTIF as user_nonaktif,
+		C.SYS_TGL_NONAKTIF as tgl_nonaktif,
+		C.SYS_JAM_NONAKTIF as jam_nonaktif
+	</sql>
+
+	<!-- query select, dengan kolom yang default di atas, apabila mau ditambahkan join juga bisa disini
+	perubahan query ini akan mempengaruhi select paging dan get di bawah  -->
+	<sql id="selectQuery">
+		select * from (
+			select <include refid="defaultColoumn" /> from hak_biaya C
+		)T
+	</sql>
+
+	<!-- kolom apa aja yang mau disearching -->
+	<sql id="searchTambahan">
+		Where 1=1
+			<!--!!TAMBAHAN parameter untuk search-->
+	</sql>
+
+	<!-- kolom apa aja yang mau disearching -->
+	<sql id="search">
+		WHERE 1=1 AND (
+			 divisi_kd like  CONCAT('%', #{search}, '%')
+			 OR subdiv_kd like  CONCAT('%', #{search}, '%')
+			 OR kd_group like  CONCAT('%', #{search}, '%')
+			 OR kd_biaya like  CONCAT('%', #{search}, '%')
+			 OR user_create like  CONCAT('%', #{search}, '%')
+			 OR jam_create like  CONCAT('%', #{search}, '%')
+			 OR user_nonaktif like  CONCAT('%', #{search}, '%')
+			 OR jam_nonaktif like  CONCAT('%', #{search}, '%')
+		)
+	</sql>
+
+	<!-- insert query untuk table ini -->
+	<insert id="insert" parameterType="HakBiaya">
+		INSERT INTO hak_biaya (
+			DIVISI_KD,
+			SUBDIV_KD,
+			KD_GROUP,
+			KD_BIAYA,
+			F_AKTIF,
+			DRTGL,
+			SPTGL,
+			SYS_USER_CREATE,
+			SYS_TGL_CREATE,
+			SYS_JAM_CREATE,
+			SYS_USER_NONAKTIF,
+			SYS_TGL_NONAKTIF,
+			SYS_JAM_NONAKTIF
+		) values (
+			#{divisi_kd},
+			#{subdiv_kd},
+			#{kd_group},
+			#{kd_biaya},
+			#{f_aktif},
+			#{drtgl},
+			#{sptgl},
+			#{user_create},
+			#{tgl_create},
+			#{jam_create},
+			#{user_nonaktif},
+			#{tgl_nonaktif},
+			#{jam_nonaktif}
+		)
+	</insert>
+
+	<!-- update query untuk table ini -->
+	<update id="update" parameterType="HakBiaya">
+		UPDATE hak_biaya
+		<set>
+			<if test="divisi_kd != null">DIVISI_KD = #{divisi_kd}, </if>
+			<if test="subdiv_kd != null">SUBDIV_KD = #{subdiv_kd}, </if>
+			<if test="kd_group != null">KD_GROUP = #{kd_group}, </if>
+			<if test="kd_biaya != null">KD_BIAYA = #{kd_biaya}, </if>
+			<if test="f_aktif != null">F_AKTIF = #{f_aktif}, </if>
+			<if test="drtgl != null">DRTGL = #{drtgl}, </if>
+			<if test="sptgl != null">SPTGL = #{sptgl}, </if>
+			<if test="user_create != null">SYS_USER_CREATE = #{user_create}, </if>
+			<if test="tgl_create != null">SYS_TGL_CREATE = #{tgl_create}, </if>
+			<if test="jam_create != null">SYS_JAM_CREATE = #{jam_create}, </if>
+			<if test="user_nonaktif != null">SYS_USER_NONAKTIF = #{user_nonaktif}, </if>
+			<if test="tgl_nonaktif != null">SYS_TGL_NONAKTIF = #{tgl_nonaktif}, </if>
+			<if test="jam_nonaktif != null">SYS_JAM_NONAKTIF = #{jam_nonaktif} </if>
+		</set>
+		WHERE  
+			DIVISI_KD= #{divisi_kd} 
+			AND SUBDIV_KD= #{subdiv_kd}
+			AND KD_GROUP= #{kd_group}
+			AND KD_BIAYA= #{kd_biaya}
+	</update>
+
+	<!-- remove query untuk table ini -->
+	<delete id="remove" parameterType="HashMap">
+		delete from hak_biaya
+		 <where> 
+			<if test="divisi_kd != null">DIVISI_KD= #{divisi_kd} </if>
+			<if test="subdiv_kd != null"> AND SUBDIV_KD= #{subdiv_kd} </if>
+			<if test="kd_group != null"> AND KD_GROUP= #{kd_group} </if>
+			<if test="kd_biaya != null"> AND KD_BIAYA= #{kd_biaya} </if>
+		 </where> 
+	</delete>
+
+	<!-- get berdasarkan primary key -->
+	<select id="get" parameterType="HashMap" resultMap="HakBiayaMap">
+		<include refid="selectQuery" />
+		 <where> 
+			<if test="divisi_kd != null"> T.divisi_kd= #{divisi_kd} </if>
+			<if test="subdiv_kd != null"> AND T.subdiv_kd= #{subdiv_kd} </if>
+			<if test="kd_group != null"> AND T.kd_group= #{kd_group} </if>
+			<if test="kd_biaya != null"> AND T.kd_biaya= #{kd_biaya} </if>
+		 </where> 
+	</select>
+
+	<!-- get ALL row -->
+	<select id="getAll" resultMap="HakBiayaMap">
+		<include refid="selectQuery" />
+	</select>
+
+	<!-- select berdasarkan paging parameter -->
+	<select id="selectPagingList" parameterType="HakBiaya" resultMap="HakBiayaMap">
+			SELECT x.* from (
+				select * from (
+					<include refid="selectQuery" />
+					<include refid="searchTambahan" />
+				) y
+				<if test="search != null">
+					<include refid="search" />
+				</if>
+				<if test="sort != null">
+					order by ${sort}
+				</if>
+				 LIMIT #{page} , #{rowcount}
+			)x
+	</select>
+
+	<!-- select jumlah seluruh data yang akan di paging -->
+	<select id="selectPagingCount" parameterType="HakBiaya" resultType="Integer">
+		select count(*) from(
+			SELECT x.* from (
+				select * from (
+					<include refid="selectQuery" />
+					<include refid="searchTambahan" />
+				) y
+				<if test="search != null">
+					<include refid="search" />
+				</if>
+			)x
+		) z
+	</select>
+
+	<!-- QUERY CUSTOM LAIN-LAIN bisa dimasukkan dibawah ini -->
+
+</mapper>

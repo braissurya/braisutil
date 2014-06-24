@@ -1,0 +1,23 @@
+<?xml version="1.0" encoding="UTF-8" standalone="no"?>
+<div xmlns:field="urn:jsptagdir:/WEB-INF/tags/form/fields" xmlns:jsp="http://java.sun.com/JSP/Page" xmlns:page="urn:jsptagdir:/WEB-INF/tags/form" version="2.0">
+    <jsp:directive.page contentType="text/html;charset=UTF-8"/>
+    <jsp:output omit-xml-declaration="yes"/>
+    <page:show id="ps_com_melawai_ppuc_model_logsms" object="${logsms}" path="/master/logsms">
+       <field:display field="id_log_sms" label="Id Log Sms" id="c_com_melawai_ppuc_model_logsms_id_log_sms"  object="${logsms}" />
+       <field:display field="divisi_kd" label="Divisi Kd" id="c_com_melawai_ppuc_model_logsms_divisi_kd"  object="${logsms}" />
+       <field:display field="subdiv_kd" label="Subdiv Kd" id="c_com_melawai_ppuc_model_logsms_subdiv_kd"  object="${logsms}" />
+       <field:display field="dept_kd" label="Dept Kd" id="c_com_melawai_ppuc_model_logsms_dept_kd"  object="${logsms}" />
+       <field:display field="lok_kd" label="Lok Kd" id="c_com_melawai_ppuc_model_logsms_lok_kd"  object="${logsms}" />
+       <field:display field="no_ppuc" label="No Ppuc" id="c_com_melawai_ppuc_model_logsms_no_ppuc"  object="${logsms}" />
+       <field:display field="tgl_ppuc" label="Tgl Ppuc" id="c_com_melawai_ppuc_model_logsms_tgl_ppuc"  object="${logsms}"  date="true" dateTimePattern="${logsms_tgl_ppuc_date_format}"/>
+       <field:display field="send_date" label="Send Date" id="c_com_melawai_ppuc_model_logsms_send_date"  object="${logsms}"  date="true" dateTimePattern="${logsms_send_date_date_format}"/>
+       <field:display field="send_time" label="Send Time" id="c_com_melawai_ppuc_model_logsms_send_time"  object="${logsms}" />
+       <field:display field="status" label="Status" id="c_com_melawai_ppuc_model_logsms_status"  object="${logsms}" />
+       <field:display field="isi_sms" label="Isi Sms" id="c_com_melawai_ppuc_model_logsms_isi_sms"  object="${logsms}" />
+       <field:display field="hp_maker" label="Hp Maker" id="c_com_melawai_ppuc_model_logsms_hp_maker"  object="${logsms}" />
+       <field:display field="hp_approval" label="Hp Approval" id="c_com_melawai_ppuc_model_logsms_hp_approval"  object="${logsms}" />
+       <field:display field="user_create" label="User Create" id="c_com_melawai_ppuc_model_logsms_user_create"  object="${logsms}" />
+       <field:display field="tgl_create" label="Tgl Create" id="c_com_melawai_ppuc_model_logsms_tgl_create"  object="${logsms}"  date="true" dateTimePattern="${logsms_tgl_create_date_format}"/>
+    </page:show>
+</div>
+

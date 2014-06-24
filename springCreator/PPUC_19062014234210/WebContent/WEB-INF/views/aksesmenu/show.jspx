@@ -1,0 +1,12 @@
+<?xml version="1.0" encoding="UTF-8" standalone="no"?>
+<div xmlns:field="urn:jsptagdir:/WEB-INF/tags/form/fields" xmlns:jsp="http://java.sun.com/JSP/Page" xmlns:page="urn:jsptagdir:/WEB-INF/tags/form" version="2.0">
+    <jsp:directive.page contentType="text/html;charset=UTF-8"/>
+    <jsp:output omit-xml-declaration="yes"/>
+    <page:show id="ps_com_melawai_ppuc_model_aksesmenu" object="${aksesmenu}" path="/master/aksesmenu">
+       <field:display field="group_kd" label="Group Kd" id="c_com_melawai_ppuc_model_aksesmenu_group_kd"  object="${aksesmenu}" />
+       <field:display field="menu_id" label="Menu Id" id="c_com_melawai_ppuc_model_aksesmenu_menu_id"  object="${aksesmenu}" />
+       <field:display field="user_create" label="User Create" id="c_com_melawai_ppuc_model_aksesmenu_user_create"  object="${aksesmenu}" />
+       <field:display field="tgl_create" label="Tgl Create" id="c_com_melawai_ppuc_model_aksesmenu_tgl_create"  object="${aksesmenu}"  date="true" dateTimePattern="${aksesmenu_tgl_create_date_format}"/>
+    </page:show>
+</div>
+

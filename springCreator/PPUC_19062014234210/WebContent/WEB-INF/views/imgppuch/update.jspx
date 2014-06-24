@@ -1,0 +1,30 @@
+<?xml version="1.0" encoding="UTF-8" standalone="no"?>
+<div xmlns:field="urn:jsptagdir:/WEB-INF/tags/form/fields" xmlns:form="urn:jsptagdir:/WEB-INF/tags/form" xmlns:jsp="http://java.sun.com/JSP/Page" version="2.0">
+    <jsp:directive.page contentType="text/html;charset=UTF-8"/>
+    <jsp:output omit-xml-declaration="yes"/>
+    <form:update id="fu_com_melawai_ppuc_model_imgppuch" modelAttribute="imgppuch" path="/master/imgppuch" idField="itemId" versionField="none" >
+       <field:input field="divisi_kd" label="Divisi Kd" id="c_com_melawai_ppuc_model_imgppuch_divisi_kd" required="true" />
+       <field:input field="subdiv_kd" label="Subdiv Kd" id="c_com_melawai_ppuc_model_imgppuch_subdiv_kd" required="true" />
+       <field:input field="dept_kd" label="Dept Kd" id="c_com_melawai_ppuc_model_imgppuch_dept_kd" required="true" />
+       <field:input field="lok_kd" label="Lok Kd" id="c_com_melawai_ppuc_model_imgppuch_lok_kd" required="true" />
+       <field:input field="no_ppuc" label="No Ppuc" id="c_com_melawai_ppuc_model_imgppuch_no_ppuc" readonly="true" validationMessageCode="field_invalid_number" />
+       <field:datetime field="tgl_ppuc" label="Tgl Ppuc" id="c_com_melawai_ppuc_model_imgppuch_tgl_ppuc" required="true" dateTimePattern="${imgppuch_tgl_ppuc_date_format}" />
+       <field:input field="no_batch" label="No Batch" id="c_com_melawai_ppuc_model_imgppuch_no_batch"  />
+       <field:input field="no_realisasi" label="No Realisasi" id="c_com_melawai_ppuc_model_imgppuch_no_realisasi" required="true" />
+       <field:datetime field="tgl_realisasi" label="Tgl Realisasi" id="c_com_melawai_ppuc_model_imgppuch_tgl_realisasi"  dateTimePattern="${imgppuch_tgl_realisasi_date_format}" />
+       <field:input field="user_entry" label="User Entry" id="c_com_melawai_ppuc_model_imgppuch_user_entry"  />
+       <field:datetime field="tgl_entry" label="Tgl Entry" id="c_com_melawai_ppuc_model_imgppuch_tgl_entry"  dateTimePattern="${imgppuch_tgl_entry_date_format}" />
+       <field:input field="jam_entry" label="Jam Entry" id="c_com_melawai_ppuc_model_imgppuch_jam_entry"  />
+       <field:input field="f_confirm" label="F Confirm" id="c_com_melawai_ppuc_model_imgppuch_f_confirm"  validationMessageCode="field_invalid_integer" />
+       <field:input field="user_confirm" label="User Confirm" id="c_com_melawai_ppuc_model_imgppuch_user_confirm" readonly="true" validationMessageCode="field_invalid_number" />
+       <field:input field="tgl_confirm" label="Tgl Confirm" id="c_com_melawai_ppuc_model_imgppuch_tgl_confirm" readonly="true" validationMessageCode="field_invalid_number" />
+       <field:input field="jam_confirm" label="Jam Confirm" id="c_com_melawai_ppuc_model_imgppuch_jam_confirm" readonly="true" validationMessageCode="field_invalid_number" />
+       <field:input field="file_image" label="File Image" id="c_com_melawai_ppuc_model_imgppuch_file_image"  />
+       <field:input field="user_create" label="User Create" id="c_com_melawai_ppuc_model_imgppuch_user_create" readonly="true" validationMessageCode="field_invalid_number" />
+       <field:input field="tgl_create" label="Tgl Create" id="c_com_melawai_ppuc_model_imgppuch_tgl_create" readonly="true" validationMessageCode="field_invalid_number" />
+       <field:input field="file_name" label="File Name" id="c_com_melawai_ppuc_model_imgppuch_file_name" readonly="true" validationMessageCode="field_invalid_number" />
+       <field:input field="file_ext" label="File Ext" id="c_com_melawai_ppuc_model_imgppuch_file_ext" readonly="true" validationMessageCode="field_invalid_number" />
+       <field:input field="file_no" label="File No" id="c_com_melawai_ppuc_model_imgppuch_file_no" readonly="true" validationMessageCode="field_invalid_number" />
+	</form:update>
+</div>
+

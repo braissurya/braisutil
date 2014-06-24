@@ -1,0 +1,18 @@
+<?xml version="1.0" encoding="UTF-8" standalone="no"?>
+<div xmlns:jsp="http://java.sun.com/JSP/Page" xmlns:page="urn:jsptagdir:/WEB-INF/tags/form" xmlns:table="urn:jsptagdir:/WEB-INF/tags/form/fields" version="2.0">
+    <jsp:directive.page contentType="text/html;charset=UTF-8"/>
+    <jsp:output omit-xml-declaration="yes"/>
+    <page:list id="pl_com_melawai_ppuc_model_smsserverin"  items="${smsserverinList}" >
+        <table:table data="${smsserverinList}" id="l_com_melawai_ppuc_model_SmsserverIn" typeIdFieldName="itemId" path="/master/smsserverin" >
+       <table:column id="c_com_melawai_ppuc_model_smsserverin_originator" property="originator" label="Originator" />
+       <table:column id="c_com_melawai_ppuc_model_smsserverin_type" property="type" label="Type" />
+       <table:column id="c_com_melawai_ppuc_model_smsserverin_encoding" property="encoding" label="Encoding" />
+       <table:column id="c_com_melawai_ppuc_model_smsserverin_text" property="text" label="Text" />
+       <table:column id="c_com_melawai_ppuc_model_smsserverin_original_ref_no" property="original_ref_no" label="Original Ref No" />
+       <table:column id="c_com_melawai_ppuc_model_smsserverin_gateway_id" property="gateway_id" label="Gateway Id" />
+       <table:column id="c_com_melawai_ppuc_model_smsserverin_user_id" property="user_id" label="User Id" />
+       <table:column id="c_com_melawai_ppuc_model_smsserverin_PROSES_KET" property="PROSES_KET" label="Proses Ket" />
+        </table:table>
+    </page:list>
+</div>
+

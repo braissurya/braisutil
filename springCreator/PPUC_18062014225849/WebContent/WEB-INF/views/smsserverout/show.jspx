@@ -1,0 +1,30 @@
+<?xml version="1.0" encoding="UTF-8" standalone="no"?>
+<div xmlns:field="urn:jsptagdir:/WEB-INF/tags/form/fields" xmlns:jsp="http://java.sun.com/JSP/Page" xmlns:page="urn:jsptagdir:/WEB-INF/tags/form" version="2.0">
+    <jsp:directive.page contentType="text/html;charset=UTF-8"/>
+    <jsp:output omit-xml-declaration="yes"/>
+    <page:show id="ps_com_melawai_ppuc_model_smsserverout" object="${smsserverout}" path="/master/smsserverout">
+       <field:display field="id" label="Id" id="c_com_melawai_ppuc_model_smsserverout_id"  object="${smsserverout}" />
+       <field:display field="type" label="Type" id="c_com_melawai_ppuc_model_smsserverout_type"  object="${smsserverout}" />
+       <field:display field="recipient" label="Recipient" id="c_com_melawai_ppuc_model_smsserverout_recipient"  object="${smsserverout}" />
+       <field:display field="text" label="Text" id="c_com_melawai_ppuc_model_smsserverout_text"  object="${smsserverout}" />
+       <field:display field="wap_url" label="Wap Url" id="c_com_melawai_ppuc_model_smsserverout_wap_url"  object="${smsserverout}" />
+       <field:display field="wap_expiry_date" label="Wap Expiry Date" id="c_com_melawai_ppuc_model_smsserverout_wap_expiry_date"  object="${smsserverout}"  date="true" dateTimePattern="${smsserverout_wap_expiry_date_date_format}"/>
+       <field:display field="wap_signal" label="Wap Signal" id="c_com_melawai_ppuc_model_smsserverout_wap_signal"  object="${smsserverout}" />
+       <field:display field="create_date" label="Create Date" id="c_com_melawai_ppuc_model_smsserverout_create_date"  object="${smsserverout}"  date="true" dateTimePattern="${smsserverout_create_date_date_format}"/>
+       <field:display field="originator" label="Originator" id="c_com_melawai_ppuc_model_smsserverout_originator"  object="${smsserverout}" />
+       <field:display field="encoding" label="Encoding" id="c_com_melawai_ppuc_model_smsserverout_encoding"  object="${smsserverout}" />
+       <field:display field="status_report" label="Status Report" id="c_com_melawai_ppuc_model_smsserverout_status_report"  object="${smsserverout}" />
+       <field:display field="flash_sms" label="Flash Sms" id="c_com_melawai_ppuc_model_smsserverout_flash_sms"  object="${smsserverout}" />
+       <field:display field="src_port" label="Src Port" id="c_com_melawai_ppuc_model_smsserverout_src_port"  object="${smsserverout}" />
+       <field:display field="dst_port" label="Dst Port" id="c_com_melawai_ppuc_model_smsserverout_dst_port"  object="${smsserverout}" />
+       <field:display field="sent_date" label="Sent Date" id="c_com_melawai_ppuc_model_smsserverout_sent_date"  object="${smsserverout}"  date="true" dateTimePattern="${smsserverout_sent_date_date_format}"/>
+       <field:display field="ref_no" label="Ref No" id="c_com_melawai_ppuc_model_smsserverout_ref_no"  object="${smsserverout}" />
+       <field:display field="priority" label="Priority" id="c_com_melawai_ppuc_model_smsserverout_priority"  object="${smsserverout}" />
+       <field:display field="status" label="Status" id="c_com_melawai_ppuc_model_smsserverout_status"  object="${smsserverout}" />
+       <field:display field="errors" label="Errors" id="c_com_melawai_ppuc_model_smsserverout_errors"  object="${smsserverout}" />
+       <field:display field="gateway_id" label="Gateway Id" id="c_com_melawai_ppuc_model_smsserverout_gateway_id"  object="${smsserverout}" />
+       <field:display field="user_id" label="User Id" id="c_com_melawai_ppuc_model_smsserverout_user_id"  object="${smsserverout}" />
+       <field:display field="id_refrence" label="Id Refrence" id="c_com_melawai_ppuc_model_smsserverout_id_refrence"  object="${smsserverout}" />
+    </page:show>
+</div>
+

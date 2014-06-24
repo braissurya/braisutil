@@ -1,0 +1,17 @@
+<?xml version="1.0" encoding="UTF-8" standalone="no"?>
+<div xmlns:jsp="http://java.sun.com/JSP/Page" xmlns:page="urn:jsptagdir:/WEB-INF/tags/form" xmlns:table="urn:jsptagdir:/WEB-INF/tags/form/fields" version="2.0">
+    <jsp:directive.page contentType="text/html;charset=UTF-8"/>
+    <jsp:output omit-xml-declaration="yes"/>
+    <page:list id="pl_com_melawai_ppuc_model_messagetemplate"  items="${messagetemplateList}" >
+        <table:table data="${messagetemplateList}" id="l_com_melawai_ppuc_model_MessageTemplate" typeIdFieldName="itemId" path="/master/messagetemplate" >
+       <table:column id="c_com_melawai_ppuc_model_messagetemplate_nm_template" property="nm_template" label="Nm Template" />
+       <table:column id="c_com_melawai_ppuc_model_messagetemplate_parameter" property="parameter" label="Parameter" />
+       <table:column id="c_com_melawai_ppuc_model_messagetemplate_keterangan" property="keterangan" label="Keterangan" />
+       <table:column id="c_com_melawai_ppuc_model_messagetemplate_f_aktif" property="f_aktif" label="F Aktif" />
+       <table:column id="c_com_melawai_ppuc_model_messagetemplate_user_create" property="user_create" label="User Create" />
+       <table:column id="c_com_melawai_ppuc_model_messagetemplate_user_update" property="user_update" label="User Update" />
+       <table:column id="c_com_melawai_ppuc_model_messagetemplate_tgl_update" property="tgl_update" label="Tgl Update" />
+        </table:table>
+    </page:list>
+</div>
+

@@ -1,0 +1,21 @@
+<?xml version="1.0" encoding="UTF-8" standalone="no"?>
+<div xmlns:jsp="http://java.sun.com/JSP/Page" xmlns:page="urn:jsptagdir:/WEB-INF/tags/form" xmlns:table="urn:jsptagdir:/WEB-INF/tags/form/fields" version="2.0">
+    <jsp:directive.page contentType="text/html;charset=UTF-8"/>
+    <jsp:output omit-xml-declaration="yes"/>
+    <page:list id="pl_com_melawai_ppuc_model_logemail"  items="${logemailList}" >
+        <table:table data="${logemailList}" id="l_com_melawai_ppuc_model_LogEmail" typeIdFieldName="itemId" path="/master/logemail" >
+       <table:column id="c_com_melawai_ppuc_model_logemail_divisi_kd" property="divisi_kd" label="Divisi Kd" />
+       <table:column id="c_com_melawai_ppuc_model_logemail_subdiv_kd" property="subdiv_kd" label="Subdiv Kd" />
+       <table:column id="c_com_melawai_ppuc_model_logemail_dept_kd" property="dept_kd" label="Dept Kd" />
+       <table:column id="c_com_melawai_ppuc_model_logemail_lok_kd" property="lok_kd" label="Lok Kd" />
+       <table:column id="c_com_melawai_ppuc_model_logemail_no_ppuc" property="no_ppuc" label="No Ppuc" />
+       <table:column id="c_com_melawai_ppuc_model_logemail_send_time" property="send_time" label="Send Time" />
+       <table:column id="c_com_melawai_ppuc_model_logemail_status" property="status" label="Status" />
+       <table:column id="c_com_melawai_ppuc_model_logemail_isi_email" property="isi_email" label="Isi Email" />
+       <table:column id="c_com_melawai_ppuc_model_logemail_mail_maker" property="mail_maker" label="Mail Maker" />
+       <table:column id="c_com_melawai_ppuc_model_logemail_mail_approval" property="mail_approval" label="Mail Approval" />
+       <table:column id="c_com_melawai_ppuc_model_logemail_user_create" property="user_create" label="User Create" />
+        </table:table>
+    </page:list>
+</div>
+

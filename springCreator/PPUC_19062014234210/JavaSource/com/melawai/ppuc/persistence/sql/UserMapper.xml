@@ -1,0 +1,204 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+"http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.melawai.ppuc.persistence.UserMapper">
+
+	<cache />
+
+	<!-- result map-->
+	<resultMap type="User" id="UserMap">
+		<id property="user_id" column="user_id"  />  
+		<result property="user_id" column="user_id" />
+		<result property="password" column="password" />
+		<result property="user_name" column="user_name" />
+		<result property="no_hp" column="no_hp" />
+		<result property="email" column="email" />
+		<result property="kd_fungsi" column="kd_fungsi" />
+		<result property="group_kd" column="group_kd" />
+		<result property="f_aktif" column="f_aktif" />
+		<result property="user_create" column="user_create" />
+		<result property="tgl_create" column="tgl_create" />
+		<result property="jam_create" column="jam_create" />
+		<result property="user_update" column="user_update" />
+		<result property="tgl_update" column="tgl_update" />
+		<result property="jam_update" column="jam_update" />
+		<result property="user_nonaktif" column="user_nonaktif" />
+		<result property="tgl_nonaktif" column="tgl_nonaktif" />
+		<result property="jam_nonaktif" column="jam_nonaktif" />
+	</resultMap>
+
+	<!-- nama kolom yang ingin ditampilkan -->
+	<sql id="defaultColoumn">
+		C.USER_ID as user_id,
+		C.PASSWORD as password,
+		C.USER_NAME as user_name,
+		C.NO_HP as no_hp,
+		C.EMAIL as email,
+		C.KD_FUNGSI as kd_fungsi,
+		C.GROUP_KD as group_kd,
+		C.F_AKTIF as f_aktif,
+		C.SYS_USER_CREATE as user_create,
+		C.SYS_TGL_CREATE as tgl_create,
+		C.SYS_JAM_CREATE as jam_create,
+		C.SYS_USER_UPDATE as user_update,
+		C.SYS_TGL_UPDATE as tgl_update,
+		C.SYS_JAM_UPDATE as jam_update,
+		C.SYS_USER_NONAKTIF as user_nonaktif,
+		C.SYS_TGL_NONAKTIF as tgl_nonaktif,
+		C.SYS_JAM_NONAKTIF as jam_nonaktif
+	</sql>
+
+	<!-- query select, dengan kolom yang default di atas, apabila mau ditambahkan join juga bisa disini
+	perubahan query ini akan mempengaruhi select paging dan get di bawah  -->
+	<sql id="selectQuery">
+		select * from (
+			select <include refid="defaultColoumn" /> from user C
+		)T
+	</sql>
+
+	<!-- kolom apa aja yang mau disearching -->
+	<sql id="searchTambahan">
+		Where 1=1
+			<!--!!TAMBAHAN parameter untuk search-->
+	</sql>
+
+	<!-- kolom apa aja yang mau disearching -->
+	<sql id="search">
+		WHERE 1=1 AND (
+			 user_id like  CONCAT('%', #{search}, '%')
+			 OR password like  CONCAT('%', #{search}, '%')
+			 OR user_name like  CONCAT('%', #{search}, '%')
+			 OR no_hp like  CONCAT('%', #{search}, '%')
+			 OR email like  CONCAT('%', #{search}, '%')
+			 OR kd_fungsi like  CONCAT('%', #{search}, '%')
+			 OR group_kd like  CONCAT('%', #{search}, '%')
+			 OR user_create like  CONCAT('%', #{search}, '%')
+			 OR jam_create like  CONCAT('%', #{search}, '%')
+			 OR user_update like  CONCAT('%', #{search}, '%')
+			 OR jam_update like  CONCAT('%', #{search}, '%')
+			 OR user_nonaktif like  CONCAT('%', #{search}, '%')
+			 OR jam_nonaktif like  CONCAT('%', #{search}, '%')
+		)
+	</sql>
+
+	<!-- insert query untuk table ini -->
+	<insert id="insert" parameterType="User">
+		INSERT INTO user (
+			USER_ID,
+			PASSWORD,
+			USER_NAME,
+			NO_HP,
+			EMAIL,
+			KD_FUNGSI,
+			GROUP_KD,
+			F_AKTIF,
+			SYS_USER_CREATE,
+			SYS_TGL_CREATE,
+			SYS_JAM_CREATE,
+			SYS_USER_UPDATE,
+			SYS_TGL_UPDATE,
+			SYS_JAM_UPDATE,
+			SYS_USER_NONAKTIF,
+			SYS_TGL_NONAKTIF,
+			SYS_JAM_NONAKTIF
+		) values (
+			#{user_id},
+			#{password},
+			#{user_name},
+			#{no_hp},
+			#{email},
+			#{kd_fungsi},
+			#{group_kd},
+			#{f_aktif},
+			#{user_create},
+			#{tgl_create},
+			#{jam_create},
+			#{user_update},
+			#{tgl_update},
+			#{jam_update},
+			#{user_nonaktif},
+			#{tgl_nonaktif},
+			#{jam_nonaktif}
+		)
+	</insert>
+
+	<!-- update query untuk table ini -->
+	<update id="update" parameterType="User">
+		UPDATE user
+		<set>
+			<if test="user_id != null">USER_ID = #{user_id}, </if>
+			<if test="password != null">PASSWORD = #{password}, </if>
+			<if test="user_name != null">USER_NAME = #{user_name}, </if>
+			<if test="no_hp != null">NO_HP = #{no_hp}, </if>
+			<if test="email != null">EMAIL = #{email}, </if>
+			<if test="kd_fungsi != null">KD_FUNGSI = #{kd_fungsi}, </if>
+			<if test="group_kd != null">GROUP_KD = #{group_kd}, </if>
+			<if test="f_aktif != null">F_AKTIF = #{f_aktif}, </if>
+			<if test="user_create != null">SYS_USER_CREATE = #{user_create}, </if>
+			<if test="tgl_create != null">SYS_TGL_CREATE = #{tgl_create}, </if>
+			<if test="jam_create != null">SYS_JAM_CREATE = #{jam_create}, </if>
+			<if test="user_update != null">SYS_USER_UPDATE = #{user_update}, </if>
+			<if test="tgl_update != null">SYS_TGL_UPDATE = #{tgl_update}, </if>
+			<if test="jam_update != null">SYS_JAM_UPDATE = #{jam_update}, </if>
+			<if test="user_nonaktif != null">SYS_USER_NONAKTIF = #{user_nonaktif}, </if>
+			<if test="tgl_nonaktif != null">SYS_TGL_NONAKTIF = #{tgl_nonaktif}, </if>
+			<if test="jam_nonaktif != null">SYS_JAM_NONAKTIF = #{jam_nonaktif} </if>
+		</set>
+		WHERE  
+			USER_ID= #{user_id} 
+	</update>
+
+	<!-- remove query untuk table ini -->
+	<delete id="remove" parameterType="String">
+		delete from user where USER_ID=#{value}
+	</delete>
+
+	<!-- get berdasarkan primary key -->
+	<select id="get" parameterType="String" resultMap="UserMap">
+		<include refid="selectQuery" />	where T.user_id=#{value}
+	</select>
+
+	<!-- get ALL row -->
+	<select id="getAll" resultMap="UserMap">
+		<include refid="selectQuery" />
+	</select>
+
+	<!-- select berdasarkan paging parameter -->
+	<select id="selectPagingList" parameterType="User" resultMap="UserMap">
+			SELECT x.* from (
+				select * from (
+					<include refid="selectQuery" />
+					<include refid="searchTambahan" />
+				) y
+				<if test="search != null">
+					<include refid="search" />
+				</if>
+				<if test="sort != null">
+					order by ${sort}
+				</if>
+				 LIMIT #{page} , #{rowcount}
+			)x
+	</select>
+
+	<!-- select jumlah seluruh data yang akan di paging -->
+	<select id="selectPagingCount" parameterType="User" resultType="Integer">
+		select count(*) from(
+			SELECT x.* from (
+				select * from (
+					<include refid="selectQuery" />
+					<include refid="searchTambahan" />
+				) y
+				<if test="search != null">
+					<include refid="search" />
+				</if>
+			)x
+		) z
+	</select>
+
+	<!-- QUERY CUSTOM LAIN-LAIN bisa dimasukkan dibawah ini -->
+
+	<select id="loadUserByUsername" parameterType="String" resultMap="UserMap">
+		<include refid="selectQuery" />
+		where T.user_id=#{value}
+	</select>
+</mapper>

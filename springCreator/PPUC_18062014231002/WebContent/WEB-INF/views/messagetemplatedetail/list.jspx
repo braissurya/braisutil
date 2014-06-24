@@ -1,0 +1,17 @@
+<?xml version="1.0" encoding="UTF-8" standalone="no"?>
+<div xmlns:jsp="http://java.sun.com/JSP/Page" xmlns:page="urn:jsptagdir:/WEB-INF/tags/form" xmlns:table="urn:jsptagdir:/WEB-INF/tags/form/fields" version="2.0">
+    <jsp:directive.page contentType="text/html;charset=UTF-8"/>
+    <jsp:output omit-xml-declaration="yes"/>
+    <page:list id="pl_com_melawai_ppuc_model_messagetemplatedetail"  items="${messagetemplatedetailList}" >
+        <table:table data="${messagetemplatedetailList}" id="l_com_melawai_ppuc_model_MessageTemplateDetail" typeIdFieldName="itemId" path="/master/messagetemplatedetail" >
+       <table:column id="c_com_melawai_ppuc_model_messagetemplatedetail_keterangan" property="keterangan" label="Keterangan" />
+       <table:column id="c_com_melawai_ppuc_model_messagetemplatedetail_template_sms" property="template_sms" label="Template Sms" />
+       <table:column id="c_com_melawai_ppuc_model_messagetemplatedetail_template_web" property="template_web" label="Template Web" />
+       <table:column id="c_com_melawai_ppuc_model_messagetemplatedetail_template_subject" property="template_subject" label="Template Subject" />
+       <table:column id="c_com_melawai_ppuc_model_messagetemplatedetail_template_email" property="template_email" label="Template Email" />
+       <table:column id="c_com_melawai_ppuc_model_messagetemplatedetail_user_create" property="user_create" label="User Create" />
+       <table:column id="c_com_melawai_ppuc_model_messagetemplatedetail_user_update" property="user_update" label="User Update" />
+        </table:table>
+    </page:list>
+</div>
+

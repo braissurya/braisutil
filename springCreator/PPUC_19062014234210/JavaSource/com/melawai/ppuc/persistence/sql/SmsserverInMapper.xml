@@ -1,0 +1,185 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+"http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.melawai.ppuc.persistence.SmsserverInMapper">
+
+	<cache />
+
+	<!-- result map-->
+	<resultMap type="SmsserverIn" id="SmsserverInMap">
+		<id property="id" column="id"  />  
+		<result property="id" column="id" />
+		<result property="process" column="process" />
+		<result property="originator" column="originator" />
+		<result property="type" column="type" />
+		<result property="encoding" column="encoding" />
+		<result property="message_date" column="message_date" />
+		<result property="receive_date" column="receive_date" />
+		<result property="text" column="text" />
+		<result property="original_ref_no" column="original_ref_no" />
+		<result property="original_receive_date" column="original_receive_date" />
+		<result property="gateway_id" column="gateway_id" />
+		<result property="PROCESS_DATE" column="PROCESS_DATE" />
+		<result property="user_id" column="user_id" />
+		<result property="PROSES_KET" column="PROSES_KET" />
+		<result property="id_refrence" column="id_refrence" />
+	</resultMap>
+
+	<!-- nama kolom yang ingin ditampilkan -->
+	<sql id="defaultColoumn">
+		C.ID as id,
+		C.PROCESS as process,
+		C.ORIGINATOR as originator,
+		C.TYPE as type,
+		C.ENCODING as encoding,
+		C.MESSAGE_DATE as message_date,
+		C.RECEIVE_DATE as receive_date,
+		C.TEXT as text,
+		C.ORIGINAL_REF_NO as original_ref_no,
+		C.ORIGINAL_RECEIVE_DATE as original_receive_date,
+		C.GATEWAY_ID as gateway_id,
+		C.PROCESS_DATE as PROCESS_DATE,
+		C.USER_ID as user_id,
+		C.PROSES_KET as PROSES_KET,
+		C.ID_REFRENCE as id_refrence
+	</sql>
+
+	<!-- query select, dengan kolom yang default di atas, apabila mau ditambahkan join juga bisa disini
+	perubahan query ini akan mempengaruhi select paging dan get di bawah  -->
+	<sql id="selectQuery">
+		select * from (
+			select <include refid="defaultColoumn" /> from smsserver_in C
+		)T
+	</sql>
+
+	<!-- kolom apa aja yang mau disearching -->
+	<sql id="searchTambahan">
+		Where 1=1
+			<!--!!TAMBAHAN parameter untuk search-->
+	</sql>
+
+	<!-- kolom apa aja yang mau disearching -->
+	<sql id="search">
+		WHERE 1=1 AND (
+			 originator like  CONCAT('%', #{search}, '%')
+			 OR type like  CONCAT('%', #{search}, '%')
+			 OR encoding like  CONCAT('%', #{search}, '%')
+			 OR text like  CONCAT('%', #{search}, '%')
+			 OR original_ref_no like  CONCAT('%', #{search}, '%')
+			 OR gateway_id like  CONCAT('%', #{search}, '%')
+			 OR user_id like  CONCAT('%', #{search}, '%')
+			 OR PROSES_KET like  CONCAT('%', #{search}, '%')
+		)
+	</sql>
+
+	<!-- insert query untuk table ini -->
+	<insert id="insert" parameterType="SmsserverIn" useGeneratedKeys="true" keyColumn="ID" keyProperty="id">
+		INSERT INTO smsserver_in (
+			ID,
+			PROCESS,
+			ORIGINATOR,
+			TYPE,
+			ENCODING,
+			MESSAGE_DATE,
+			RECEIVE_DATE,
+			TEXT,
+			ORIGINAL_REF_NO,
+			ORIGINAL_RECEIVE_DATE,
+			GATEWAY_ID,
+			PROCESS_DATE,
+			USER_ID,
+			PROSES_KET,
+			ID_REFRENCE
+		) values (
+			#{id},
+			#{process},
+			#{originator},
+			#{type},
+			#{encoding},
+			#{message_date},
+			#{receive_date},
+			#{text},
+			#{original_ref_no},
+			#{original_receive_date},
+			#{gateway_id},
+			#{PROCESS_DATE},
+			#{user_id},
+			#{PROSES_KET},
+			#{id_refrence}
+		)
+	</insert>
+
+	<!-- update query untuk table ini -->
+	<update id="update" parameterType="SmsserverIn">
+		UPDATE smsserver_in
+		<set>
+			<if test="id != null">ID = #{id}, </if>
+			<if test="process != null">PROCESS = #{process}, </if>
+			<if test="originator != null">ORIGINATOR = #{originator}, </if>
+			<if test="type != null">TYPE = #{type}, </if>
+			<if test="encoding != null">ENCODING = #{encoding}, </if>
+			<if test="message_date != null">MESSAGE_DATE = #{message_date}, </if>
+			<if test="receive_date != null">RECEIVE_DATE = #{receive_date}, </if>
+			<if test="text != null">TEXT = #{text}, </if>
+			<if test="original_ref_no != null">ORIGINAL_REF_NO = #{original_ref_no}, </if>
+			<if test="original_receive_date != null">ORIGINAL_RECEIVE_DATE = #{original_receive_date}, </if>
+			<if test="gateway_id != null">GATEWAY_ID = #{gateway_id}, </if>
+			<if test="PROCESS_DATE != null">PROCESS_DATE = #{PROCESS_DATE}, </if>
+			<if test="user_id != null">USER_ID = #{user_id}, </if>
+			<if test="PROSES_KET != null">PROSES_KET = #{PROSES_KET}, </if>
+			<if test="id_refrence != null">ID_REFRENCE = #{id_refrence} </if>
+		</set>
+		WHERE  
+			ID= #{id} 
+	</update>
+
+	<!-- remove query untuk table ini -->
+	<delete id="remove" parameterType="Long">
+		delete from smsserver_in where ID=#{value}
+	</delete>
+
+	<!-- get berdasarkan primary key -->
+	<select id="get" parameterType="Long" resultMap="SmsserverInMap">
+		<include refid="selectQuery" />	where T.id=#{value}
+	</select>
+
+	<!-- get ALL row -->
+	<select id="getAll" resultMap="SmsserverInMap">
+		<include refid="selectQuery" />
+	</select>
+
+	<!-- select berdasarkan paging parameter -->
+	<select id="selectPagingList" parameterType="SmsserverIn" resultMap="SmsserverInMap">
+			SELECT x.* from (
+				select * from (
+					<include refid="selectQuery" />
+					<include refid="searchTambahan" />
+				) y
+				<if test="search != null">
+					<include refid="search" />
+				</if>
+				<if test="sort != null">
+					order by ${sort}
+				</if>
+				 LIMIT #{page} , #{rowcount}
+			)x
+	</select>
+
+	<!-- select jumlah seluruh data yang akan di paging -->
+	<select id="selectPagingCount" parameterType="SmsserverIn" resultType="Integer">
+		select count(*) from(
+			SELECT x.* from (
+				select * from (
+					<include refid="selectQuery" />
+					<include refid="searchTambahan" />
+				) y
+				<if test="search != null">
+					<include refid="search" />
+				</if>
+			)x
+		) z
+	</select>
+
+	<!-- QUERY CUSTOM LAIN-LAIN bisa dimasukkan dibawah ini -->
+
+</mapper>

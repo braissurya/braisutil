@@ -1,0 +1,20 @@
+#Properties yang akan dipakai, support untuk language i18n
+
+application_name=$app_name
+
+#foreach( $t in $tableList.keySet())
+label_$!{packageParent}_model_$t.toLowerCase()=$t
+#foreach( $col in $tableList.get($t) )
+label_$!{packageParent}_model_$!{t.toLowerCase()}_$col.namakolom.toLowerCase()=$col.viewkolom
+#end
+label_$!{packageParent}_model_$t.toLowerCase()_plural=$t List
+#end
+
+#foreach( $t in $tableList.keySet())
+menu_category_$t.toLowerCase()_label=$t
+#end
+
+#foreach( $t in $tableList.keySet())
+menu_item_$t.toLowerCase()_list_label=$!{t}List
+menu_item_$t.toLowerCase()_new_label=$t
+#end

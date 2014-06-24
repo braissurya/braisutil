@@ -1,0 +1,30 @@
+<?xml version="1.0" encoding="UTF-8" standalone="no"?>
+<div xmlns:field="urn:jsptagdir:/WEB-INF/tags/form/fields" xmlns:form="urn:jsptagdir:/WEB-INF/tags/form" xmlns:jsp="http://java.sun.com/JSP/Page" version="2.0">
+    <jsp:directive.page contentType="text/html;charset=UTF-8"/>
+    <jsp:output omit-xml-declaration="yes"/>
+    <form:update id="fu_com_melawai_ppuc_model_smsserverout" modelAttribute="smsserverout" path="/master/smsserverout" idField="itemId" versionField="none" >
+       <field:input field="id" label="Id" id="c_com_melawai_ppuc_model_smsserverout_id" readonly="true" validationMessageCode="field_invalid_number" />
+       <field:input field="type" label="Type" id="c_com_melawai_ppuc_model_smsserverout_type" required="true" />
+       <field:input field="recipient" label="Recipient" id="c_com_melawai_ppuc_model_smsserverout_recipient" required="true" />
+       <field:input field="text" label="Text" id="c_com_melawai_ppuc_model_smsserverout_text" required="true" />
+       <field:input field="wap_url" label="Wap Url" id="c_com_melawai_ppuc_model_smsserverout_wap_url"  />
+       <field:datetime field="wap_expiry_date" label="Wap Expiry Date" id="c_com_melawai_ppuc_model_smsserverout_wap_expiry_date"  dateTimePattern="${smsserverout_wap_expiry_date_date_format}" />
+       <field:input field="wap_signal" label="Wap Signal" id="c_com_melawai_ppuc_model_smsserverout_wap_signal"  />
+       <field:datetime field="create_date" label="Create Date" id="c_com_melawai_ppuc_model_smsserverout_create_date" required="true" dateTimePattern="${smsserverout_create_date_date_format}" />
+       <field:input field="originator" label="Originator" id="c_com_melawai_ppuc_model_smsserverout_originator" required="true" />
+       <field:input field="encoding" label="Encoding" id="c_com_melawai_ppuc_model_smsserverout_encoding" required="true" />
+       <field:input field="status_report" label="Status Report" id="c_com_melawai_ppuc_model_smsserverout_status_report" required="true" validationMessageCode="field_invalid_integer" />
+       <field:input field="flash_sms" label="Flash Sms" id="c_com_melawai_ppuc_model_smsserverout_flash_sms" required="true" validationMessageCode="field_invalid_integer" />
+       <field:input field="src_port" label="Src Port" id="c_com_melawai_ppuc_model_smsserverout_src_port" required="true" validationMessageCode="field_invalid_integer" />
+       <field:input field="dst_port" label="Dst Port" id="c_com_melawai_ppuc_model_smsserverout_dst_port" required="true" validationMessageCode="field_invalid_integer" />
+       <field:datetime field="sent_date" label="Sent Date" id="c_com_melawai_ppuc_model_smsserverout_sent_date"  dateTimePattern="${smsserverout_sent_date_date_format}" />
+       <field:input field="ref_no" label="Ref No" id="c_com_melawai_ppuc_model_smsserverout_ref_no"  />
+       <field:input field="priority" label="Priority" id="c_com_melawai_ppuc_model_smsserverout_priority" required="true" validationMessageCode="field_invalid_integer" />
+       <field:input field="status" label="Status" id="c_com_melawai_ppuc_model_smsserverout_status" required="true" />
+       <field:input field="errors" label="Errors" id="c_com_melawai_ppuc_model_smsserverout_errors" required="true" validationMessageCode="field_invalid_integer" />
+       <field:input field="gateway_id" label="Gateway Id" id="c_com_melawai_ppuc_model_smsserverout_gateway_id" required="true" />
+       <field:input field="user_id" label="User Id" id="c_com_melawai_ppuc_model_smsserverout_user_id"  />
+       <field:input field="id_refrence" label="Id Refrence" id="c_com_melawai_ppuc_model_smsserverout_id_refrence"  validationMessageCode="field_invalid_integer" />
+	</form:update>
+</div>
+

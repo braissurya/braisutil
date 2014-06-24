@@ -1,0 +1,23 @@
+<?xml version="1.0" encoding="UTF-8" standalone="no"?>
+<div xmlns:field="urn:jsptagdir:/WEB-INF/tags/form/fields" xmlns:form="urn:jsptagdir:/WEB-INF/tags/form" xmlns:jsp="http://java.sun.com/JSP/Page" version="2.0">
+    <jsp:directive.page contentType="text/html;charset=UTF-8"/>
+    <jsp:output omit-xml-declaration="yes"/>
+    <form:update id="fu_com_melawai_ppuc_model_smsserverin" modelAttribute="smsserverin" path="/master/smsserverin" idField="itemId" versionField="none" >
+       <field:input field="id" label="Id" id="c_com_melawai_ppuc_model_smsserverin_id" readonly="true" validationMessageCode="field_invalid_number" />
+       <field:input field="process" label="Process" id="c_com_melawai_ppuc_model_smsserverin_process" required="true" validationMessageCode="field_invalid_integer" />
+       <field:input field="originator" label="Originator" id="c_com_melawai_ppuc_model_smsserverin_originator" required="true" />
+       <field:input field="type" label="Type" id="c_com_melawai_ppuc_model_smsserverin_type" required="true" />
+       <field:input field="encoding" label="Encoding" id="c_com_melawai_ppuc_model_smsserverin_encoding" required="true" />
+       <field:datetime field="message_date" label="Message Date" id="c_com_melawai_ppuc_model_smsserverin_message_date" required="true" dateTimePattern="${smsserverin_message_date_date_format}" />
+       <field:datetime field="receive_date" label="Receive Date" id="c_com_melawai_ppuc_model_smsserverin_receive_date" required="true" dateTimePattern="${smsserverin_receive_date_date_format}" />
+       <field:input field="text" label="Text" id="c_com_melawai_ppuc_model_smsserverin_text" required="true" />
+       <field:input field="original_ref_no" label="Original Ref No" id="c_com_melawai_ppuc_model_smsserverin_original_ref_no"  />
+       <field:datetime field="original_receive_date" label="Original Receive Date" id="c_com_melawai_ppuc_model_smsserverin_original_receive_date"  dateTimePattern="${smsserverin_original_receive_date_date_format}" />
+       <field:input field="gateway_id" label="Gateway Id" id="c_com_melawai_ppuc_model_smsserverin_gateway_id"  />
+       <field:datetime field="PROCESS_DATE" label="Process Date" id="c_com_melawai_ppuc_model_smsserverin_PROCESS_DATE"  dateTimePattern="${smsserverin_PROCESS_DATE_date_format}" />
+       <field:input field="user_id" label="User Id" id="c_com_melawai_ppuc_model_smsserverin_user_id"  />
+       <field:input field="PROSES_KET" label="Proses Ket" id="c_com_melawai_ppuc_model_smsserverin_PROSES_KET"  />
+       <field:input field="id_refrence" label="Id Refrence" id="c_com_melawai_ppuc_model_smsserverin_id_refrence"  validationMessageCode="field_invalid_integer" />
+	</form:update>
+</div>
+

@@ -1,0 +1,188 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+"http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.melawai.ppuc.persistence.LogSmsMapper">
+
+	<cache />
+
+	<!-- result map-->
+	<resultMap type="LogSms" id="LogSmsMap">
+		<id property="id_log_sms" column="id_log_sms"  />  
+		<result property="id_log_sms" column="id_log_sms" />
+		<result property="divisi_kd" column="divisi_kd" />
+		<result property="subdiv_kd" column="subdiv_kd" />
+		<result property="dept_kd" column="dept_kd" />
+		<result property="lok_kd" column="lok_kd" />
+		<result property="no_ppuc" column="no_ppuc" />
+		<result property="tgl_ppuc" column="tgl_ppuc" />
+		<result property="send_date" column="send_date" />
+		<result property="send_time" column="send_time" />
+		<result property="status" column="status" />
+		<result property="isi_sms" column="isi_sms" />
+		<result property="hp_maker" column="hp_maker" />
+		<result property="hp_approval" column="hp_approval" />
+		<result property="user_create" column="user_create" />
+		<result property="tgl_create" column="tgl_create" />
+	</resultMap>
+
+	<!-- nama kolom yang ingin ditampilkan -->
+	<sql id="defaultColoumn">
+		C.SYS_ID_LOG_SMS as id_log_sms,
+		C.SYS_DIVISI_KD as divisi_kd,
+		C.SYS_SUBDIV_KD as subdiv_kd,
+		C.SYS_DEPT_KD as dept_kd,
+		C.SYS_LOK_KD as lok_kd,
+		C.SYS_NO_PPUC as no_ppuc,
+		C.SYS_TGL_PPUC as tgl_ppuc,
+		C.SYS_SEND_DATE as send_date,
+		C.SYS_SEND_TIME as send_time,
+		C.SYS_STATUS as status,
+		C.SYS_ISI_SMS as isi_sms,
+		C.SYS_HP_MAKER as hp_maker,
+		C.SYS_HP_APPROVAL as hp_approval,
+		C.SYS_USER_CREATE as user_create,
+		C.SYS_TGL_CREATE as tgl_create
+	</sql>
+
+	<!-- query select, dengan kolom yang default di atas, apabila mau ditambahkan join juga bisa disini
+	perubahan query ini akan mempengaruhi select paging dan get di bawah  -->
+	<sql id="selectQuery">
+		select * from (
+			select <include refid="defaultColoumn" /> from sys_log_sms C
+		)T
+	</sql>
+
+	<!-- kolom apa aja yang mau disearching -->
+	<sql id="searchTambahan">
+		Where 1=1
+			<!--!!TAMBAHAN parameter untuk search-->
+	</sql>
+
+	<!-- kolom apa aja yang mau disearching -->
+	<sql id="search">
+		WHERE 1=1 AND (
+			 divisi_kd like  CONCAT('%', #{search}, '%')
+			 OR subdiv_kd like  CONCAT('%', #{search}, '%')
+			 OR dept_kd like  CONCAT('%', #{search}, '%')
+			 OR lok_kd like  CONCAT('%', #{search}, '%')
+			 OR no_ppuc like  CONCAT('%', #{search}, '%')
+			 OR send_time like  CONCAT('%', #{search}, '%')
+			 OR status like  CONCAT('%', #{search}, '%')
+			 OR isi_sms like  CONCAT('%', #{search}, '%')
+			 OR hp_maker like  CONCAT('%', #{search}, '%')
+			 OR hp_approval like  CONCAT('%', #{search}, '%')
+			 OR user_create like  CONCAT('%', #{search}, '%')
+		)
+	</sql>
+
+	<!-- insert query untuk table ini -->
+	<insert id="insert" parameterType="LogSms" useGeneratedKeys="true" keyColumn="SYS_ID_LOG_SMS" keyProperty="id_log_sms">
+		INSERT INTO sys_log_sms (
+			SYS_ID_LOG_SMS,
+			SYS_DIVISI_KD,
+			SYS_SUBDIV_KD,
+			SYS_DEPT_KD,
+			SYS_LOK_KD,
+			SYS_NO_PPUC,
+			SYS_TGL_PPUC,
+			SYS_SEND_DATE,
+			SYS_SEND_TIME,
+			SYS_STATUS,
+			SYS_ISI_SMS,
+			SYS_HP_MAKER,
+			SYS_HP_APPROVAL,
+			SYS_USER_CREATE,
+			SYS_TGL_CREATE
+		) values (
+			#{id_log_sms},
+			#{divisi_kd},
+			#{subdiv_kd},
+			#{dept_kd},
+			#{lok_kd},
+			#{no_ppuc},
+			#{tgl_ppuc},
+			#{send_date},
+			#{send_time},
+			#{status},
+			#{isi_sms},
+			#{hp_maker},
+			#{hp_approval},
+			#{user_create},
+			#{tgl_create}
+		)
+	</insert>
+
+	<!-- update query untuk table ini -->
+	<update id="update" parameterType="LogSms">
+		UPDATE sys_log_sms
+		<set>
+			<if test="id_log_sms != null">SYS_ID_LOG_SMS = #{id_log_sms}, </if>
+			<if test="divisi_kd != null">SYS_DIVISI_KD = #{divisi_kd}, </if>
+			<if test="subdiv_kd != null">SYS_SUBDIV_KD = #{subdiv_kd}, </if>
+			<if test="dept_kd != null">SYS_DEPT_KD = #{dept_kd}, </if>
+			<if test="lok_kd != null">SYS_LOK_KD = #{lok_kd}, </if>
+			<if test="no_ppuc != null">SYS_NO_PPUC = #{no_ppuc}, </if>
+			<if test="tgl_ppuc != null">SYS_TGL_PPUC = #{tgl_ppuc}, </if>
+			<if test="send_date != null">SYS_SEND_DATE = #{send_date}, </if>
+			<if test="send_time != null">SYS_SEND_TIME = #{send_time}, </if>
+			<if test="status != null">SYS_STATUS = #{status}, </if>
+			<if test="isi_sms != null">SYS_ISI_SMS = #{isi_sms}, </if>
+			<if test="hp_maker != null">SYS_HP_MAKER = #{hp_maker}, </if>
+			<if test="hp_approval != null">SYS_HP_APPROVAL = #{hp_approval}, </if>
+			<if test="user_create != null">SYS_USER_CREATE = #{user_create}, </if>
+			<if test="tgl_create != null">SYS_TGL_CREATE = #{tgl_create} </if>
+		</set>
+		WHERE  
+			SYS_ID_LOG_SMS= #{id_log_sms} 
+	</update>
+
+	<!-- remove query untuk table ini -->
+	<delete id="remove" parameterType="Long">
+		delete from sys_log_sms where SYS_ID_LOG_SMS=#{value}
+	</delete>
+
+	<!-- get berdasarkan primary key -->
+	<select id="get" parameterType="Long" resultMap="LogSmsMap">
+		<include refid="selectQuery" />	where T.id_log_sms=#{value}
+	</select>
+
+	<!-- get ALL row -->
+	<select id="getAll" resultMap="LogSmsMap">
+		<include refid="selectQuery" />
+	</select>
+
+	<!-- select berdasarkan paging parameter -->
+	<select id="selectPagingList" parameterType="LogSms" resultMap="LogSmsMap">
+			SELECT x.* from (
+				select * from (
+					<include refid="selectQuery" />
+					<include refid="searchTambahan" />
+				) y
+				<if test="search != null">
+					<include refid="search" />
+				</if>
+				<if test="sort != null">
+					order by ${sort}
+				</if>
+				 LIMIT #{page} , #{rowcount}
+			)x
+	</select>
+
+	<!-- select jumlah seluruh data yang akan di paging -->
+	<select id="selectPagingCount" parameterType="LogSms" resultType="Integer">
+		select count(*) from(
+			SELECT x.* from (
+				select * from (
+					<include refid="selectQuery" />
+					<include refid="searchTambahan" />
+				) y
+				<if test="search != null">
+					<include refid="search" />
+				</if>
+			)x
+		) z
+	</select>
+
+	<!-- QUERY CUSTOM LAIN-LAIN bisa dimasukkan dibawah ini -->
+
+</mapper>

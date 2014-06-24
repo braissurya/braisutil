@@ -1,0 +1,181 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+"http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.melawai.ppuc.persistence.LokasiMapper">
+
+	<cache />
+
+	<!-- result map-->
+	<resultMap type="Lokasi" id="LokasiMap">
+		<id property="lok_kd" column="lok_kd"  />  
+		<result property="lok_kd" column="lok_kd" />
+		<result property="divisi_kd" column="divisi_kd" />
+		<result property="subdiv_kd" column="subdiv_kd" />
+		<result property="dept_kd" column="dept_kd" />
+		<result property="lok_nm" column="lok_nm" />
+		<result property="f_tutup" column="f_tutup" />
+		<result property="tgl_tutup" column="tgl_tutup" />
+		<result property="counter" column="counter" />
+		<result property="max_counter" column="max_counter" />
+		<result property="user_update" column="user_update" />
+		<result property="tgl_update" column="tgl_update" />
+		<result property="jam_update" column="jam_update" />
+		<result property="user_create" column="user_create" />
+		<result property="tgl_create" column="tgl_create" />
+	</resultMap>
+
+	<!-- nama kolom yang ingin ditampilkan -->
+	<sql id="defaultColoumn">
+		C.LOK_KD as lok_kd,
+		C.DIVISI_KD as divisi_kd,
+		C.SUBDIV_KD as subdiv_kd,
+		C.DEPT_KD as dept_kd,
+		C.LOK_NM as lok_nm,
+		C.F_TUTUP as f_tutup,
+		C.TGL_TUTUP as tgl_tutup,
+		C.COUNTER as counter,
+		C.MAX_COUNTER as max_counter,
+		C.SYS_USER_UPDATE as user_update,
+		C.SYS_TGL_UPDATE as tgl_update,
+		C.SYS_JAM_UPDATE as jam_update,
+		C.SYS_USER_CREATE as user_create,
+		C.SYS_TGL_CREATE as tgl_create
+	</sql>
+
+	<!-- query select, dengan kolom yang default di atas, apabila mau ditambahkan join juga bisa disini
+	perubahan query ini akan mempengaruhi select paging dan get di bawah  -->
+	<sql id="selectQuery">
+		select * from (
+			select <include refid="defaultColoumn" /> from lokasi C
+		)T
+	</sql>
+
+	<!-- kolom apa aja yang mau disearching -->
+	<sql id="searchTambahan">
+		Where 1=1
+			<!--!!TAMBAHAN parameter untuk search-->
+	</sql>
+
+	<!-- kolom apa aja yang mau disearching -->
+	<sql id="search">
+		WHERE 1=1 AND (
+			 lok_kd like  CONCAT('%', #{search}, '%')
+			 OR divisi_kd like  CONCAT('%', #{search}, '%')
+			 OR subdiv_kd like  CONCAT('%', #{search}, '%')
+			 OR dept_kd like  CONCAT('%', #{search}, '%')
+			 OR lok_nm like  CONCAT('%', #{search}, '%')
+			 OR f_tutup like  CONCAT('%', #{search}, '%')
+			 OR user_update like  CONCAT('%', #{search}, '%')
+			 OR jam_update like  CONCAT('%', #{search}, '%')
+			 OR user_create like  CONCAT('%', #{search}, '%')
+		)
+	</sql>
+
+	<!-- insert query untuk table ini -->
+	<insert id="insert" parameterType="Lokasi">
+		INSERT INTO lokasi (
+			LOK_KD,
+			DIVISI_KD,
+			SUBDIV_KD,
+			DEPT_KD,
+			LOK_NM,
+			F_TUTUP,
+			TGL_TUTUP,
+			COUNTER,
+			MAX_COUNTER,
+			SYS_USER_UPDATE,
+			SYS_TGL_UPDATE,
+			SYS_JAM_UPDATE,
+			SYS_USER_CREATE,
+			SYS_TGL_CREATE
+		) values (
+			#{lok_kd},
+			#{divisi_kd},
+			#{subdiv_kd},
+			#{dept_kd},
+			#{lok_nm},
+			#{f_tutup},
+			#{tgl_tutup},
+			#{counter},
+			#{max_counter},
+			#{user_update},
+			#{tgl_update},
+			#{jam_update},
+			#{user_create},
+			#{tgl_create}
+		)
+	</insert>
+
+	<!-- update query untuk table ini -->
+	<update id="update" parameterType="Lokasi">
+		UPDATE lokasi
+		<set>
+			<if test="lok_kd != null">LOK_KD = #{lok_kd}, </if>
+			<if test="divisi_kd != null">DIVISI_KD = #{divisi_kd}, </if>
+			<if test="subdiv_kd != null">SUBDIV_KD = #{subdiv_kd}, </if>
+			<if test="dept_kd != null">DEPT_KD = #{dept_kd}, </if>
+			<if test="lok_nm != null">LOK_NM = #{lok_nm}, </if>
+			<if test="f_tutup != null">F_TUTUP = #{f_tutup}, </if>
+			<if test="tgl_tutup != null">TGL_TUTUP = #{tgl_tutup}, </if>
+			<if test="counter != null">COUNTER = #{counter}, </if>
+			<if test="max_counter != null">MAX_COUNTER = #{max_counter}, </if>
+			<if test="user_update != null">SYS_USER_UPDATE = #{user_update}, </if>
+			<if test="tgl_update != null">SYS_TGL_UPDATE = #{tgl_update}, </if>
+			<if test="jam_update != null">SYS_JAM_UPDATE = #{jam_update}, </if>
+			<if test="user_create != null">SYS_USER_CREATE = #{user_create}, </if>
+			<if test="tgl_create != null">SYS_TGL_CREATE = #{tgl_create} </if>
+		</set>
+		WHERE  
+			LOK_KD= #{lok_kd} 
+	</update>
+
+	<!-- remove query untuk table ini -->
+	<delete id="remove" parameterType="String">
+		delete from lokasi where LOK_KD=#{value}
+	</delete>
+
+	<!-- get berdasarkan primary key -->
+	<select id="get" parameterType="String" resultMap="LokasiMap">
+		<include refid="selectQuery" />	where T.lok_kd=#{value}
+	</select>
+
+	<!-- get ALL row -->
+	<select id="getAll" resultMap="LokasiMap">
+		<include refid="selectQuery" />
+	</select>
+
+	<!-- select berdasarkan paging parameter -->
+	<select id="selectPagingList" parameterType="Lokasi" resultMap="LokasiMap">
+			SELECT x.* from (
+				select * from (
+					<include refid="selectQuery" />
+					<include refid="searchTambahan" />
+				) y
+				<if test="search != null">
+					<include refid="search" />
+				</if>
+				<if test="sort != null">
+					order by ${sort}
+				</if>
+				 LIMIT #{page} , #{rowcount}
+			)x
+	</select>
+
+	<!-- select jumlah seluruh data yang akan di paging -->
+	<select id="selectPagingCount" parameterType="Lokasi" resultType="Integer">
+		select count(*) from(
+			SELECT x.* from (
+				select * from (
+					<include refid="selectQuery" />
+					<include refid="searchTambahan" />
+				) y
+				<if test="search != null">
+					<include refid="search" />
+				</if>
+			)x
+		) z
+	</select>
+
+	<!-- QUERY CUSTOM LAIN-LAIN bisa dimasukkan dibawah ini -->
+
+</mapper>

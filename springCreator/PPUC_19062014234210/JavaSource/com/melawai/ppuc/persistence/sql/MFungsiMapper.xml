@@ -1,0 +1,136 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+"http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.melawai.ppuc.persistence.MFungsiMapper">
+
+	<cache />
+
+	<!-- result map-->
+	<resultMap type="MFungsi" id="MFungsiMap">
+		<id property="kd_fungsi" column="kd_fungsi"  />  
+		<result property="kd_fungsi" column="kd_fungsi" />
+		<result property="nm_fungsi" column="nm_fungsi" />
+		<result property="mail_seq" column="mail_seq" />
+		<result property="user_create" column="user_create" />
+		<result property="tgl_create" column="tgl_create" />
+		<result property="jam_create" column="jam_create" />
+	</resultMap>
+
+	<!-- nama kolom yang ingin ditampilkan -->
+	<sql id="defaultColoumn">
+		C.KD_FUNGSI as kd_fungsi,
+		C.NM_FUNGSI as nm_fungsi,
+		C.MAIL_SEQ as mail_seq,
+		C.SYS_USER_CREATE as user_create,
+		C.SYS_TGL_CREATE as tgl_create,
+		C.SYS_JAM_CREATE as jam_create
+	</sql>
+
+	<!-- query select, dengan kolom yang default di atas, apabila mau ditambahkan join juga bisa disini
+	perubahan query ini akan mempengaruhi select paging dan get di bawah  -->
+	<sql id="selectQuery">
+		select * from (
+			select <include refid="defaultColoumn" /> from m_fungsi C
+		)T
+	</sql>
+
+	<!-- kolom apa aja yang mau disearching -->
+	<sql id="searchTambahan">
+		Where 1=1
+			<!--!!TAMBAHAN parameter untuk search-->
+	</sql>
+
+	<!-- kolom apa aja yang mau disearching -->
+	<sql id="search">
+		WHERE 1=1 AND (
+			 kd_fungsi like  CONCAT('%', #{search}, '%')
+			 OR nm_fungsi like  CONCAT('%', #{search}, '%')
+			 OR user_create like  CONCAT('%', #{search}, '%')
+			 OR jam_create like  CONCAT('%', #{search}, '%')
+		)
+	</sql>
+
+	<!-- insert query untuk table ini -->
+	<insert id="insert" parameterType="MFungsi">
+		INSERT INTO m_fungsi (
+			KD_FUNGSI,
+			NM_FUNGSI,
+			MAIL_SEQ,
+			SYS_USER_CREATE,
+			SYS_TGL_CREATE,
+			SYS_JAM_CREATE
+		) values (
+			#{kd_fungsi},
+			#{nm_fungsi},
+			#{mail_seq},
+			#{user_create},
+			#{tgl_create},
+			#{jam_create}
+		)
+	</insert>
+
+	<!-- update query untuk table ini -->
+	<update id="update" parameterType="MFungsi">
+		UPDATE m_fungsi
+		<set>
+			<if test="kd_fungsi != null">KD_FUNGSI = #{kd_fungsi}, </if>
+			<if test="nm_fungsi != null">NM_FUNGSI = #{nm_fungsi}, </if>
+			<if test="mail_seq != null">MAIL_SEQ = #{mail_seq}, </if>
+			<if test="user_create != null">SYS_USER_CREATE = #{user_create}, </if>
+			<if test="tgl_create != null">SYS_TGL_CREATE = #{tgl_create}, </if>
+			<if test="jam_create != null">SYS_JAM_CREATE = #{jam_create} </if>
+		</set>
+		WHERE  
+			KD_FUNGSI= #{kd_fungsi} 
+	</update>
+
+	<!-- remove query untuk table ini -->
+	<delete id="remove" parameterType="String">
+		delete from m_fungsi where KD_FUNGSI=#{value}
+	</delete>
+
+	<!-- get berdasarkan primary key -->
+	<select id="get" parameterType="String" resultMap="MFungsiMap">
+		<include refid="selectQuery" />	where T.kd_fungsi=#{value}
+	</select>
+
+	<!-- get ALL row -->
+	<select id="getAll" resultMap="MFungsiMap">
+		<include refid="selectQuery" />
+	</select>
+
+	<!-- select berdasarkan paging parameter -->
+	<select id="selectPagingList" parameterType="MFungsi" resultMap="MFungsiMap">
+			SELECT x.* from (
+				select * from (
+					<include refid="selectQuery" />
+					<include refid="searchTambahan" />
+				) y
+				<if test="search != null">
+					<include refid="search" />
+				</if>
+				<if test="sort != null">
+					order by ${sort}
+				</if>
+				 LIMIT #{page} , #{rowcount}
+			)x
+	</select>
+
+	<!-- select jumlah seluruh data yang akan di paging -->
+	<select id="selectPagingCount" parameterType="MFungsi" resultType="Integer">
+		select count(*) from(
+			SELECT x.* from (
+				select * from (
+					<include refid="selectQuery" />
+					<include refid="searchTambahan" />
+				) y
+				<if test="search != null">
+					<include refid="search" />
+				</if>
+			)x
+		) z
+	</select>
+
+	<!-- QUERY CUSTOM LAIN-LAIN bisa dimasukkan dibawah ini -->
+
+</mapper>

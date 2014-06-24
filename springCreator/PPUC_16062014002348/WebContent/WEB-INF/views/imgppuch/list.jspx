@@ -1,0 +1,21 @@
+<?xml version="1.0" encoding="UTF-8" standalone="no"?>
+<div xmlns:jsp="http://java.sun.com/JSP/Page" xmlns:page="urn:jsptagdir:/WEB-INF/tags/form" xmlns:table="urn:jsptagdir:/WEB-INF/tags/form/fields" version="2.0">
+    <jsp:directive.page contentType="text/html;charset=UTF-8"/>
+    <jsp:output omit-xml-declaration="yes"/>
+    <page:list id="pl_com_melawai_ppuc_model_imgppuch" typeIdFieldName="itemId" items="${imgppuchList}" >
+        <table:table data="${imgppuchList}" id="l_com_melawai_ppuc_model_ImgPpucH" path="/master/imgppuch" >
+       <table:column id="c_com_melawai_ppuc_model_imgppuch_no_ppuc" property="no_ppuc" label="No Ppuc" />
+       <table:column id="c_com_melawai_ppuc_model_imgppuch_divisi_kd" property="divisi_kd" label="Divisi Kd" />
+       <table:column id="c_com_melawai_ppuc_model_imgppuch_subdiv_kd" property="subdiv_kd" label="Subdiv Kd" />
+       <table:column id="c_com_melawai_ppuc_model_imgppuch_dept_kd" property="dept_kd" label="Dept Kd" />
+       <table:column id="c_com_melawai_ppuc_model_imgppuch_lok_kd" property="lok_kd" label="Lok Kd" />
+       <table:column id="c_com_melawai_ppuc_model_imgppuch_no_realisasi" property="no_realisasi" label="No Realisasi" />
+       <table:column id="c_com_melawai_ppuc_model_imgppuch_user_entry" property="user_entry" label="User Entry" />
+       <table:column id="c_com_melawai_ppuc_model_imgppuch_jam_entry" property="jam_entry" label="Jam Entry" />
+       <table:column id="c_com_melawai_ppuc_model_imgppuch_user_confirm" property="user_confirm" label="User Confirm" />
+       <table:column id="c_com_melawai_ppuc_model_imgppuch_jam_confirm" property="jam_confirm" label="Jam Confirm" />
+       <table:column id="c_com_melawai_ppuc_model_imgppuch_user_create" property="user_create" label="User Create" />
+        </table:table>
+    </page:list>
+</div>
+

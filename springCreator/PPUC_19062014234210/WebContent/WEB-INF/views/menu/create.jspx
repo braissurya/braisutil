@@ -1,0 +1,23 @@
+<?xml version="1.0" encoding="UTF-8" standalone="no"?>
+<div xmlns:c="http://java.sun.com/jsp/jstl/core" xmlns:field="urn:jsptagdir:/WEB-INF/tags/form/fields" xmlns:form="urn:jsptagdir:/WEB-INF/tags/form" xmlns:jsp="http://java.sun.com/JSP/Page" xmlns:spring="http://www.springframework.org/tags" version="2.0">
+    <jsp:directive.page contentType="text/html;charset=UTF-8"/>
+    <jsp:output omit-xml-declaration="yes"/>
+    <form:create id="fc_com_melawai_ppuc_model_menu" modelAttribute="menu" path="/master/menu" render="${ empty dependencies }">
+       <field:input field="menu_id" label="Menu Id" id="c_com_melawai_ppuc_model_menu_menu_id" readonly="true" validationMessageCode="field_invalid_number" />
+       <field:input field="parent" label="Parent" id="c_com_melawai_ppuc_model_menu_parent"  validationMessageCode="field_invalid_integer" />
+       <field:input field="nama" label="Nama" id="c_com_melawai_ppuc_model_menu_nama"  max="50"/>
+       <field:input field="link" label="Link" id="c_com_melawai_ppuc_model_menu_link"  max="200"/>
+       <field:input field="level" label="Level" id="c_com_melawai_ppuc_model_menu_level"  validationMessageCode="field_invalid_integer" />
+       <field:input field="urut" label="Urut" id="c_com_melawai_ppuc_model_menu_urut"  validationMessageCode="field_invalid_integer" />
+       <field:input field="path" label="Path" id="c_com_melawai_ppuc_model_menu_path" readonly="true" validationMessageCode="field_invalid_number" />
+       <field:input field="f_aktif" label="F Aktif" id="c_com_melawai_ppuc_model_menu_f_aktif"  validationMessageCode="field_invalid_integer" />
+       <field:input field="user_create" label="User Create" id="c_com_melawai_ppuc_model_menu_user_create" readonly="true" validationMessageCode="field_invalid_number" />
+       <field:input field="tgl_create" label="Tgl Create" id="c_com_melawai_ppuc_model_menu_tgl_create" readonly="true" validationMessageCode="field_invalid_number" />
+       <field:input field="jam_create" label="Jam Create" id="c_com_melawai_ppuc_model_menu_jam_create" readonly="true" validationMessageCode="field_invalid_number" />
+       <field:input field="user_nonaktif" label="User Nonaktif" id="c_com_melawai_ppuc_model_menu_user_nonaktif" readonly="true" validationMessageCode="field_invalid_number" />
+       <field:input field="tgl_nonaktif" label="Tgl Nonaktif" id="c_com_melawai_ppuc_model_menu_tgl_nonaktif" readonly="true" validationMessageCode="field_invalid_number" />
+       <field:input field="jam_nonaktif" label="Jam Nonaktif" id="c_com_melawai_ppuc_model_menu_jam_nonaktif" readonly="true" validationMessageCode="field_invalid_number" />
+    </form:create>
+    <form:dependency dependencies="${dependencies}" id="d_com_melawai_ppuc_model_menu" render="${ not empty dependencies }"/>
+</div>
+

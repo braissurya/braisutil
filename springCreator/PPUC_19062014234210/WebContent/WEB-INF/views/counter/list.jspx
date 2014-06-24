@@ -1,0 +1,12 @@
+<?xml version="1.0" encoding="UTF-8" standalone="no"?>
+<div xmlns:jsp="http://java.sun.com/JSP/Page" xmlns:page="urn:jsptagdir:/WEB-INF/tags/form" xmlns:table="urn:jsptagdir:/WEB-INF/tags/form/fields" version="2.0">
+    <jsp:directive.page contentType="text/html;charset=UTF-8"/>
+    <jsp:output omit-xml-declaration="yes"/>
+    <page:list id="pl_com_melawai_ppuc_model_counter"  items="${counterList}" >
+        <table:table data="${counterList}" id="l_com_melawai_ppuc_model_Counter" typeIdFieldName="itemId" path="/master/counter" >
+       <table:column id="c_com_melawai_ppuc_model_counter_nm_counter" property="nm_counter" label="Nm Counter" />
+       <table:column id="c_com_melawai_ppuc_model_counter_keterangan" property="keterangan" label="Keterangan" />
+        </table:table>
+    </page:list>
+</div>
+

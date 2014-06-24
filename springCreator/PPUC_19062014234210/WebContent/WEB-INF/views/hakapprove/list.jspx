@@ -1,0 +1,20 @@
+<?xml version="1.0" encoding="UTF-8" standalone="no"?>
+<div xmlns:jsp="http://java.sun.com/JSP/Page" xmlns:page="urn:jsptagdir:/WEB-INF/tags/form" xmlns:table="urn:jsptagdir:/WEB-INF/tags/form/fields" version="2.0">
+    <jsp:directive.page contentType="text/html;charset=UTF-8"/>
+    <jsp:output omit-xml-declaration="yes"/>
+    <page:list id="pl_com_melawai_ppuc_model_hakapprove"  items="${hakapproveList}" >
+        <table:table data="${hakapproveList}" id="l_com_melawai_ppuc_model_HakApprove" typeIdFieldName="itemId" path="/master/hakapprove" >
+       <table:column id="c_com_melawai_ppuc_model_hakapprove_user_id" property="user_id" label="User Id" />
+       <table:column id="c_com_melawai_ppuc_model_hakapprove_divisi_kd" property="divisi_kd" label="Divisi Kd" />
+       <table:column id="c_com_melawai_ppuc_model_hakapprove_subdiv_kd" property="subdiv_kd" label="Subdiv Kd" />
+       <table:column id="c_com_melawai_ppuc_model_hakapprove_dept_kd" property="dept_kd" label="Dept Kd" />
+       <table:column id="c_com_melawai_ppuc_model_hakapprove_kd_group" property="kd_group" label="Kd Group" />
+       <table:column id="c_com_melawai_ppuc_model_hakapprove_kd_biaya" property="kd_biaya" label="Kd Biaya" />
+       <table:column id="c_com_melawai_ppuc_model_hakapprove_user_create" property="user_create" label="User Create" />
+       <table:column id="c_com_melawai_ppuc_model_hakapprove_jam_create" property="jam_create" label="Jam Create" />
+       <table:column id="c_com_melawai_ppuc_model_hakapprove_user_nonaktif" property="user_nonaktif" label="User Nonaktif" />
+       <table:column id="c_com_melawai_ppuc_model_hakapprove_jam_nonaktif" property="jam_nonaktif" label="Jam Nonaktif" />
+        </table:table>
+    </page:list>
+</div>
+

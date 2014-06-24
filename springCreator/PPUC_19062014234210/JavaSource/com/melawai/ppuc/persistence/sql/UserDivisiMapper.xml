@@ -1,0 +1,154 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+"http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.melawai.ppuc.persistence.UserDivisiMapper">
+
+	<cache />
+
+	<!-- result map-->
+	<resultMap type="UserDivisi" id="UserDivisiMap">
+		<id property="id_user_divisi" column="id_user_divisi"  />  
+		<result property="id_user_divisi" column="id_user_divisi" />
+		<result property="user_id" column="user_id" />
+		<result property="divisi_kd" column="divisi_kd" />
+		<result property="subdiv_kd" column="subdiv_kd" />
+		<result property="dept_kd" column="dept_kd" />
+		<result property="lok_kd" column="lok_kd" />
+		<result property="user_create" column="user_create" />
+		<result property="tgl_create" column="tgl_create" />
+		<result property="jam_create" column="jam_create" />
+	</resultMap>
+
+	<!-- nama kolom yang ingin ditampilkan -->
+	<sql id="defaultColoumn">
+		C.ID_USER_DIVISI as id_user_divisi,
+		C.USER_ID as user_id,
+		C.DIVISI_KD as divisi_kd,
+		C.SUBDIV_KD as subdiv_kd,
+		C.DEPT_KD as dept_kd,
+		C.LOK_KD as lok_kd,
+		C.SYS_USER_CREATE as user_create,
+		C.SYS_TGL_CREATE as tgl_create,
+		C.SYS_JAM_CREATE as jam_create
+	</sql>
+
+	<!-- query select, dengan kolom yang default di atas, apabila mau ditambahkan join juga bisa disini
+	perubahan query ini akan mempengaruhi select paging dan get di bawah  -->
+	<sql id="selectQuery">
+		select * from (
+			select <include refid="defaultColoumn" /> from user_divisi C
+		)T
+	</sql>
+
+	<!-- kolom apa aja yang mau disearching -->
+	<sql id="searchTambahan">
+		Where 1=1
+			<!--!!TAMBAHAN parameter untuk search-->
+	</sql>
+
+	<!-- kolom apa aja yang mau disearching -->
+	<sql id="search">
+		WHERE 1=1 AND (
+			 user_id like  CONCAT('%', #{search}, '%')
+			 OR divisi_kd like  CONCAT('%', #{search}, '%')
+			 OR subdiv_kd like  CONCAT('%', #{search}, '%')
+			 OR dept_kd like  CONCAT('%', #{search}, '%')
+			 OR lok_kd like  CONCAT('%', #{search}, '%')
+			 OR user_create like  CONCAT('%', #{search}, '%')
+			 OR jam_create like  CONCAT('%', #{search}, '%')
+		)
+	</sql>
+
+	<!-- insert query untuk table ini -->
+	<insert id="insert" parameterType="UserDivisi" useGeneratedKeys="true" keyColumn="ID_USER_DIVISI" keyProperty="id_user_divisi">
+		INSERT INTO user_divisi (
+			ID_USER_DIVISI,
+			USER_ID,
+			DIVISI_KD,
+			SUBDIV_KD,
+			DEPT_KD,
+			LOK_KD,
+			SYS_USER_CREATE,
+			SYS_TGL_CREATE,
+			SYS_JAM_CREATE
+		) values (
+			#{id_user_divisi},
+			#{user_id},
+			#{divisi_kd},
+			#{subdiv_kd},
+			#{dept_kd},
+			#{lok_kd},
+			#{user_create},
+			#{tgl_create},
+			#{jam_create}
+		)
+	</insert>
+
+	<!-- update query untuk table ini -->
+	<update id="update" parameterType="UserDivisi">
+		UPDATE user_divisi
+		<set>
+			<if test="id_user_divisi != null">ID_USER_DIVISI = #{id_user_divisi}, </if>
+			<if test="user_id != null">USER_ID = #{user_id}, </if>
+			<if test="divisi_kd != null">DIVISI_KD = #{divisi_kd}, </if>
+			<if test="subdiv_kd != null">SUBDIV_KD = #{subdiv_kd}, </if>
+			<if test="dept_kd != null">DEPT_KD = #{dept_kd}, </if>
+			<if test="lok_kd != null">LOK_KD = #{lok_kd}, </if>
+			<if test="user_create != null">SYS_USER_CREATE = #{user_create}, </if>
+			<if test="tgl_create != null">SYS_TGL_CREATE = #{tgl_create}, </if>
+			<if test="jam_create != null">SYS_JAM_CREATE = #{jam_create} </if>
+		</set>
+		WHERE  
+			ID_USER_DIVISI= #{id_user_divisi} 
+	</update>
+
+	<!-- remove query untuk table ini -->
+	<delete id="remove" parameterType="Long">
+		delete from user_divisi where ID_USER_DIVISI=#{value}
+	</delete>
+
+	<!-- get berdasarkan primary key -->
+	<select id="get" parameterType="Long" resultMap="UserDivisiMap">
+		<include refid="selectQuery" />	where T.id_user_divisi=#{value}
+	</select>
+
+	<!-- get ALL row -->
+	<select id="getAll" resultMap="UserDivisiMap">
+		<include refid="selectQuery" />
+	</select>
+
+	<!-- select berdasarkan paging parameter -->
+	<select id="selectPagingList" parameterType="UserDivisi" resultMap="UserDivisiMap">
+			SELECT x.* from (
+				select * from (
+					<include refid="selectQuery" />
+					<include refid="searchTambahan" />
+				) y
+				<if test="search != null">
+					<include refid="search" />
+				</if>
+				<if test="sort != null">
+					order by ${sort}
+				</if>
+				 LIMIT #{page} , #{rowcount}
+			)x
+	</select>
+
+	<!-- select jumlah seluruh data yang akan di paging -->
+	<select id="selectPagingCount" parameterType="UserDivisi" resultType="Integer">
+		select count(*) from(
+			SELECT x.* from (
+				select * from (
+					<include refid="selectQuery" />
+					<include refid="searchTambahan" />
+				) y
+				<if test="search != null">
+					<include refid="search" />
+				</if>
+			)x
+		) z
+	</select>
+
+	<!-- QUERY CUSTOM LAIN-LAIN bisa dimasukkan dibawah ini -->
+
+</mapper>

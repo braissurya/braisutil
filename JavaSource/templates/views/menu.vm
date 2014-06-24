@@ -1,0 +1,15 @@
+<?xml version="1.0" encoding="UTF-8" standalone="no"?>
+<div xmlns:jsp="http://java.sun.com/JSP/Page" xmlns:menu="urn:jsptagdir:/WEB-INF/tags/menu" id="menu" version="2.0">
+    <jsp:directive.page contentType="text/html;charset=UTF-8"/>
+    <jsp:output omit-xml-declaration="yes"/>
+    <menu:menu id="_menu" >
+		#foreach( $t in $tableList.keySet())
+		<menu:category id="c_$t.toLowerCase()" >
+            <menu:item id="i_$t.toLowerCase()_new" messageCode="global_menu_new" url="/master/$t.toLowerCase()?form" />
+            <menu:item id="i_$t.toLowerCase()_list" messageCode="global_menu_list" url="/master/$t.toLowerCase()" />
+        </menu:category>
+		#end
+        
+        
+    </menu:menu>
+</div>

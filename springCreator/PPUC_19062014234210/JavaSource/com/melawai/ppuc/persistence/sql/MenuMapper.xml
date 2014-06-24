@@ -1,0 +1,179 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+"http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.melawai.ppuc.persistence.MenuMapper">
+
+	<cache />
+
+	<!-- result map-->
+	<resultMap type="Menu" id="MenuMap">
+		<id property="menu_id" column="menu_id"  />  
+		<result property="menu_id" column="menu_id" />
+		<result property="parent" column="parent" />
+		<result property="nama" column="nama" />
+		<result property="link" column="link" />
+		<result property="level" column="level" />
+		<result property="urut" column="urut" />
+		<result property="path" column="path" />
+		<result property="f_aktif" column="f_aktif" />
+		<result property="user_create" column="user_create" />
+		<result property="tgl_create" column="tgl_create" />
+		<result property="jam_create" column="jam_create" />
+		<result property="user_nonaktif" column="user_nonaktif" />
+		<result property="tgl_nonaktif" column="tgl_nonaktif" />
+		<result property="jam_nonaktif" column="jam_nonaktif" />
+	</resultMap>
+
+	<!-- nama kolom yang ingin ditampilkan -->
+	<sql id="defaultColoumn">
+		C.SYS_MENU_ID as menu_id,
+		C.PARENT as parent,
+		C.NAMA as nama,
+		C.LINK as link,
+		C.LEVEL as level,
+		C.URUT as urut,
+		C.SYS_PATH as path,
+		C.F_AKTIF as f_aktif,
+		C.SYS_USER_CREATE as user_create,
+		C.SYS_TGL_CREATE as tgl_create,
+		C.SYS_JAM_CREATE as jam_create,
+		C.SYS_USER_NONAKTIF as user_nonaktif,
+		C.SYS_TGL_NONAKTIF as tgl_nonaktif,
+		C.SYS_JAM_NONAKTIF as jam_nonaktif
+	</sql>
+
+	<!-- query select, dengan kolom yang default di atas, apabila mau ditambahkan join juga bisa disini
+	perubahan query ini akan mempengaruhi select paging dan get di bawah  -->
+	<sql id="selectQuery">
+		select * from (
+			select <include refid="defaultColoumn" /> from menu C
+		)T
+	</sql>
+
+	<!-- kolom apa aja yang mau disearching -->
+	<sql id="searchTambahan">
+		Where 1=1
+			<!--!!TAMBAHAN parameter untuk search-->
+	</sql>
+
+	<!-- kolom apa aja yang mau disearching -->
+	<sql id="search">
+		WHERE 1=1 AND (
+			 nama like  CONCAT('%', #{search}, '%')
+			 OR link like  CONCAT('%', #{search}, '%')
+			 OR path like  CONCAT('%', #{search}, '%')
+			 OR user_create like  CONCAT('%', #{search}, '%')
+			 OR jam_create like  CONCAT('%', #{search}, '%')
+			 OR user_nonaktif like  CONCAT('%', #{search}, '%')
+			 OR jam_nonaktif like  CONCAT('%', #{search}, '%')
+		)
+	</sql>
+
+	<!-- insert query untuk table ini -->
+	<insert id="insert" parameterType="Menu" useGeneratedKeys="true" keyColumn="SYS_MENU_ID" keyProperty="menu_id">
+		INSERT INTO menu (
+			SYS_MENU_ID,
+			PARENT,
+			NAMA,
+			LINK,
+			LEVEL,
+			URUT,
+			SYS_PATH,
+			F_AKTIF,
+			SYS_USER_CREATE,
+			SYS_TGL_CREATE,
+			SYS_JAM_CREATE,
+			SYS_USER_NONAKTIF,
+			SYS_TGL_NONAKTIF,
+			SYS_JAM_NONAKTIF
+		) values (
+			#{menu_id},
+			#{parent},
+			#{nama},
+			#{link},
+			#{level},
+			#{urut},
+			#{path},
+			#{f_aktif},
+			#{user_create},
+			#{tgl_create},
+			#{jam_create},
+			#{user_nonaktif},
+			#{tgl_nonaktif},
+			#{jam_nonaktif}
+		)
+	</insert>
+
+	<!-- update query untuk table ini -->
+	<update id="update" parameterType="Menu">
+		UPDATE menu
+		<set>
+			<if test="menu_id != null">SYS_MENU_ID = #{menu_id}, </if>
+			<if test="parent != null">PARENT = #{parent}, </if>
+			<if test="nama != null">NAMA = #{nama}, </if>
+			<if test="link != null">LINK = #{link}, </if>
+			<if test="level != null">LEVEL = #{level}, </if>
+			<if test="urut != null">URUT = #{urut}, </if>
+			<if test="path != null">SYS_PATH = #{path}, </if>
+			<if test="f_aktif != null">F_AKTIF = #{f_aktif}, </if>
+			<if test="user_create != null">SYS_USER_CREATE = #{user_create}, </if>
+			<if test="tgl_create != null">SYS_TGL_CREATE = #{tgl_create}, </if>
+			<if test="jam_create != null">SYS_JAM_CREATE = #{jam_create}, </if>
+			<if test="user_nonaktif != null">SYS_USER_NONAKTIF = #{user_nonaktif}, </if>
+			<if test="tgl_nonaktif != null">SYS_TGL_NONAKTIF = #{tgl_nonaktif}, </if>
+			<if test="jam_nonaktif != null">SYS_JAM_NONAKTIF = #{jam_nonaktif} </if>
+		</set>
+		WHERE  
+			SYS_MENU_ID= #{menu_id} 
+	</update>
+
+	<!-- remove query untuk table ini -->
+	<delete id="remove" parameterType="Long">
+		delete from menu where SYS_MENU_ID=#{value}
+	</delete>
+
+	<!-- get berdasarkan primary key -->
+	<select id="get" parameterType="Long" resultMap="MenuMap">
+		<include refid="selectQuery" />	where T.menu_id=#{value}
+	</select>
+
+	<!-- get ALL row -->
+	<select id="getAll" resultMap="MenuMap">
+		<include refid="selectQuery" />
+	</select>
+
+	<!-- select berdasarkan paging parameter -->
+	<select id="selectPagingList" parameterType="Menu" resultMap="MenuMap">
+			SELECT x.* from (
+				select * from (
+					<include refid="selectQuery" />
+					<include refid="searchTambahan" />
+				) y
+				<if test="search != null">
+					<include refid="search" />
+				</if>
+				<if test="sort != null">
+					order by ${sort}
+				</if>
+				 LIMIT #{page} , #{rowcount}
+			)x
+	</select>
+
+	<!-- select jumlah seluruh data yang akan di paging -->
+	<select id="selectPagingCount" parameterType="Menu" resultType="Integer">
+		select count(*) from(
+			SELECT x.* from (
+				select * from (
+					<include refid="selectQuery" />
+					<include refid="searchTambahan" />
+				) y
+				<if test="search != null">
+					<include refid="search" />
+				</if>
+			)x
+		) z
+	</select>
+
+	<!-- QUERY CUSTOM LAIN-LAIN bisa dimasukkan dibawah ini -->
+
+</mapper>

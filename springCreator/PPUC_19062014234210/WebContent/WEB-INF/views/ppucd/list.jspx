@@ -1,0 +1,20 @@
+<?xml version="1.0" encoding="UTF-8" standalone="no"?>
+<div xmlns:jsp="http://java.sun.com/JSP/Page" xmlns:page="urn:jsptagdir:/WEB-INF/tags/form" xmlns:table="urn:jsptagdir:/WEB-INF/tags/form/fields" version="2.0">
+    <jsp:directive.page contentType="text/html;charset=UTF-8"/>
+    <jsp:output omit-xml-declaration="yes"/>
+    <page:list id="pl_com_melawai_ppuc_model_ppucd"  items="${ppucdList}" >
+        <table:table data="${ppucdList}" id="l_com_melawai_ppuc_model_PpucD" typeIdFieldName="itemId" path="/master/ppucd" >
+       <table:column id="c_com_melawai_ppuc_model_ppucd_divisi_kd" property="divisi_kd" label="Divisi Kd" />
+       <table:column id="c_com_melawai_ppuc_model_ppucd_subdiv_kd" property="subdiv_kd" label="Subdiv Kd" />
+       <table:column id="c_com_melawai_ppuc_model_ppucd_dept_kd" property="dept_kd" label="Dept Kd" />
+       <table:column id="c_com_melawai_ppuc_model_ppucd_lok_kd" property="lok_kd" label="Lok Kd" />
+       <table:column id="c_com_melawai_ppuc_model_ppucd_no_ppuc" property="no_ppuc" label="No Ppuc" />
+       <table:column id="c_com_melawai_ppuc_model_ppucd_kd_group" property="kd_group" label="Kd Group" />
+       <table:column id="c_com_melawai_ppuc_model_ppucd_kd_biaya" property="kd_biaya" label="Kd Biaya" />
+       <table:column id="c_com_melawai_ppuc_model_ppucd_no_batch" property="no_batch" label="No Batch" />
+       <table:column id="c_com_melawai_ppuc_model_ppucd_keterangan" property="keterangan" label="Keterangan" />
+       <table:column id="c_com_melawai_ppuc_model_ppucd_user_create" property="user_create" label="User Create" />
+        </table:table>
+    </page:list>
+</div>
+

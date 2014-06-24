@@ -1,0 +1,134 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+"http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.melawai.ppuc.persistence.AksesMenuMapper">
+
+	<cache />
+
+	<!-- result map-->
+	<resultMap type="AksesMenu" id="AksesMenuMap">
+		<id property="group_kd" column="group_kd"  />  
+		<id property="menu_id" column="menu_id"  />  
+		<result property="group_kd" column="group_kd" />
+		<result property="menu_id" column="menu_id" />
+		<result property="user_create" column="user_create" />
+		<result property="tgl_create" column="tgl_create" />
+	</resultMap>
+
+	<!-- nama kolom yang ingin ditampilkan -->
+	<sql id="defaultColoumn">
+		C.GROUP_KD as group_kd,
+		C.MENU_ID as menu_id,
+		C.SYS_USER_CREATE as user_create,
+		C.SYS_TGL_CREATE as tgl_create
+	</sql>
+
+	<!-- query select, dengan kolom yang default di atas, apabila mau ditambahkan join juga bisa disini
+	perubahan query ini akan mempengaruhi select paging dan get di bawah  -->
+	<sql id="selectQuery">
+		select * from (
+			select <include refid="defaultColoumn" /> from sys_akses_menu C
+		)T
+	</sql>
+
+	<!-- kolom apa aja yang mau disearching -->
+	<sql id="searchTambahan">
+		Where 1=1
+			<!--!!TAMBAHAN parameter untuk search-->
+	</sql>
+
+	<!-- kolom apa aja yang mau disearching -->
+	<sql id="search">
+		WHERE 1=1 AND (
+			 group_kd like  CONCAT('%', #{search}, '%')
+			 OR user_create like  CONCAT('%', #{search}, '%')
+		)
+	</sql>
+
+	<!-- insert query untuk table ini -->
+	<insert id="insert" parameterType="AksesMenu">
+		INSERT INTO sys_akses_menu (
+			GROUP_KD,
+			MENU_ID,
+			SYS_USER_CREATE,
+			SYS_TGL_CREATE
+		) values (
+			#{group_kd},
+			#{menu_id},
+			#{user_create},
+			#{tgl_create}
+		)
+	</insert>
+
+	<!-- update query untuk table ini -->
+	<update id="update" parameterType="AksesMenu">
+		UPDATE sys_akses_menu
+		<set>
+			<if test="group_kd != null">GROUP_KD = #{group_kd}, </if>
+			<if test="menu_id != null">MENU_ID = #{menu_id}, </if>
+			<if test="user_create != null">SYS_USER_CREATE = #{user_create}, </if>
+			<if test="tgl_create != null">SYS_TGL_CREATE = #{tgl_create} </if>
+		</set>
+		WHERE  
+			GROUP_KD= #{group_kd} 
+			AND MENU_ID= #{menu_id}
+	</update>
+
+	<!-- remove query untuk table ini -->
+	<delete id="remove" parameterType="HashMap">
+		delete from sys_akses_menu
+		 <where> 
+			<if test="group_kd != null">GROUP_KD= #{group_kd} </if>
+			<if test="menu_id != null"> AND MENU_ID= #{menu_id} </if>
+		 </where> 
+	</delete>
+
+	<!-- get berdasarkan primary key -->
+	<select id="get" parameterType="HashMap" resultMap="AksesMenuMap">
+		<include refid="selectQuery" />
+		 <where> 
+			<if test="group_kd != null"> T.group_kd= #{group_kd} </if>
+			<if test="menu_id != null"> AND T.menu_id= #{menu_id} </if>
+		 </where> 
+	</select>
+
+	<!-- get ALL row -->
+	<select id="getAll" resultMap="AksesMenuMap">
+		<include refid="selectQuery" />
+	</select>
+
+	<!-- select berdasarkan paging parameter -->
+	<select id="selectPagingList" parameterType="AksesMenu" resultMap="AksesMenuMap">
+			SELECT x.* from (
+				select * from (
+					<include refid="selectQuery" />
+					<include refid="searchTambahan" />
+				) y
+				<if test="search != null">
+					<include refid="search" />
+				</if>
+				<if test="sort != null">
+					order by ${sort}
+				</if>
+				 LIMIT #{page} , #{rowcount}
+			)x
+	</select>
+
+	<!-- select jumlah seluruh data yang akan di paging -->
+	<select id="selectPagingCount" parameterType="AksesMenu" resultType="Integer">
+		select count(*) from(
+			SELECT x.* from (
+				select * from (
+					<include refid="selectQuery" />
+					<include refid="searchTambahan" />
+				) y
+				<if test="search != null">
+					<include refid="search" />
+				</if>
+			)x
+		) z
+	</select>
+
+	<!-- QUERY CUSTOM LAIN-LAIN bisa dimasukkan dibawah ini -->
+
+</mapper>

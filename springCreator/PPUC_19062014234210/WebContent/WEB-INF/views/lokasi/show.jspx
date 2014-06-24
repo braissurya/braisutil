@@ -1,0 +1,22 @@
+<?xml version="1.0" encoding="UTF-8" standalone="no"?>
+<div xmlns:field="urn:jsptagdir:/WEB-INF/tags/form/fields" xmlns:jsp="http://java.sun.com/JSP/Page" xmlns:page="urn:jsptagdir:/WEB-INF/tags/form" version="2.0">
+    <jsp:directive.page contentType="text/html;charset=UTF-8"/>
+    <jsp:output omit-xml-declaration="yes"/>
+    <page:show id="ps_com_melawai_ppuc_model_lokasi" object="${lokasi}" path="/master/lokasi">
+       <field:display field="lok_kd" label="Lok Kd" id="c_com_melawai_ppuc_model_lokasi_lok_kd"  object="${lokasi}" />
+       <field:display field="divisi_kd" label="Divisi Kd" id="c_com_melawai_ppuc_model_lokasi_divisi_kd"  object="${lokasi}" />
+       <field:display field="subdiv_kd" label="Subdiv Kd" id="c_com_melawai_ppuc_model_lokasi_subdiv_kd"  object="${lokasi}" />
+       <field:display field="dept_kd" label="Dept Kd" id="c_com_melawai_ppuc_model_lokasi_dept_kd"  object="${lokasi}" />
+       <field:display field="lok_nm" label="Lok Nm" id="c_com_melawai_ppuc_model_lokasi_lok_nm"  object="${lokasi}" />
+       <field:display field="f_tutup" label="F Tutup" id="c_com_melawai_ppuc_model_lokasi_f_tutup"  object="${lokasi}" />
+       <field:display field="tgl_tutup" label="Tgl Tutup" id="c_com_melawai_ppuc_model_lokasi_tgl_tutup"  object="${lokasi}"  date="true" dateTimePattern="${lokasi_tgl_tutup_date_format}"/>
+       <field:display field="counter" label="Counter" id="c_com_melawai_ppuc_model_lokasi_counter"  object="${lokasi}" />
+       <field:display field="max_counter" label="Max Counter" id="c_com_melawai_ppuc_model_lokasi_max_counter"  object="${lokasi}" />
+       <field:display field="user_update" label="User Update" id="c_com_melawai_ppuc_model_lokasi_user_update"  object="${lokasi}" />
+       <field:display field="tgl_update" label="Tgl Update" id="c_com_melawai_ppuc_model_lokasi_tgl_update"  object="${lokasi}"  date="true" dateTimePattern="${lokasi_tgl_update_date_format}"/>
+       <field:display field="jam_update" label="Jam Update" id="c_com_melawai_ppuc_model_lokasi_jam_update"  object="${lokasi}" />
+       <field:display field="user_create" label="User Create" id="c_com_melawai_ppuc_model_lokasi_user_create"  object="${lokasi}" />
+       <field:display field="tgl_create" label="Tgl Create" id="c_com_melawai_ppuc_model_lokasi_tgl_create"  object="${lokasi}"  date="true" dateTimePattern="${lokasi_tgl_create_date_format}"/>
+    </page:show>
+</div>
+

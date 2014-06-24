@@ -1,0 +1,424 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+"http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.melawai.ppuc.persistence.PpucHMapper">
+
+	<cache />
+
+	<!-- result map-->
+	<resultMap type="PpucH" id="PpucHMap">
+		<id property="divisi_kd" column="divisi_kd"  />  
+		<id property="subdiv_kd" column="subdiv_kd"  />  
+		<id property="dept_kd" column="dept_kd"  />  
+		<id property="lok_kd" column="lok_kd"  />  
+		<id property="no_ppuc" column="no_ppuc"  />  
+		<id property="tgl_ppuc" column="tgl_ppuc"  />  
+		<result property="divisi_kd" column="divisi_kd" />
+		<result property="subdiv_kd" column="subdiv_kd" />
+		<result property="dept_kd" column="dept_kd" />
+		<result property="lok_kd" column="lok_kd" />
+		<result property="no_ppuc" column="no_ppuc" />
+		<result property="tgl_ppuc" column="tgl_ppuc" />
+		<result property="no_batch" column="no_batch" />
+		<result property="user_create" column="user_create" />
+		<result property="tgl_create" column="tgl_create" />
+		<result property="jam_create" column="jam_create" />
+		<result property="user_confirm" column="user_confirm" />
+		<result property="tgl_confirm" column="tgl_confirm" />
+		<result property="jam_confirm" column="jam_confirm" />
+		<result property="hp_asal_create" column="hp_asal_create" />
+		<result property="hp_tujuan_create" column="hp_tujuan_create" />
+		<result property="email_asal_create" column="email_asal_create" />
+		<result property="email_tujuan_create" column="email_tujuan_create" />
+		<result property="divisi_kd_apprv" column="divisi_kd_apprv" />
+		<result property="subdiv_kd_apprv" column="subdiv_kd_apprv" />
+		<result property="dept_kd_apprv" column="dept_kd_apprv" />
+		<result property="user_approve" column="user_approve" />
+		<result property="tgl_approve" column="tgl_approve" />
+		<result property="jam_approve" column="jam_approve" />
+		<result property="f_approval" column="f_approval" />
+		<result property="hp_asal_approve" column="hp_asal_approve" />
+		<result property="hp_tujuan_approve" column="hp_tujuan_approve" />
+		<result property="email_asal_approve" column="email_asal_approve" />
+		<result property="email_tujuan_approve" column="email_tujuan_approve" />
+		<result property="no_realisasi" column="no_realisasi" />
+		<result property="user_realisasi" column="user_realisasi" />
+		<result property="tgl_realisasi" column="tgl_realisasi" />
+		<result property="jam_realisasi" column="jam_realisasi" />
+		<result property="user_conf_real" column="user_conf_real" />
+		<result property="tgl_conf_real" column="tgl_conf_real" />
+		<result property="jam_conf_real" column="jam_conf_real" />
+		<result property="user_conf_oc" column="user_conf_oc" />
+		<result property="tgl_conf_oc" column="tgl_conf_oc" />
+		<result property="jam_conf_oc" column="jam_conf_oc" />
+		<result property="hp_asal_conf_oc" column="hp_asal_conf_oc" />
+		<result property="hp_tujuan_conf_oc" column="hp_tujuan_conf_oc" />
+		<result property="email_asal_conf_oc" column="email_asal_conf_oc" />
+		<result property="email_tujuan_conf_oc" column="email_tujuan_conf_oc" />
+		<result property="f_batal" column="f_batal" />
+		<result property="user_batal" column="user_batal" />
+		<result property="tgl_batal" column="tgl_batal" />
+		<result property="jam_batal" column="jam_batal" />
+		<result property="alasan_batal" column="alasan_batal" />
+		<result property="hp_asal_batal" column="hp_asal_batal" />
+		<result property="hp_tujuan_batal" column="hp_tujuan_batal" />
+		<result property="email_asal_batal" column="email_asal_batal" />
+		<result property="email_tujuan_batal" column="email_tujuan_batal" />
+	</resultMap>
+
+	<!-- nama kolom yang ingin ditampilkan -->
+	<sql id="defaultColoumn">
+		C.DIVISI_KD as divisi_kd,
+		C.SUBDIV_KD as subdiv_kd,
+		C.DEPT_KD as dept_kd,
+		C.LOK_KD as lok_kd,
+		C.SYS_NO_PPUC as no_ppuc,
+		C.TGL_PPUC as tgl_ppuc,
+		C.NO_BATCH as no_batch,
+		C.SYS_USER_CREATE as user_create,
+		C.SYS_TGL_CREATE as tgl_create,
+		C.SYS_JAM_CREATE as jam_create,
+		C.SYS_USER_CONFIRM as user_confirm,
+		C.SYS_TGL_CONFIRM as tgl_confirm,
+		C.SYS_JAM_CONFIRM as jam_confirm,
+		C.SYS_HP_ASAL_CREATE as hp_asal_create,
+		C.SYS_HP_TUJUAN_CREATE as hp_tujuan_create,
+		C.SYS_EMAIL_ASAL_CREATE as email_asal_create,
+		C.SYS_EMAIL_TUJUAN_CREATE as email_tujuan_create,
+		C.SYS_DIVISI_KD_APPRV as divisi_kd_apprv,
+		C.SYS_SUBDIV_KD_APPRV as subdiv_kd_apprv,
+		C.SYS_DEPT_KD_APPRV as dept_kd_apprv,
+		C.SYS_USER_APPROVE as user_approve,
+		C.SYS_TGL_APPROVE as tgl_approve,
+		C.SYS_JAM_APPROVE as jam_approve,
+		C.F_APPROVAL as f_approval,
+		C.SYS_HP_ASAL_APPROVE as hp_asal_approve,
+		C.SYS_HP_TUJUAN_APPROVE as hp_tujuan_approve,
+		C.SYS_EMAIL_ASAL_APPROVE as email_asal_approve,
+		C.SYS_EMAIL_TUJUAN_APPROVE as email_tujuan_approve,
+		C.NO_REALISASI as no_realisasi,
+		C.SYS_USER_REALISASI as user_realisasi,
+		C.SYS_TGL_REALISASI as tgl_realisasi,
+		C.SYS_JAM_REALISASI as jam_realisasi,
+		C.SYS_USER_CONF_REAL as user_conf_real,
+		C.SYS_TGL_CONF_REAL as tgl_conf_real,
+		C.JAM_CONF_REAL as jam_conf_real,
+		C.SYS_USER_CONF_OC as user_conf_oc,
+		C.SYS_TGL_CONF_OC as tgl_conf_oc,
+		C.SYS_JAM_CONF_OC as jam_conf_oc,
+		C.SYS_HP_ASAL_CONF_OC as hp_asal_conf_oc,
+		C.SYS_HP_TUJUAN_CONF_OC as hp_tujuan_conf_oc,
+		C.SYS_EMAIL_ASAL_CONF_OC as email_asal_conf_oc,
+		C.SYS_EMAIL_TUJUAN_CONF_OC as email_tujuan_conf_oc,
+		C.F_BATAL as f_batal,
+		C.SYS_USER_BATAL as user_batal,
+		C.SYS_TGL_BATAL as tgl_batal,
+		C.SYS_JAM_BATAL as jam_batal,
+		C.SYS_ALASAN_BATAL as alasan_batal,
+		C.SYS_HP_ASAL_BATAL as hp_asal_batal,
+		C.SYS_HP_TUJUAN_BATAL as hp_tujuan_batal,
+		C.SYS_EMAIL_ASAL_BATAL as email_asal_batal,
+		C.SYS_EMAIL_TUJUAN_BATAL as email_tujuan_batal
+	</sql>
+
+	<!-- query select, dengan kolom yang default di atas, apabila mau ditambahkan join juga bisa disini
+	perubahan query ini akan mempengaruhi select paging dan get di bawah  -->
+	<sql id="selectQuery">
+		select * from (
+			select <include refid="defaultColoumn" /> from ppuc_h C
+		)T
+	</sql>
+
+	<!-- kolom apa aja yang mau disearching -->
+	<sql id="searchTambahan">
+		Where 1=1
+			<!--!!TAMBAHAN parameter untuk search-->
+	</sql>
+
+	<!-- kolom apa aja yang mau disearching -->
+	<sql id="search">
+		WHERE 1=1 AND (
+			 divisi_kd like  CONCAT('%', #{search}, '%')
+			 OR subdiv_kd like  CONCAT('%', #{search}, '%')
+			 OR dept_kd like  CONCAT('%', #{search}, '%')
+			 OR lok_kd like  CONCAT('%', #{search}, '%')
+			 OR no_ppuc like  CONCAT('%', #{search}, '%')
+			 OR no_batch like  CONCAT('%', #{search}, '%')
+			 OR user_create like  CONCAT('%', #{search}, '%')
+			 OR jam_create like  CONCAT('%', #{search}, '%')
+			 OR user_confirm like  CONCAT('%', #{search}, '%')
+			 OR jam_confirm like  CONCAT('%', #{search}, '%')
+			 OR hp_asal_create like  CONCAT('%', #{search}, '%')
+			 OR hp_tujuan_create like  CONCAT('%', #{search}, '%')
+			 OR email_asal_create like  CONCAT('%', #{search}, '%')
+			 OR email_tujuan_create like  CONCAT('%', #{search}, '%')
+			 OR divisi_kd_apprv like  CONCAT('%', #{search}, '%')
+			 OR subdiv_kd_apprv like  CONCAT('%', #{search}, '%')
+			 OR dept_kd_apprv like  CONCAT('%', #{search}, '%')
+			 OR user_approve like  CONCAT('%', #{search}, '%')
+			 OR jam_approve like  CONCAT('%', #{search}, '%')
+			 OR hp_asal_approve like  CONCAT('%', #{search}, '%')
+			 OR hp_tujuan_approve like  CONCAT('%', #{search}, '%')
+			 OR email_asal_approve like  CONCAT('%', #{search}, '%')
+			 OR email_tujuan_approve like  CONCAT('%', #{search}, '%')
+			 OR no_realisasi like  CONCAT('%', #{search}, '%')
+			 OR user_realisasi like  CONCAT('%', #{search}, '%')
+			 OR jam_realisasi like  CONCAT('%', #{search}, '%')
+			 OR user_conf_real like  CONCAT('%', #{search}, '%')
+			 OR jam_conf_real like  CONCAT('%', #{search}, '%')
+			 OR user_conf_oc like  CONCAT('%', #{search}, '%')
+			 OR jam_conf_oc like  CONCAT('%', #{search}, '%')
+			 OR hp_asal_conf_oc like  CONCAT('%', #{search}, '%')
+			 OR hp_tujuan_conf_oc like  CONCAT('%', #{search}, '%')
+			 OR email_asal_conf_oc like  CONCAT('%', #{search}, '%')
+			 OR email_tujuan_conf_oc like  CONCAT('%', #{search}, '%')
+			 OR user_batal like  CONCAT('%', #{search}, '%')
+			 OR jam_batal like  CONCAT('%', #{search}, '%')
+			 OR alasan_batal like  CONCAT('%', #{search}, '%')
+			 OR hp_asal_batal like  CONCAT('%', #{search}, '%')
+			 OR hp_tujuan_batal like  CONCAT('%', #{search}, '%')
+			 OR email_asal_batal like  CONCAT('%', #{search}, '%')
+			 OR email_tujuan_batal like  CONCAT('%', #{search}, '%')
+		)
+	</sql>
+
+	<!-- insert query untuk table ini -->
+	<insert id="insert" parameterType="PpucH">
+		INSERT INTO ppuc_h (
+			DIVISI_KD,
+			SUBDIV_KD,
+			DEPT_KD,
+			LOK_KD,
+			SYS_NO_PPUC,
+			TGL_PPUC,
+			NO_BATCH,
+			SYS_USER_CREATE,
+			SYS_TGL_CREATE,
+			SYS_JAM_CREATE,
+			SYS_USER_CONFIRM,
+			SYS_TGL_CONFIRM,
+			SYS_JAM_CONFIRM,
+			SYS_HP_ASAL_CREATE,
+			SYS_HP_TUJUAN_CREATE,
+			SYS_EMAIL_ASAL_CREATE,
+			SYS_EMAIL_TUJUAN_CREATE,
+			SYS_DIVISI_KD_APPRV,
+			SYS_SUBDIV_KD_APPRV,
+			SYS_DEPT_KD_APPRV,
+			SYS_USER_APPROVE,
+			SYS_TGL_APPROVE,
+			SYS_JAM_APPROVE,
+			F_APPROVAL,
+			SYS_HP_ASAL_APPROVE,
+			SYS_HP_TUJUAN_APPROVE,
+			SYS_EMAIL_ASAL_APPROVE,
+			SYS_EMAIL_TUJUAN_APPROVE,
+			NO_REALISASI,
+			SYS_USER_REALISASI,
+			SYS_TGL_REALISASI,
+			SYS_JAM_REALISASI,
+			SYS_USER_CONF_REAL,
+			SYS_TGL_CONF_REAL,
+			JAM_CONF_REAL,
+			SYS_USER_CONF_OC,
+			SYS_TGL_CONF_OC,
+			SYS_JAM_CONF_OC,
+			SYS_HP_ASAL_CONF_OC,
+			SYS_HP_TUJUAN_CONF_OC,
+			SYS_EMAIL_ASAL_CONF_OC,
+			SYS_EMAIL_TUJUAN_CONF_OC,
+			F_BATAL,
+			SYS_USER_BATAL,
+			SYS_TGL_BATAL,
+			SYS_JAM_BATAL,
+			SYS_ALASAN_BATAL,
+			SYS_HP_ASAL_BATAL,
+			SYS_HP_TUJUAN_BATAL,
+			SYS_EMAIL_ASAL_BATAL,
+			SYS_EMAIL_TUJUAN_BATAL
+		) values (
+			#{divisi_kd},
+			#{subdiv_kd},
+			#{dept_kd},
+			#{lok_kd},
+			#{no_ppuc},
+			#{tgl_ppuc},
+			#{no_batch},
+			#{user_create},
+			#{tgl_create},
+			#{jam_create},
+			#{user_confirm},
+			#{tgl_confirm},
+			#{jam_confirm},
+			#{hp_asal_create},
+			#{hp_tujuan_create},
+			#{email_asal_create},
+			#{email_tujuan_create},
+			#{divisi_kd_apprv},
+			#{subdiv_kd_apprv},
+			#{dept_kd_apprv},
+			#{user_approve},
+			#{tgl_approve},
+			#{jam_approve},
+			#{f_approval},
+			#{hp_asal_approve},
+			#{hp_tujuan_approve},
+			#{email_asal_approve},
+			#{email_tujuan_approve},
+			#{no_realisasi},
+			#{user_realisasi},
+			#{tgl_realisasi},
+			#{jam_realisasi},
+			#{user_conf_real},
+			#{tgl_conf_real},
+			#{jam_conf_real},
+			#{user_conf_oc},
+			#{tgl_conf_oc},
+			#{jam_conf_oc},
+			#{hp_asal_conf_oc},
+			#{hp_tujuan_conf_oc},
+			#{email_asal_conf_oc},
+			#{email_tujuan_conf_oc},
+			#{f_batal},
+			#{user_batal},
+			#{tgl_batal},
+			#{jam_batal},
+			#{alasan_batal},
+			#{hp_asal_batal},
+			#{hp_tujuan_batal},
+			#{email_asal_batal},
+			#{email_tujuan_batal}
+		)
+	</insert>
+
+	<!-- update query untuk table ini -->
+	<update id="update" parameterType="PpucH">
+		UPDATE ppuc_h
+		<set>
+			<if test="divisi_kd != null">DIVISI_KD = #{divisi_kd}, </if>
+			<if test="subdiv_kd != null">SUBDIV_KD = #{subdiv_kd}, </if>
+			<if test="dept_kd != null">DEPT_KD = #{dept_kd}, </if>
+			<if test="lok_kd != null">LOK_KD = #{lok_kd}, </if>
+			<if test="no_ppuc != null">SYS_NO_PPUC = #{no_ppuc}, </if>
+			<if test="tgl_ppuc != null">TGL_PPUC = #{tgl_ppuc}, </if>
+			<if test="no_batch != null">NO_BATCH = #{no_batch}, </if>
+			<if test="user_create != null">SYS_USER_CREATE = #{user_create}, </if>
+			<if test="tgl_create != null">SYS_TGL_CREATE = #{tgl_create}, </if>
+			<if test="jam_create != null">SYS_JAM_CREATE = #{jam_create}, </if>
+			<if test="user_confirm != null">SYS_USER_CONFIRM = #{user_confirm}, </if>
+			<if test="tgl_confirm != null">SYS_TGL_CONFIRM = #{tgl_confirm}, </if>
+			<if test="jam_confirm != null">SYS_JAM_CONFIRM = #{jam_confirm}, </if>
+			<if test="hp_asal_create != null">SYS_HP_ASAL_CREATE = #{hp_asal_create}, </if>
+			<if test="hp_tujuan_create != null">SYS_HP_TUJUAN_CREATE = #{hp_tujuan_create}, </if>
+			<if test="email_asal_create != null">SYS_EMAIL_ASAL_CREATE = #{email_asal_create}, </if>
+			<if test="email_tujuan_create != null">SYS_EMAIL_TUJUAN_CREATE = #{email_tujuan_create}, </if>
+			<if test="divisi_kd_apprv != null">SYS_DIVISI_KD_APPRV = #{divisi_kd_apprv}, </if>
+			<if test="subdiv_kd_apprv != null">SYS_SUBDIV_KD_APPRV = #{subdiv_kd_apprv}, </if>
+			<if test="dept_kd_apprv != null">SYS_DEPT_KD_APPRV = #{dept_kd_apprv}, </if>
+			<if test="user_approve != null">SYS_USER_APPROVE = #{user_approve}, </if>
+			<if test="tgl_approve != null">SYS_TGL_APPROVE = #{tgl_approve}, </if>
+			<if test="jam_approve != null">SYS_JAM_APPROVE = #{jam_approve}, </if>
+			<if test="f_approval != null">F_APPROVAL = #{f_approval}, </if>
+			<if test="hp_asal_approve != null">SYS_HP_ASAL_APPROVE = #{hp_asal_approve}, </if>
+			<if test="hp_tujuan_approve != null">SYS_HP_TUJUAN_APPROVE = #{hp_tujuan_approve}, </if>
+			<if test="email_asal_approve != null">SYS_EMAIL_ASAL_APPROVE = #{email_asal_approve}, </if>
+			<if test="email_tujuan_approve != null">SYS_EMAIL_TUJUAN_APPROVE = #{email_tujuan_approve}, </if>
+			<if test="no_realisasi != null">NO_REALISASI = #{no_realisasi}, </if>
+			<if test="user_realisasi != null">SYS_USER_REALISASI = #{user_realisasi}, </if>
+			<if test="tgl_realisasi != null">SYS_TGL_REALISASI = #{tgl_realisasi}, </if>
+			<if test="jam_realisasi != null">SYS_JAM_REALISASI = #{jam_realisasi}, </if>
+			<if test="user_conf_real != null">SYS_USER_CONF_REAL = #{user_conf_real}, </if>
+			<if test="tgl_conf_real != null">SYS_TGL_CONF_REAL = #{tgl_conf_real}, </if>
+			<if test="jam_conf_real != null">JAM_CONF_REAL = #{jam_conf_real}, </if>
+			<if test="user_conf_oc != null">SYS_USER_CONF_OC = #{user_conf_oc}, </if>
+			<if test="tgl_conf_oc != null">SYS_TGL_CONF_OC = #{tgl_conf_oc}, </if>
+			<if test="jam_conf_oc != null">SYS_JAM_CONF_OC = #{jam_conf_oc}, </if>
+			<if test="hp_asal_conf_oc != null">SYS_HP_ASAL_CONF_OC = #{hp_asal_conf_oc}, </if>
+			<if test="hp_tujuan_conf_oc != null">SYS_HP_TUJUAN_CONF_OC = #{hp_tujuan_conf_oc}, </if>
+			<if test="email_asal_conf_oc != null">SYS_EMAIL_ASAL_CONF_OC = #{email_asal_conf_oc}, </if>
+			<if test="email_tujuan_conf_oc != null">SYS_EMAIL_TUJUAN_CONF_OC = #{email_tujuan_conf_oc}, </if>
+			<if test="f_batal != null">F_BATAL = #{f_batal}, </if>
+			<if test="user_batal != null">SYS_USER_BATAL = #{user_batal}, </if>
+			<if test="tgl_batal != null">SYS_TGL_BATAL = #{tgl_batal}, </if>
+			<if test="jam_batal != null">SYS_JAM_BATAL = #{jam_batal}, </if>
+			<if test="alasan_batal != null">SYS_ALASAN_BATAL = #{alasan_batal}, </if>
+			<if test="hp_asal_batal != null">SYS_HP_ASAL_BATAL = #{hp_asal_batal}, </if>
+			<if test="hp_tujuan_batal != null">SYS_HP_TUJUAN_BATAL = #{hp_tujuan_batal}, </if>
+			<if test="email_asal_batal != null">SYS_EMAIL_ASAL_BATAL = #{email_asal_batal}, </if>
+			<if test="email_tujuan_batal != null">SYS_EMAIL_TUJUAN_BATAL = #{email_tujuan_batal} </if>
+		</set>
+		WHERE  
+			DIVISI_KD= #{divisi_kd} 
+			AND SUBDIV_KD= #{subdiv_kd}
+			AND DEPT_KD= #{dept_kd}
+			AND LOK_KD= #{lok_kd}
+			AND SYS_NO_PPUC= #{no_ppuc}
+			AND TGL_PPUC= #{tgl_ppuc}
+	</update>
+
+	<!-- remove query untuk table ini -->
+	<delete id="remove" parameterType="HashMap">
+		delete from ppuc_h
+		 <where> 
+			<if test="divisi_kd != null">DIVISI_KD= #{divisi_kd} </if>
+			<if test="subdiv_kd != null"> AND SUBDIV_KD= #{subdiv_kd} </if>
+			<if test="dept_kd != null"> AND DEPT_KD= #{dept_kd} </if>
+			<if test="lok_kd != null"> AND LOK_KD= #{lok_kd} </if>
+			<if test="no_ppuc != null"> AND SYS_NO_PPUC= #{no_ppuc} </if>
+			<if test="tgl_ppuc != null"> AND TGL_PPUC= #{tgl_ppuc} </if>
+		 </where> 
+	</delete>
+
+	<!-- get berdasarkan primary key -->
+	<select id="get" parameterType="HashMap" resultMap="PpucHMap">
+		<include refid="selectQuery" />
+		 <where> 
+			<if test="divisi_kd != null"> T.divisi_kd= #{divisi_kd} </if>
+			<if test="subdiv_kd != null"> AND T.subdiv_kd= #{subdiv_kd} </if>
+			<if test="dept_kd != null"> AND T.dept_kd= #{dept_kd} </if>
+			<if test="lok_kd != null"> AND T.lok_kd= #{lok_kd} </if>
+			<if test="no_ppuc != null"> AND T.no_ppuc= #{no_ppuc} </if>
+			<if test="tgl_ppuc != null"> AND T.tgl_ppuc= #{tgl_ppuc} </if>
+		 </where> 
+	</select>
+
+	<!-- get ALL row -->
+	<select id="getAll" resultMap="PpucHMap">
+		<include refid="selectQuery" />
+	</select>
+
+	<!-- select berdasarkan paging parameter -->
+	<select id="selectPagingList" parameterType="PpucH" resultMap="PpucHMap">
+			SELECT x.* from (
+				select * from (
+					<include refid="selectQuery" />
+					<include refid="searchTambahan" />
+				) y
+				<if test="search != null">
+					<include refid="search" />
+				</if>
+				<if test="sort != null">
+					order by ${sort}
+				</if>
+				 LIMIT #{page} , #{rowcount}
+			)x
+	</select>
+
+	<!-- select jumlah seluruh data yang akan di paging -->
+	<select id="selectPagingCount" parameterType="PpucH" resultType="Integer">
+		select count(*) from(
+			SELECT x.* from (
+				select * from (
+					<include refid="selectQuery" />
+					<include refid="searchTambahan" />
+				) y
+				<if test="search != null">
+					<include refid="search" />
+				</if>
+			)x
+		) z
+	</select>
+
+	<!-- QUERY CUSTOM LAIN-LAIN bisa dimasukkan dibawah ini -->
+
+</mapper>

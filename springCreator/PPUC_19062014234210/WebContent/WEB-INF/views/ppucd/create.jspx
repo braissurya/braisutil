@@ -1,0 +1,34 @@
+<?xml version="1.0" encoding="UTF-8" standalone="no"?>
+<div xmlns:c="http://java.sun.com/jsp/jstl/core" xmlns:field="urn:jsptagdir:/WEB-INF/tags/form/fields" xmlns:form="urn:jsptagdir:/WEB-INF/tags/form" xmlns:jsp="http://java.sun.com/JSP/Page" xmlns:spring="http://www.springframework.org/tags" version="2.0">
+    <jsp:directive.page contentType="text/html;charset=UTF-8"/>
+    <jsp:output omit-xml-declaration="yes"/>
+    <form:create id="fc_com_melawai_ppuc_model_ppucd" modelAttribute="ppucd" path="/master/ppucd" render="${ empty dependencies }">
+       <field:input field="divisi_kd" label="Divisi Kd" id="c_com_melawai_ppuc_model_ppucd_divisi_kd" required="true" max="3"/>
+       <field:input field="subdiv_kd" label="Subdiv Kd" id="c_com_melawai_ppuc_model_ppucd_subdiv_kd" required="true" max="3"/>
+       <field:input field="dept_kd" label="Dept Kd" id="c_com_melawai_ppuc_model_ppucd_dept_kd" required="true" max="3"/>
+       <field:input field="lok_kd" label="Lok Kd" id="c_com_melawai_ppuc_model_ppucd_lok_kd" required="true" max="5"/>
+       <field:input field="no_ppuc" label="No Ppuc" id="c_com_melawai_ppuc_model_ppucd_no_ppuc" readonly="true" validationMessageCode="field_invalid_number" />
+       <field:datetime field="tgl_ppuc" label="Tgl Ppuc" id="c_com_melawai_ppuc_model_ppucd_tgl_ppuc" required="true" dateTimePattern="${ppucd_tgl_ppuc_date_format}" />
+       <field:input field="kd_group" label="Kd Group" id="c_com_melawai_ppuc_model_ppucd_kd_group"  max="5"/>
+       <field:input field="kd_biaya" label="Kd Biaya" id="c_com_melawai_ppuc_model_ppucd_kd_biaya" required="true" max="30"/>
+       <field:input field="no_batch" label="No Batch" id="c_com_melawai_ppuc_model_ppucd_no_batch"  max="10"/>
+       <field:input field="qty" label="Qty" id="c_com_melawai_ppuc_model_ppucd_qty"  validationMessageCode="field_invalid_integer" />
+       <field:input field="harga" label="Harga" id="c_com_melawai_ppuc_model_ppucd_harga"  max="0"/>
+       <field:input field="total" label="Total" id="c_com_melawai_ppuc_model_ppucd_total"  max="0"/>
+       <field:input field="qty_old" label="Qty Old" id="c_com_melawai_ppuc_model_ppucd_qty_old"  validationMessageCode="field_invalid_integer" />
+       <field:input field="harga_old" label="Harga Old" id="c_com_melawai_ppuc_model_ppucd_harga_old"  max="0"/>
+       <field:input field="total_old" label="Total Old" id="c_com_melawai_ppuc_model_ppucd_total_old"  max="0"/>
+       <field:input field="keterangan" label="Keterangan" id="c_com_melawai_ppuc_model_ppucd_keterangan"  max="65535"/>
+       <field:input field="qty_real_cbg" label="Qty Real Cbg" id="c_com_melawai_ppuc_model_ppucd_qty_real_cbg"  validationMessageCode="field_invalid_integer" />
+       <field:input field="harga_real_cbg" label="Harga Real Cbg" id="c_com_melawai_ppuc_model_ppucd_harga_real_cbg"  max="0"/>
+       <field:input field="total_real_cbg" label="Total Real Cbg" id="c_com_melawai_ppuc_model_ppucd_total_real_cbg"  max="0"/>
+       <field:input field="qty_real_oc" label="Qty Real Oc" id="c_com_melawai_ppuc_model_ppucd_qty_real_oc"  validationMessageCode="field_invalid_integer" />
+       <field:input field="harga_real_oc" label="Harga Real Oc" id="c_com_melawai_ppuc_model_ppucd_harga_real_oc"  max="0"/>
+       <field:input field="total_real_oc" label="Total Real Oc" id="c_com_melawai_ppuc_model_ppucd_total_real_oc"  max="0"/>
+       <field:input field="nilai_charge" label="Nilai Charge" id="c_com_melawai_ppuc_model_ppucd_nilai_charge"  max="0"/>
+       <field:input field="user_create" label="User Create" id="c_com_melawai_ppuc_model_ppucd_user_create" readonly="true" validationMessageCode="field_invalid_number" />
+       <field:input field="tgl_create" label="Tgl Create" id="c_com_melawai_ppuc_model_ppucd_tgl_create" readonly="true" validationMessageCode="field_invalid_number" />
+    </form:create>
+    <form:dependency dependencies="${dependencies}" id="d_com_melawai_ppuc_model_ppucd" render="${ not empty dependencies }"/>
+</div>
+

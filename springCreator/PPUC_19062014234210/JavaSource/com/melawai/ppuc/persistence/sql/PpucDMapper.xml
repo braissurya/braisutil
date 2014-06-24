@@ -1,0 +1,267 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+"http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.melawai.ppuc.persistence.PpucDMapper">
+
+	<cache />
+
+	<!-- result map-->
+	<resultMap type="PpucD" id="PpucDMap">
+		<id property="divisi_kd" column="divisi_kd"  />  
+		<id property="subdiv_kd" column="subdiv_kd"  />  
+		<id property="dept_kd" column="dept_kd"  />  
+		<id property="lok_kd" column="lok_kd"  />  
+		<id property="no_ppuc" column="no_ppuc"  />  
+		<id property="tgl_ppuc" column="tgl_ppuc"  />  
+		<id property="kd_biaya" column="kd_biaya"  />  
+		<result property="divisi_kd" column="divisi_kd" />
+		<result property="subdiv_kd" column="subdiv_kd" />
+		<result property="dept_kd" column="dept_kd" />
+		<result property="lok_kd" column="lok_kd" />
+		<result property="no_ppuc" column="no_ppuc" />
+		<result property="tgl_ppuc" column="tgl_ppuc" />
+		<result property="kd_group" column="kd_group" />
+		<result property="kd_biaya" column="kd_biaya" />
+		<result property="no_batch" column="no_batch" />
+		<result property="qty" column="qty" />
+		<result property="harga" column="harga" />
+		<result property="total" column="total" />
+		<result property="qty_old" column="qty_old" />
+		<result property="harga_old" column="harga_old" />
+		<result property="total_old" column="total_old" />
+		<result property="keterangan" column="keterangan" />
+		<result property="qty_real_cbg" column="qty_real_cbg" />
+		<result property="harga_real_cbg" column="harga_real_cbg" />
+		<result property="total_real_cbg" column="total_real_cbg" />
+		<result property="qty_real_oc" column="qty_real_oc" />
+		<result property="harga_real_oc" column="harga_real_oc" />
+		<result property="total_real_oc" column="total_real_oc" />
+		<result property="nilai_charge" column="nilai_charge" />
+		<result property="user_create" column="user_create" />
+		<result property="tgl_create" column="tgl_create" />
+	</resultMap>
+
+	<!-- nama kolom yang ingin ditampilkan -->
+	<sql id="defaultColoumn">
+		C.DIVISI_KD as divisi_kd,
+		C.SUBDIV_KD as subdiv_kd,
+		C.DEPT_KD as dept_kd,
+		C.LOK_KD as lok_kd,
+		C.SYS_NO_PPUC as no_ppuc,
+		C.TGL_PPUC as tgl_ppuc,
+		C.KD_GROUP as kd_group,
+		C.KD_BIAYA as kd_biaya,
+		C.NO_BATCH as no_batch,
+		C.QTY as qty,
+		C.HARGA as harga,
+		C.TOTAL as total,
+		C.QTY_OLD as qty_old,
+		C.HARGA_OLD as harga_old,
+		C.TOTAL_OLD as total_old,
+		C.KETERANGAN as keterangan,
+		C.QTY_REAL_CBG as qty_real_cbg,
+		C.HARGA_REAL_CBG as harga_real_cbg,
+		C.TOTAL_REAL_CBG as total_real_cbg,
+		C.QTY_REAL_OC as qty_real_oc,
+		C.HARGA_REAL_OC as harga_real_oc,
+		C.TOTAL_REAL_OC as total_real_oc,
+		C.NILAI_CHARGE as nilai_charge,
+		C.SYS_USER_CREATE as user_create,
+		C.SYS_TGL_CREATE as tgl_create
+	</sql>
+
+	<!-- query select, dengan kolom yang default di atas, apabila mau ditambahkan join juga bisa disini
+	perubahan query ini akan mempengaruhi select paging dan get di bawah  -->
+	<sql id="selectQuery">
+		select * from (
+			select <include refid="defaultColoumn" /> from ppuc_d C
+		)T
+	</sql>
+
+	<!-- kolom apa aja yang mau disearching -->
+	<sql id="searchTambahan">
+		Where 1=1
+			<!--!!TAMBAHAN parameter untuk search-->
+	</sql>
+
+	<!-- kolom apa aja yang mau disearching -->
+	<sql id="search">
+		WHERE 1=1 AND (
+			 divisi_kd like  CONCAT('%', #{search}, '%')
+			 OR subdiv_kd like  CONCAT('%', #{search}, '%')
+			 OR dept_kd like  CONCAT('%', #{search}, '%')
+			 OR lok_kd like  CONCAT('%', #{search}, '%')
+			 OR no_ppuc like  CONCAT('%', #{search}, '%')
+			 OR kd_group like  CONCAT('%', #{search}, '%')
+			 OR kd_biaya like  CONCAT('%', #{search}, '%')
+			 OR no_batch like  CONCAT('%', #{search}, '%')
+			 OR keterangan like  CONCAT('%', #{search}, '%')
+			 OR user_create like  CONCAT('%', #{search}, '%')
+		)
+	</sql>
+
+	<!-- insert query untuk table ini -->
+	<insert id="insert" parameterType="PpucD">
+		INSERT INTO ppuc_d (
+			DIVISI_KD,
+			SUBDIV_KD,
+			DEPT_KD,
+			LOK_KD,
+			SYS_NO_PPUC,
+			TGL_PPUC,
+			KD_GROUP,
+			KD_BIAYA,
+			NO_BATCH,
+			QTY,
+			HARGA,
+			TOTAL,
+			QTY_OLD,
+			HARGA_OLD,
+			TOTAL_OLD,
+			KETERANGAN,
+			QTY_REAL_CBG,
+			HARGA_REAL_CBG,
+			TOTAL_REAL_CBG,
+			QTY_REAL_OC,
+			HARGA_REAL_OC,
+			TOTAL_REAL_OC,
+			NILAI_CHARGE,
+			SYS_USER_CREATE,
+			SYS_TGL_CREATE
+		) values (
+			#{divisi_kd},
+			#{subdiv_kd},
+			#{dept_kd},
+			#{lok_kd},
+			#{no_ppuc},
+			#{tgl_ppuc},
+			#{kd_group},
+			#{kd_biaya},
+			#{no_batch},
+			#{qty},
+			#{harga},
+			#{total},
+			#{qty_old},
+			#{harga_old},
+			#{total_old},
+			#{keterangan},
+			#{qty_real_cbg},
+			#{harga_real_cbg},
+			#{total_real_cbg},
+			#{qty_real_oc},
+			#{harga_real_oc},
+			#{total_real_oc},
+			#{nilai_charge},
+			#{user_create},
+			#{tgl_create}
+		)
+	</insert>
+
+	<!-- update query untuk table ini -->
+	<update id="update" parameterType="PpucD">
+		UPDATE ppuc_d
+		<set>
+			<if test="divisi_kd != null">DIVISI_KD = #{divisi_kd}, </if>
+			<if test="subdiv_kd != null">SUBDIV_KD = #{subdiv_kd}, </if>
+			<if test="dept_kd != null">DEPT_KD = #{dept_kd}, </if>
+			<if test="lok_kd != null">LOK_KD = #{lok_kd}, </if>
+			<if test="no_ppuc != null">SYS_NO_PPUC = #{no_ppuc}, </if>
+			<if test="tgl_ppuc != null">TGL_PPUC = #{tgl_ppuc}, </if>
+			<if test="kd_group != null">KD_GROUP = #{kd_group}, </if>
+			<if test="kd_biaya != null">KD_BIAYA = #{kd_biaya}, </if>
+			<if test="no_batch != null">NO_BATCH = #{no_batch}, </if>
+			<if test="qty != null">QTY = #{qty}, </if>
+			<if test="harga != null">HARGA = #{harga}, </if>
+			<if test="total != null">TOTAL = #{total}, </if>
+			<if test="qty_old != null">QTY_OLD = #{qty_old}, </if>
+			<if test="harga_old != null">HARGA_OLD = #{harga_old}, </if>
+			<if test="total_old != null">TOTAL_OLD = #{total_old}, </if>
+			<if test="keterangan != null">KETERANGAN = #{keterangan}, </if>
+			<if test="qty_real_cbg != null">QTY_REAL_CBG = #{qty_real_cbg}, </if>
+			<if test="harga_real_cbg != null">HARGA_REAL_CBG = #{harga_real_cbg}, </if>
+			<if test="total_real_cbg != null">TOTAL_REAL_CBG = #{total_real_cbg}, </if>
+			<if test="qty_real_oc != null">QTY_REAL_OC = #{qty_real_oc}, </if>
+			<if test="harga_real_oc != null">HARGA_REAL_OC = #{harga_real_oc}, </if>
+			<if test="total_real_oc != null">TOTAL_REAL_OC = #{total_real_oc}, </if>
+			<if test="nilai_charge != null">NILAI_CHARGE = #{nilai_charge}, </if>
+			<if test="user_create != null">SYS_USER_CREATE = #{user_create}, </if>
+			<if test="tgl_create != null">SYS_TGL_CREATE = #{tgl_create} </if>
+		</set>
+		WHERE  
+			DIVISI_KD= #{divisi_kd} 
+			AND SUBDIV_KD= #{subdiv_kd}
+			AND DEPT_KD= #{dept_kd}
+			AND LOK_KD= #{lok_kd}
+			AND SYS_NO_PPUC= #{no_ppuc}
+			AND TGL_PPUC= #{tgl_ppuc}
+			AND KD_BIAYA= #{kd_biaya}
+	</update>
+
+	<!-- remove query untuk table ini -->
+	<delete id="remove" parameterType="HashMap">
+		delete from ppuc_d
+		 <where> 
+			<if test="divisi_kd != null">DIVISI_KD= #{divisi_kd} </if>
+			<if test="subdiv_kd != null"> AND SUBDIV_KD= #{subdiv_kd} </if>
+			<if test="dept_kd != null"> AND DEPT_KD= #{dept_kd} </if>
+			<if test="lok_kd != null"> AND LOK_KD= #{lok_kd} </if>
+			<if test="no_ppuc != null"> AND SYS_NO_PPUC= #{no_ppuc} </if>
+			<if test="tgl_ppuc != null"> AND TGL_PPUC= #{tgl_ppuc} </if>
+			<if test="kd_biaya != null"> AND KD_BIAYA= #{kd_biaya} </if>
+		 </where> 
+	</delete>
+
+	<!-- get berdasarkan primary key -->
+	<select id="get" parameterType="HashMap" resultMap="PpucDMap">
+		<include refid="selectQuery" />
+		 <where> 
+			<if test="divisi_kd != null"> T.divisi_kd= #{divisi_kd} </if>
+			<if test="subdiv_kd != null"> AND T.subdiv_kd= #{subdiv_kd} </if>
+			<if test="dept_kd != null"> AND T.dept_kd= #{dept_kd} </if>
+			<if test="lok_kd != null"> AND T.lok_kd= #{lok_kd} </if>
+			<if test="no_ppuc != null"> AND T.no_ppuc= #{no_ppuc} </if>
+			<if test="tgl_ppuc != null"> AND T.tgl_ppuc= #{tgl_ppuc} </if>
+			<if test="kd_biaya != null"> AND T.kd_biaya= #{kd_biaya} </if>
+		 </where> 
+	</select>
+
+	<!-- get ALL row -->
+	<select id="getAll" resultMap="PpucDMap">
+		<include refid="selectQuery" />
+	</select>
+
+	<!-- select berdasarkan paging parameter -->
+	<select id="selectPagingList" parameterType="PpucD" resultMap="PpucDMap">
+			SELECT x.* from (
+				select * from (
+					<include refid="selectQuery" />
+					<include refid="searchTambahan" />
+				) y
+				<if test="search != null">
+					<include refid="search" />
+				</if>
+				<if test="sort != null">
+					order by ${sort}
+				</if>
+				 LIMIT #{page} , #{rowcount}
+			)x
+	</select>
+
+	<!-- select jumlah seluruh data yang akan di paging -->
+	<select id="selectPagingCount" parameterType="PpucD" resultType="Integer">
+		select count(*) from(
+			SELECT x.* from (
+				select * from (
+					<include refid="selectQuery" />
+					<include refid="searchTambahan" />
+				) y
+				<if test="search != null">
+					<include refid="search" />
+				</if>
+			)x
+		) z
+	</select>
+
+	<!-- QUERY CUSTOM LAIN-LAIN bisa dimasukkan dibawah ini -->
+
+</mapper>

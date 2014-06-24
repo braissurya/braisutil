@@ -1,0 +1,59 @@
+<?xml version="1.0" encoding="UTF-8" standalone="no"?>
+<div xmlns:field="urn:jsptagdir:/WEB-INF/tags/form/fields" xmlns:jsp="http://java.sun.com/JSP/Page" xmlns:page="urn:jsptagdir:/WEB-INF/tags/form" version="2.0">
+    <jsp:directive.page contentType="text/html;charset=UTF-8"/>
+    <jsp:output omit-xml-declaration="yes"/>
+    <page:show id="ps_com_melawai_ppuc_model_ppuch" object="${ppuch}" path="/master/ppuch">
+       <field:display field="divisi_kd" label="Divisi Kd" id="c_com_melawai_ppuc_model_ppuch_divisi_kd"  object="${ppuch}" />
+       <field:display field="subdiv_kd" label="Subdiv Kd" id="c_com_melawai_ppuc_model_ppuch_subdiv_kd"  object="${ppuch}" />
+       <field:display field="dept_kd" label="Dept Kd" id="c_com_melawai_ppuc_model_ppuch_dept_kd"  object="${ppuch}" />
+       <field:display field="lok_kd" label="Lok Kd" id="c_com_melawai_ppuc_model_ppuch_lok_kd"  object="${ppuch}" />
+       <field:display field="no_ppuc" label="No Ppuc" id="c_com_melawai_ppuc_model_ppuch_no_ppuc"  object="${ppuch}" />
+       <field:display field="tgl_ppuc" label="Tgl Ppuc" id="c_com_melawai_ppuc_model_ppuch_tgl_ppuc"  object="${ppuch}"  date="true" dateTimePattern="${ppuch_tgl_ppuc_date_format}"/>
+       <field:display field="no_batch" label="No Batch" id="c_com_melawai_ppuc_model_ppuch_no_batch"  object="${ppuch}" />
+       <field:display field="user_create" label="User Create" id="c_com_melawai_ppuc_model_ppuch_user_create"  object="${ppuch}" />
+       <field:display field="tgl_create" label="Tgl Create" id="c_com_melawai_ppuc_model_ppuch_tgl_create"  object="${ppuch}"  date="true" dateTimePattern="${ppuch_tgl_create_date_format}"/>
+       <field:display field="jam_create" label="Jam Create" id="c_com_melawai_ppuc_model_ppuch_jam_create"  object="${ppuch}" />
+       <field:display field="user_confirm" label="User Confirm" id="c_com_melawai_ppuc_model_ppuch_user_confirm"  object="${ppuch}" />
+       <field:display field="tgl_confirm" label="Tgl Confirm" id="c_com_melawai_ppuc_model_ppuch_tgl_confirm"  object="${ppuch}"  date="true" dateTimePattern="${ppuch_tgl_confirm_date_format}"/>
+       <field:display field="jam_confirm" label="Jam Confirm" id="c_com_melawai_ppuc_model_ppuch_jam_confirm"  object="${ppuch}" />
+       <field:display field="hp_asal_create" label="Hp Asal Create" id="c_com_melawai_ppuc_model_ppuch_hp_asal_create"  object="${ppuch}" />
+       <field:display field="hp_tujuan_create" label="Hp Tujuan Create" id="c_com_melawai_ppuc_model_ppuch_hp_tujuan_create"  object="${ppuch}" />
+       <field:display field="email_asal_create" label="Email Asal Create" id="c_com_melawai_ppuc_model_ppuch_email_asal_create"  object="${ppuch}" />
+       <field:display field="email_tujuan_create" label="Email Tujuan Create" id="c_com_melawai_ppuc_model_ppuch_email_tujuan_create"  object="${ppuch}" />
+       <field:display field="divisi_kd_apprv" label="Divisi Kd Apprv" id="c_com_melawai_ppuc_model_ppuch_divisi_kd_apprv"  object="${ppuch}" />
+       <field:display field="subdiv_kd_apprv" label="Subdiv Kd Apprv" id="c_com_melawai_ppuc_model_ppuch_subdiv_kd_apprv"  object="${ppuch}" />
+       <field:display field="dept_kd_apprv" label="Dept Kd Apprv" id="c_com_melawai_ppuc_model_ppuch_dept_kd_apprv"  object="${ppuch}" />
+       <field:display field="user_approve" label="User Approve" id="c_com_melawai_ppuc_model_ppuch_user_approve"  object="${ppuch}" />
+       <field:display field="tgl_approve" label="Tgl Approve" id="c_com_melawai_ppuc_model_ppuch_tgl_approve"  object="${ppuch}"  date="true" dateTimePattern="${ppuch_tgl_approve_date_format}"/>
+       <field:display field="jam_approve" label="Jam Approve" id="c_com_melawai_ppuc_model_ppuch_jam_approve"  object="${ppuch}" />
+       <field:display field="f_approval" label="F Approval" id="c_com_melawai_ppuc_model_ppuch_f_approval"  object="${ppuch}" />
+       <field:display field="hp_asal_approve" label="Hp Asal Approve" id="c_com_melawai_ppuc_model_ppuch_hp_asal_approve"  object="${ppuch}" />
+       <field:display field="hp_tujuan_approve" label="Hp Tujuan Approve" id="c_com_melawai_ppuc_model_ppuch_hp_tujuan_approve"  object="${ppuch}" />
+       <field:display field="email_asal_approve" label="Email Asal Approve" id="c_com_melawai_ppuc_model_ppuch_email_asal_approve"  object="${ppuch}" />
+       <field:display field="email_tujuan_approve" label="Email Tujuan Approve" id="c_com_melawai_ppuc_model_ppuch_email_tujuan_approve"  object="${ppuch}" />
+       <field:display field="no_realisasi" label="No Realisasi" id="c_com_melawai_ppuc_model_ppuch_no_realisasi"  object="${ppuch}" />
+       <field:display field="user_realisasi" label="User Realisasi" id="c_com_melawai_ppuc_model_ppuch_user_realisasi"  object="${ppuch}" />
+       <field:display field="tgl_realisasi" label="Tgl Realisasi" id="c_com_melawai_ppuc_model_ppuch_tgl_realisasi"  object="${ppuch}"  date="true" dateTimePattern="${ppuch_tgl_realisasi_date_format}"/>
+       <field:display field="jam_realisasi" label="Jam Realisasi" id="c_com_melawai_ppuc_model_ppuch_jam_realisasi"  object="${ppuch}" />
+       <field:display field="user_conf_real" label="User Conf Real" id="c_com_melawai_ppuc_model_ppuch_user_conf_real"  object="${ppuch}" />
+       <field:display field="tgl_conf_real" label="Tgl Conf Real" id="c_com_melawai_ppuc_model_ppuch_tgl_conf_real"  object="${ppuch}"  date="true" dateTimePattern="${ppuch_tgl_conf_real_date_format}"/>
+       <field:display field="jam_conf_real" label="Jam Conf Real" id="c_com_melawai_ppuc_model_ppuch_jam_conf_real"  object="${ppuch}" />
+       <field:display field="user_conf_oc" label="User Conf Oc" id="c_com_melawai_ppuc_model_ppuch_user_conf_oc"  object="${ppuch}" />
+       <field:display field="tgl_conf_oc" label="Tgl Conf Oc" id="c_com_melawai_ppuc_model_ppuch_tgl_conf_oc"  object="${ppuch}"  date="true" dateTimePattern="${ppuch_tgl_conf_oc_date_format}"/>
+       <field:display field="jam_conf_oc" label="Jam Conf Oc" id="c_com_melawai_ppuc_model_ppuch_jam_conf_oc"  object="${ppuch}" />
+       <field:display field="hp_asal_conf_oc" label="Hp Asal Conf Oc" id="c_com_melawai_ppuc_model_ppuch_hp_asal_conf_oc"  object="${ppuch}" />
+       <field:display field="hp_tujuan_conf_oc" label="Hp Tujuan Conf Oc" id="c_com_melawai_ppuc_model_ppuch_hp_tujuan_conf_oc"  object="${ppuch}" />
+       <field:display field="email_asal_conf_oc" label="Email Asal Conf Oc" id="c_com_melawai_ppuc_model_ppuch_email_asal_conf_oc"  object="${ppuch}" />
+       <field:display field="email_tujuan_conf_oc" label="Email Tujuan Conf Oc" id="c_com_melawai_ppuc_model_ppuch_email_tujuan_conf_oc"  object="${ppuch}" />
+       <field:display field="f_batal" label="F Batal" id="c_com_melawai_ppuc_model_ppuch_f_batal"  object="${ppuch}" />
+       <field:display field="user_batal" label="User Batal" id="c_com_melawai_ppuc_model_ppuch_user_batal"  object="${ppuch}" />
+       <field:display field="tgl_batal" label="Tgl Batal" id="c_com_melawai_ppuc_model_ppuch_tgl_batal"  object="${ppuch}"  date="true" dateTimePattern="${ppuch_tgl_batal_date_format}"/>
+       <field:display field="jam_batal" label="Jam Batal" id="c_com_melawai_ppuc_model_ppuch_jam_batal"  object="${ppuch}" />
+       <field:display field="alasan_batal" label="Alasan Batal" id="c_com_melawai_ppuc_model_ppuch_alasan_batal"  object="${ppuch}" />
+       <field:display field="hp_asal_batal" label="Hp Asal Batal" id="c_com_melawai_ppuc_model_ppuch_hp_asal_batal"  object="${ppuch}" />
+       <field:display field="hp_tujuan_batal" label="Hp Tujuan Batal" id="c_com_melawai_ppuc_model_ppuch_hp_tujuan_batal"  object="${ppuch}" />
+       <field:display field="email_asal_batal" label="Email Asal Batal" id="c_com_melawai_ppuc_model_ppuch_email_asal_batal"  object="${ppuch}" />
+       <field:display field="email_tujuan_batal" label="Email Tujuan Batal" id="c_com_melawai_ppuc_model_ppuch_email_tujuan_batal"  object="${ppuch}" />
+    </page:show>
+</div>
+

@@ -1,0 +1,153 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+"http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.melawai.ppuc.persistence.DetailBiayaMapper">
+
+	<cache />
+
+	<!-- result map-->
+	<resultMap type="DetailBiaya" id="DetailBiayaMap">
+		<id property="kd_biaya" column="kd_biaya"  />  
+		<result property="kd_biaya" column="kd_biaya" />
+		<result property="kd_group" column="kd_group" />
+		<result property="biaya_description" column="biaya_description" />
+		<result property="f_putus" column="f_putus" />
+		<result property="f_used" column="f_used" />
+		<result property="acc_no" column="acc_no" />
+		<result property="user_create" column="user_create" />
+		<result property="tgl_create" column="tgl_create" />
+		<result property="jam_create" column="jam_create" />
+	</resultMap>
+
+	<!-- nama kolom yang ingin ditampilkan -->
+	<sql id="defaultColoumn">
+		C.KD_BIAYA as kd_biaya,
+		C.KD_GROUP as kd_group,
+		C.BIAYA_DESCRIPTION as biaya_description,
+		C.F_PUTUS as f_putus,
+		C.F_USED as f_used,
+		C.ACC_NO as acc_no,
+		C.SYS_USER_CREATE as user_create,
+		C.SYS_TGL_CREATE as tgl_create,
+		C.SYS_JAM_CREATE as jam_create
+	</sql>
+
+	<!-- query select, dengan kolom yang default di atas, apabila mau ditambahkan join juga bisa disini
+	perubahan query ini akan mempengaruhi select paging dan get di bawah  -->
+	<sql id="selectQuery">
+		select * from (
+			select <include refid="defaultColoumn" /> from detail_biaya C
+		)T
+	</sql>
+
+	<!-- kolom apa aja yang mau disearching -->
+	<sql id="searchTambahan">
+		Where 1=1
+			<!--!!TAMBAHAN parameter untuk search-->
+	</sql>
+
+	<!-- kolom apa aja yang mau disearching -->
+	<sql id="search">
+		WHERE 1=1 AND (
+			 kd_biaya like  CONCAT('%', #{search}, '%')
+			 OR kd_group like  CONCAT('%', #{search}, '%')
+			 OR biaya_description like  CONCAT('%', #{search}, '%')
+			 OR acc_no like  CONCAT('%', #{search}, '%')
+			 OR user_create like  CONCAT('%', #{search}, '%')
+			 OR jam_create like  CONCAT('%', #{search}, '%')
+		)
+	</sql>
+
+	<!-- insert query untuk table ini -->
+	<insert id="insert" parameterType="DetailBiaya">
+		INSERT INTO detail_biaya (
+			KD_BIAYA,
+			KD_GROUP,
+			BIAYA_DESCRIPTION,
+			F_PUTUS,
+			F_USED,
+			ACC_NO,
+			SYS_USER_CREATE,
+			SYS_TGL_CREATE,
+			SYS_JAM_CREATE
+		) values (
+			#{kd_biaya},
+			#{kd_group},
+			#{biaya_description},
+			#{f_putus},
+			#{f_used},
+			#{acc_no},
+			#{user_create},
+			#{tgl_create},
+			#{jam_create}
+		)
+	</insert>
+
+	<!-- update query untuk table ini -->
+	<update id="update" parameterType="DetailBiaya">
+		UPDATE detail_biaya
+		<set>
+			<if test="kd_biaya != null">KD_BIAYA = #{kd_biaya}, </if>
+			<if test="kd_group != null">KD_GROUP = #{kd_group}, </if>
+			<if test="biaya_description != null">BIAYA_DESCRIPTION = #{biaya_description}, </if>
+			<if test="f_putus != null">F_PUTUS = #{f_putus}, </if>
+			<if test="f_used != null">F_USED = #{f_used}, </if>
+			<if test="acc_no != null">ACC_NO = #{acc_no}, </if>
+			<if test="user_create != null">SYS_USER_CREATE = #{user_create}, </if>
+			<if test="tgl_create != null">SYS_TGL_CREATE = #{tgl_create}, </if>
+			<if test="jam_create != null">SYS_JAM_CREATE = #{jam_create} </if>
+		</set>
+		WHERE  
+			KD_BIAYA= #{kd_biaya} 
+	</update>
+
+	<!-- remove query untuk table ini -->
+	<delete id="remove" parameterType="String">
+		delete from detail_biaya where KD_BIAYA=#{value}
+	</delete>
+
+	<!-- get berdasarkan primary key -->
+	<select id="get" parameterType="String" resultMap="DetailBiayaMap">
+		<include refid="selectQuery" />	where T.kd_biaya=#{value}
+	</select>
+
+	<!-- get ALL row -->
+	<select id="getAll" resultMap="DetailBiayaMap">
+		<include refid="selectQuery" />
+	</select>
+
+	<!-- select berdasarkan paging parameter -->
+	<select id="selectPagingList" parameterType="DetailBiaya" resultMap="DetailBiayaMap">
+			SELECT x.* from (
+				select * from (
+					<include refid="selectQuery" />
+					<include refid="searchTambahan" />
+				) y
+				<if test="search != null">
+					<include refid="search" />
+				</if>
+				<if test="sort != null">
+					order by ${sort}
+				</if>
+				 LIMIT #{page} , #{rowcount}
+			)x
+	</select>
+
+	<!-- select jumlah seluruh data yang akan di paging -->
+	<select id="selectPagingCount" parameterType="DetailBiaya" resultType="Integer">
+		select count(*) from(
+			SELECT x.* from (
+				select * from (
+					<include refid="selectQuery" />
+					<include refid="searchTambahan" />
+				) y
+				<if test="search != null">
+					<include refid="search" />
+				</if>
+			)x
+		) z
+	</select>
+
+	<!-- QUERY CUSTOM LAIN-LAIN bisa dimasukkan dibawah ini -->
+
+</mapper>

@@ -1,0 +1,134 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+"http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.melawai.ppuc.persistence.CounterMapper">
+
+	<cache />
+
+	<!-- result map-->
+	<resultMap type="Counter" id="CounterMap">
+		<id property="id" column="id"  />  
+		<result property="id" column="id" />
+		<result property="nm_counter" column="nm_counter" />
+		<result property="counter" column="counter" />
+		<result property="max" column="max" />
+		<result property="last_periode" column="last_periode" />
+		<result property="keterangan" column="keterangan" />
+	</resultMap>
+
+	<!-- nama kolom yang ingin ditampilkan -->
+	<sql id="defaultColoumn">
+		C.SYS_ID as id,
+		C.SYS_NM_COUNTER as nm_counter,
+		C.SYS_COUNTER as counter,
+		C.SYS_MAX as max,
+		C.SYS_LAST_PERIODE as last_periode,
+		C.SYS_KETERANGAN as keterangan
+	</sql>
+
+	<!-- query select, dengan kolom yang default di atas, apabila mau ditambahkan join juga bisa disini
+	perubahan query ini akan mempengaruhi select paging dan get di bawah  -->
+	<sql id="selectQuery">
+		select * from (
+			select <include refid="defaultColoumn" /> from sys_counter C
+		)T
+	</sql>
+
+	<!-- kolom apa aja yang mau disearching -->
+	<sql id="searchTambahan">
+		Where 1=1
+			<!--!!TAMBAHAN parameter untuk search-->
+	</sql>
+
+	<!-- kolom apa aja yang mau disearching -->
+	<sql id="search">
+		WHERE 1=1 AND (
+			 nm_counter like  CONCAT('%', #{search}, '%')
+			 OR keterangan like  CONCAT('%', #{search}, '%')
+		)
+	</sql>
+
+	<!-- insert query untuk table ini -->
+	<insert id="insert" parameterType="Counter">
+		INSERT INTO sys_counter (
+			SYS_ID,
+			SYS_NM_COUNTER,
+			SYS_COUNTER,
+			SYS_MAX,
+			SYS_LAST_PERIODE,
+			SYS_KETERANGAN
+		) values (
+			#{id},
+			#{nm_counter},
+			#{counter},
+			#{max},
+			#{last_periode},
+			#{keterangan}
+		)
+	</insert>
+
+	<!-- update query untuk table ini -->
+	<update id="update" parameterType="Counter">
+		UPDATE sys_counter
+		<set>
+			<if test="id != null">SYS_ID = #{id}, </if>
+			<if test="nm_counter != null">SYS_NM_COUNTER = #{nm_counter}, </if>
+			<if test="counter != null">SYS_COUNTER = #{counter}, </if>
+			<if test="max != null">SYS_MAX = #{max}, </if>
+			<if test="last_periode != null">SYS_LAST_PERIODE = #{last_periode}, </if>
+			<if test="keterangan != null">SYS_KETERANGAN = #{keterangan} </if>
+		</set>
+		WHERE  
+			SYS_ID= #{id} 
+	</update>
+
+	<!-- remove query untuk table ini -->
+	<delete id="remove" parameterType="Long">
+		delete from sys_counter where SYS_ID=#{value}
+	</delete>
+
+	<!-- get berdasarkan primary key -->
+	<select id="get" parameterType="Long" resultMap="CounterMap">
+		<include refid="selectQuery" />	where T.id=#{value}
+	</select>
+
+	<!-- get ALL row -->
+	<select id="getAll" resultMap="CounterMap">
+		<include refid="selectQuery" />
+	</select>
+
+	<!-- select berdasarkan paging parameter -->
+	<select id="selectPagingList" parameterType="Counter" resultMap="CounterMap">
+			SELECT x.* from (
+				select * from (
+					<include refid="selectQuery" />
+					<include refid="searchTambahan" />
+				) y
+				<if test="search != null">
+					<include refid="search" />
+				</if>
+				<if test="sort != null">
+					order by ${sort}
+				</if>
+				 LIMIT #{page} , #{rowcount}
+			)x
+	</select>
+
+	<!-- select jumlah seluruh data yang akan di paging -->
+	<select id="selectPagingCount" parameterType="Counter" resultType="Integer">
+		select count(*) from(
+			SELECT x.* from (
+				select * from (
+					<include refid="selectQuery" />
+					<include refid="searchTambahan" />
+				) y
+				<if test="search != null">
+					<include refid="search" />
+				</if>
+			)x
+		) z
+	</select>
+
+	<!-- QUERY CUSTOM LAIN-LAIN bisa dimasukkan dibawah ini -->
+
+</mapper>

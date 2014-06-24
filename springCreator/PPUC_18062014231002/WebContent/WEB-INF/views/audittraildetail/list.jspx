@@ -1,0 +1,14 @@
+<?xml version="1.0" encoding="UTF-8" standalone="no"?>
+<div xmlns:jsp="http://java.sun.com/JSP/Page" xmlns:page="urn:jsptagdir:/WEB-INF/tags/form" xmlns:table="urn:jsptagdir:/WEB-INF/tags/form/fields" version="2.0">
+    <jsp:directive.page contentType="text/html;charset=UTF-8"/>
+    <jsp:output omit-xml-declaration="yes"/>
+    <page:list id="pl_com_melawai_ppuc_model_audittraildetail"  items="${audittraildetailList}" >
+        <table:table data="${audittraildetailList}" id="l_com_melawai_ppuc_model_AudittrailDetail" typeIdFieldName="itemId" path="/master/audittraildetail" >
+       <table:column id="c_com_melawai_ppuc_model_audittraildetail_field" property="field" label="Field" />
+       <table:column id="c_com_melawai_ppuc_model_audittraildetail_before" property="before" label="Before" />
+       <table:column id="c_com_melawai_ppuc_model_audittraildetail_after" property="after" label="After" />
+       <table:column id="c_com_melawai_ppuc_model_audittraildetail_user_create" property="user_create" label="User Create" />
+        </table:table>
+    </page:list>
+</div>
+

@@ -1,0 +1,23 @@
+<?xml version="1.0" encoding="UTF-8" standalone="no"?>
+<div xmlns:field="urn:jsptagdir:/WEB-INF/tags/form/fields" xmlns:jsp="http://java.sun.com/JSP/Page" xmlns:page="urn:jsptagdir:/WEB-INF/tags/form" version="2.0">
+    <jsp:directive.page contentType="text/html;charset=UTF-8"/>
+    <jsp:output omit-xml-declaration="yes"/>
+    <page:show id="ps_com_melawai_ppuc_model_logemail" object="${logemail}" path="/master/logemail">
+       <field:display field="id_log_email" label="Id Log Email" id="c_com_melawai_ppuc_model_logemail_id_log_email"  object="${logemail}" />
+       <field:display field="divisi_kd" label="Divisi Kd" id="c_com_melawai_ppuc_model_logemail_divisi_kd"  object="${logemail}" />
+       <field:display field="subdiv_kd" label="Subdiv Kd" id="c_com_melawai_ppuc_model_logemail_subdiv_kd"  object="${logemail}" />
+       <field:display field="dept_kd" label="Dept Kd" id="c_com_melawai_ppuc_model_logemail_dept_kd"  object="${logemail}" />
+       <field:display field="lok_kd" label="Lok Kd" id="c_com_melawai_ppuc_model_logemail_lok_kd"  object="${logemail}" />
+       <field:display field="no_ppuc" label="No Ppuc" id="c_com_melawai_ppuc_model_logemail_no_ppuc"  object="${logemail}" />
+       <field:display field="tgl_ppuc" label="Tgl Ppuc" id="c_com_melawai_ppuc_model_logemail_tgl_ppuc"  object="${logemail}"  date="true" dateTimePattern="${logemail_tgl_ppuc_date_format}"/>
+       <field:display field="send_date" label="Send Date" id="c_com_melawai_ppuc_model_logemail_send_date"  object="${logemail}"  date="true" dateTimePattern="${logemail_send_date_date_format}"/>
+       <field:display field="send_time" label="Send Time" id="c_com_melawai_ppuc_model_logemail_send_time"  object="${logemail}" />
+       <field:display field="status" label="Status" id="c_com_melawai_ppuc_model_logemail_status"  object="${logemail}" />
+       <field:display field="isi_email" label="Isi Email" id="c_com_melawai_ppuc_model_logemail_isi_email"  object="${logemail}" />
+       <field:display field="mail_maker" label="Mail Maker" id="c_com_melawai_ppuc_model_logemail_mail_maker"  object="${logemail}" />
+       <field:display field="mail_approval" label="Mail Approval" id="c_com_melawai_ppuc_model_logemail_mail_approval"  object="${logemail}" />
+       <field:display field="user_create" label="User Create" id="c_com_melawai_ppuc_model_logemail_user_create"  object="${logemail}" />
+       <field:display field="tgl_create" label="Tgl Create" id="c_com_melawai_ppuc_model_logemail_tgl_create"  object="${logemail}"  date="true" dateTimePattern="${logemail_tgl_create_date_format}"/>
+    </page:show>
+</div>
+

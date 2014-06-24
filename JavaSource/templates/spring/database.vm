@@ -1,0 +1,4 @@
+database.url=$url
+database.username=$username
+database.password=$password
+database.driverClassName=$driver

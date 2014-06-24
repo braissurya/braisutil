@@ -1,0 +1,23 @@
+<?xml version="1.0" encoding="UTF-8" standalone="no"?>
+<div xmlns:field="urn:jsptagdir:/WEB-INF/tags/form/fields" xmlns:form="urn:jsptagdir:/WEB-INF/tags/form" xmlns:jsp="http://java.sun.com/JSP/Page" version="2.0">
+    <jsp:directive.page contentType="text/html;charset=UTF-8"/>
+    <jsp:output omit-xml-declaration="yes"/>
+    <form:update id="fu_com_melawai_ppuc_model_logsms" modelAttribute="logsms" path="/master/logsms" idField="itemId" versionField="none" >
+       <field:input field="id_log_sms" label="Id Log Sms" id="c_com_melawai_ppuc_model_logsms_id_log_sms" readonly="true" validationMessageCode="field_invalid_number" />
+       <field:input field="divisi_kd" label="Divisi Kd" id="c_com_melawai_ppuc_model_logsms_divisi_kd" readonly="true" validationMessageCode="field_invalid_number" />
+       <field:input field="subdiv_kd" label="Subdiv Kd" id="c_com_melawai_ppuc_model_logsms_subdiv_kd" readonly="true" validationMessageCode="field_invalid_number" />
+       <field:input field="dept_kd" label="Dept Kd" id="c_com_melawai_ppuc_model_logsms_dept_kd" readonly="true" validationMessageCode="field_invalid_number" />
+       <field:input field="lok_kd" label="Lok Kd" id="c_com_melawai_ppuc_model_logsms_lok_kd" readonly="true" validationMessageCode="field_invalid_number" />
+       <field:input field="no_ppuc" label="No Ppuc" id="c_com_melawai_ppuc_model_logsms_no_ppuc" readonly="true" validationMessageCode="field_invalid_number" />
+       <field:input field="tgl_ppuc" label="Tgl Ppuc" id="c_com_melawai_ppuc_model_logsms_tgl_ppuc" readonly="true" validationMessageCode="field_invalid_number" />
+       <field:input field="send_date" label="Send Date" id="c_com_melawai_ppuc_model_logsms_send_date" readonly="true" validationMessageCode="field_invalid_number" />
+       <field:input field="send_time" label="Send Time" id="c_com_melawai_ppuc_model_logsms_send_time" readonly="true" validationMessageCode="field_invalid_number" />
+       <field:input field="status" label="Status" id="c_com_melawai_ppuc_model_logsms_status" readonly="true" validationMessageCode="field_invalid_number" />
+       <field:input field="isi_sms" label="Isi Sms" id="c_com_melawai_ppuc_model_logsms_isi_sms" readonly="true" validationMessageCode="field_invalid_number" />
+       <field:input field="hp_maker" label="Hp Maker" id="c_com_melawai_ppuc_model_logsms_hp_maker" readonly="true" validationMessageCode="field_invalid_number" />
+       <field:input field="hp_approval" label="Hp Approval" id="c_com_melawai_ppuc_model_logsms_hp_approval" readonly="true" validationMessageCode="field_invalid_number" />
+       <field:input field="user_create" label="User Create" id="c_com_melawai_ppuc_model_logsms_user_create" readonly="true" validationMessageCode="field_invalid_number" />
+       <field:input field="tgl_create" label="Tgl Create" id="c_com_melawai_ppuc_model_logsms_tgl_create" readonly="true" validationMessageCode="field_invalid_number" />
+	</form:update>
+</div>
+

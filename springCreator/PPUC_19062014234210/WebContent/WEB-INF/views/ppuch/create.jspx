@@ -1,0 +1,60 @@
+<?xml version="1.0" encoding="UTF-8" standalone="no"?>
+<div xmlns:c="http://java.sun.com/jsp/jstl/core" xmlns:field="urn:jsptagdir:/WEB-INF/tags/form/fields" xmlns:form="urn:jsptagdir:/WEB-INF/tags/form" xmlns:jsp="http://java.sun.com/JSP/Page" xmlns:spring="http://www.springframework.org/tags" version="2.0">
+    <jsp:directive.page contentType="text/html;charset=UTF-8"/>
+    <jsp:output omit-xml-declaration="yes"/>
+    <form:create id="fc_com_melawai_ppuc_model_ppuch" modelAttribute="ppuch" path="/master/ppuch" render="${ empty dependencies }">
+       <field:input field="divisi_kd" label="Divisi Kd" id="c_com_melawai_ppuc_model_ppuch_divisi_kd" required="true" max="3"/>
+       <field:input field="subdiv_kd" label="Subdiv Kd" id="c_com_melawai_ppuc_model_ppuch_subdiv_kd" required="true" max="3"/>
+       <field:input field="dept_kd" label="Dept Kd" id="c_com_melawai_ppuc_model_ppuch_dept_kd" required="true" max="3"/>
+       <field:input field="lok_kd" label="Lok Kd" id="c_com_melawai_ppuc_model_ppuch_lok_kd" required="true" max="5"/>
+       <field:input field="no_ppuc" label="No Ppuc" id="c_com_melawai_ppuc_model_ppuch_no_ppuc" readonly="true" validationMessageCode="field_invalid_number" />
+       <field:datetime field="tgl_ppuc" label="Tgl Ppuc" id="c_com_melawai_ppuc_model_ppuch_tgl_ppuc" required="true" dateTimePattern="${ppuch_tgl_ppuc_date_format}" />
+       <field:input field="no_batch" label="No Batch" id="c_com_melawai_ppuc_model_ppuch_no_batch" required="true" max="10"/>
+       <field:input field="user_create" label="User Create" id="c_com_melawai_ppuc_model_ppuch_user_create" readonly="true" validationMessageCode="field_invalid_number" />
+       <field:input field="tgl_create" label="Tgl Create" id="c_com_melawai_ppuc_model_ppuch_tgl_create" readonly="true" validationMessageCode="field_invalid_number" />
+       <field:input field="jam_create" label="Jam Create" id="c_com_melawai_ppuc_model_ppuch_jam_create" readonly="true" validationMessageCode="field_invalid_number" />
+       <field:input field="user_confirm" label="User Confirm" id="c_com_melawai_ppuc_model_ppuch_user_confirm" readonly="true" validationMessageCode="field_invalid_number" />
+       <field:input field="tgl_confirm" label="Tgl Confirm" id="c_com_melawai_ppuc_model_ppuch_tgl_confirm" readonly="true" validationMessageCode="field_invalid_number" />
+       <field:input field="jam_confirm" label="Jam Confirm" id="c_com_melawai_ppuc_model_ppuch_jam_confirm" readonly="true" validationMessageCode="field_invalid_number" />
+       <field:input field="hp_asal_create" label="Hp Asal Create" id="c_com_melawai_ppuc_model_ppuch_hp_asal_create" readonly="true" validationMessageCode="field_invalid_number" />
+       <field:input field="hp_tujuan_create" label="Hp Tujuan Create" id="c_com_melawai_ppuc_model_ppuch_hp_tujuan_create" readonly="true" validationMessageCode="field_invalid_number" />
+       <field:input field="email_asal_create" label="Email Asal Create" id="c_com_melawai_ppuc_model_ppuch_email_asal_create" readonly="true" validationMessageCode="field_invalid_number" />
+       <field:input field="email_tujuan_create" label="Email Tujuan Create" id="c_com_melawai_ppuc_model_ppuch_email_tujuan_create" readonly="true" validationMessageCode="field_invalid_number" />
+       <field:input field="divisi_kd_apprv" label="Divisi Kd Apprv" id="c_com_melawai_ppuc_model_ppuch_divisi_kd_apprv" readonly="true" validationMessageCode="field_invalid_number" />
+       <field:input field="subdiv_kd_apprv" label="Subdiv Kd Apprv" id="c_com_melawai_ppuc_model_ppuch_subdiv_kd_apprv" readonly="true" validationMessageCode="field_invalid_number" />
+       <field:input field="dept_kd_apprv" label="Dept Kd Apprv" id="c_com_melawai_ppuc_model_ppuch_dept_kd_apprv" readonly="true" validationMessageCode="field_invalid_number" />
+       <field:input field="user_approve" label="User Approve" id="c_com_melawai_ppuc_model_ppuch_user_approve" readonly="true" validationMessageCode="field_invalid_number" />
+       <field:input field="tgl_approve" label="Tgl Approve" id="c_com_melawai_ppuc_model_ppuch_tgl_approve" readonly="true" validationMessageCode="field_invalid_number" />
+       <field:input field="jam_approve" label="Jam Approve" id="c_com_melawai_ppuc_model_ppuch_jam_approve" readonly="true" validationMessageCode="field_invalid_number" />
+       <field:input field="f_approval" label="F Approval" id="c_com_melawai_ppuc_model_ppuch_f_approval"  validationMessageCode="field_invalid_integer" />
+       <field:input field="hp_asal_approve" label="Hp Asal Approve" id="c_com_melawai_ppuc_model_ppuch_hp_asal_approve" readonly="true" validationMessageCode="field_invalid_number" />
+       <field:input field="hp_tujuan_approve" label="Hp Tujuan Approve" id="c_com_melawai_ppuc_model_ppuch_hp_tujuan_approve" readonly="true" validationMessageCode="field_invalid_number" />
+       <field:input field="email_asal_approve" label="Email Asal Approve" id="c_com_melawai_ppuc_model_ppuch_email_asal_approve" readonly="true" validationMessageCode="field_invalid_number" />
+       <field:input field="email_tujuan_approve" label="Email Tujuan Approve" id="c_com_melawai_ppuc_model_ppuch_email_tujuan_approve" readonly="true" validationMessageCode="field_invalid_number" />
+       <field:input field="no_realisasi" label="No Realisasi" id="c_com_melawai_ppuc_model_ppuch_no_realisasi"  max="25"/>
+       <field:input field="user_realisasi" label="User Realisasi" id="c_com_melawai_ppuc_model_ppuch_user_realisasi" readonly="true" validationMessageCode="field_invalid_number" />
+       <field:input field="tgl_realisasi" label="Tgl Realisasi" id="c_com_melawai_ppuc_model_ppuch_tgl_realisasi" readonly="true" validationMessageCode="field_invalid_number" />
+       <field:input field="jam_realisasi" label="Jam Realisasi" id="c_com_melawai_ppuc_model_ppuch_jam_realisasi" readonly="true" validationMessageCode="field_invalid_number" />
+       <field:input field="user_conf_real" label="User Conf Real" id="c_com_melawai_ppuc_model_ppuch_user_conf_real" readonly="true" validationMessageCode="field_invalid_number" />
+       <field:input field="tgl_conf_real" label="Tgl Conf Real" id="c_com_melawai_ppuc_model_ppuch_tgl_conf_real" readonly="true" validationMessageCode="field_invalid_number" />
+       <field:input field="jam_conf_real" label="Jam Conf Real" id="c_com_melawai_ppuc_model_ppuch_jam_conf_real"  max="8"/>
+       <field:input field="user_conf_oc" label="User Conf Oc" id="c_com_melawai_ppuc_model_ppuch_user_conf_oc" readonly="true" validationMessageCode="field_invalid_number" />
+       <field:input field="tgl_conf_oc" label="Tgl Conf Oc" id="c_com_melawai_ppuc_model_ppuch_tgl_conf_oc" readonly="true" validationMessageCode="field_invalid_number" />
+       <field:input field="jam_conf_oc" label="Jam Conf Oc" id="c_com_melawai_ppuc_model_ppuch_jam_conf_oc" readonly="true" validationMessageCode="field_invalid_number" />
+       <field:input field="hp_asal_conf_oc" label="Hp Asal Conf Oc" id="c_com_melawai_ppuc_model_ppuch_hp_asal_conf_oc" readonly="true" validationMessageCode="field_invalid_number" />
+       <field:input field="hp_tujuan_conf_oc" label="Hp Tujuan Conf Oc" id="c_com_melawai_ppuc_model_ppuch_hp_tujuan_conf_oc" readonly="true" validationMessageCode="field_invalid_number" />
+       <field:input field="email_asal_conf_oc" label="Email Asal Conf Oc" id="c_com_melawai_ppuc_model_ppuch_email_asal_conf_oc" readonly="true" validationMessageCode="field_invalid_number" />
+       <field:input field="email_tujuan_conf_oc" label="Email Tujuan Conf Oc" id="c_com_melawai_ppuc_model_ppuch_email_tujuan_conf_oc" readonly="true" validationMessageCode="field_invalid_number" />
+       <field:input field="f_batal" label="F Batal" id="c_com_melawai_ppuc_model_ppuch_f_batal"  validationMessageCode="field_invalid_integer" />
+       <field:input field="user_batal" label="User Batal" id="c_com_melawai_ppuc_model_ppuch_user_batal" readonly="true" validationMessageCode="field_invalid_number" />
+       <field:input field="tgl_batal" label="Tgl Batal" id="c_com_melawai_ppuc_model_ppuch_tgl_batal" readonly="true" validationMessageCode="field_invalid_number" />
+       <field:input field="jam_batal" label="Jam Batal" id="c_com_melawai_ppuc_model_ppuch_jam_batal" readonly="true" validationMessageCode="field_invalid_number" />
+       <field:input field="alasan_batal" label="Alasan Batal" id="c_com_melawai_ppuc_model_ppuch_alasan_batal" readonly="true" validationMessageCode="field_invalid_number" />
+       <field:input field="hp_asal_batal" label="Hp Asal Batal" id="c_com_melawai_ppuc_model_ppuch_hp_asal_batal" readonly="true" validationMessageCode="field_invalid_number" />
+       <field:input field="hp_tujuan_batal" label="Hp Tujuan Batal" id="c_com_melawai_ppuc_model_ppuch_hp_tujuan_batal" readonly="true" validationMessageCode="field_invalid_number" />
+       <field:input field="email_asal_batal" label="Email Asal Batal" id="c_com_melawai_ppuc_model_ppuch_email_asal_batal" readonly="true" validationMessageCode="field_invalid_number" />
+       <field:input field="email_tujuan_batal" label="Email Tujuan Batal" id="c_com_melawai_ppuc_model_ppuch_email_tujuan_batal" readonly="true" validationMessageCode="field_invalid_number" />
+    </form:create>
+    <form:dependency dependencies="${dependencies}" id="d_com_melawai_ppuc_model_ppuch" render="${ not empty dependencies }"/>
+</div>
+

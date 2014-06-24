@@ -1,0 +1,14 @@
+<?xml version="1.0" encoding="UTF-8" standalone="no"?>
+<div xmlns:field="urn:jsptagdir:/WEB-INF/tags/form/fields" xmlns:jsp="http://java.sun.com/JSP/Page" xmlns:page="urn:jsptagdir:/WEB-INF/tags/form" version="2.0">
+    <jsp:directive.page contentType="text/html;charset=UTF-8"/>
+    <jsp:output omit-xml-declaration="yes"/>
+    <page:show id="ps_com_melawai_ppuc_model_counter" object="${counter}" path="/master/counter">
+       <field:display field="id" label="Id" id="c_com_melawai_ppuc_model_counter_id"  object="${counter}" />
+       <field:display field="nm_counter" label="Nm Counter" id="c_com_melawai_ppuc_model_counter_nm_counter"  object="${counter}" />
+       <field:display field="counter" label="Counter" id="c_com_melawai_ppuc_model_counter_counter"  object="${counter}" />
+       <field:display field="max" label="Max" id="c_com_melawai_ppuc_model_counter_max"  object="${counter}" />
+       <field:display field="last_periode" label="Last Periode" id="c_com_melawai_ppuc_model_counter_last_periode"  object="${counter}"  date="true" dateTimePattern="${counter_last_periode_date_format}"/>
+       <field:display field="keterangan" label="Keterangan" id="c_com_melawai_ppuc_model_counter_keterangan"  object="${counter}" />
+    </page:show>
+</div>
+

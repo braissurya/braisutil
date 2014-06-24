@@ -1,0 +1,23 @@
+<?xml version="1.0" encoding="UTF-8" standalone="no"?>
+<div xmlns:field="urn:jsptagdir:/WEB-INF/tags/form/fields" xmlns:jsp="http://java.sun.com/JSP/Page" xmlns:page="urn:jsptagdir:/WEB-INF/tags/form" version="2.0">
+    <jsp:directive.page contentType="text/html;charset=UTF-8"/>
+    <jsp:output omit-xml-declaration="yes"/>
+    <page:show id="ps_com_melawai_ppuc_model_hakapprove" object="${hakapprove}" path="/master/hakapprove">
+       <field:display field="user_id" label="User Id" id="c_com_melawai_ppuc_model_hakapprove_user_id"  object="${hakapprove}" />
+       <field:display field="divisi_kd" label="Divisi Kd" id="c_com_melawai_ppuc_model_hakapprove_divisi_kd"  object="${hakapprove}" />
+       <field:display field="subdiv_kd" label="Subdiv Kd" id="c_com_melawai_ppuc_model_hakapprove_subdiv_kd"  object="${hakapprove}" />
+       <field:display field="dept_kd" label="Dept Kd" id="c_com_melawai_ppuc_model_hakapprove_dept_kd"  object="${hakapprove}" />
+       <field:display field="kd_group" label="Kd Group" id="c_com_melawai_ppuc_model_hakapprove_kd_group"  object="${hakapprove}" />
+       <field:display field="kd_biaya" label="Kd Biaya" id="c_com_melawai_ppuc_model_hakapprove_kd_biaya"  object="${hakapprove}" />
+       <field:display field="f_aktif" label="F Aktif" id="c_com_melawai_ppuc_model_hakapprove_f_aktif"  object="${hakapprove}" />
+       <field:display field="drtgl" label="Drtgl" id="c_com_melawai_ppuc_model_hakapprove_drtgl"  object="${hakapprove}"  date="true" dateTimePattern="${hakapprove_drtgl_date_format}"/>
+       <field:display field="sptgl" label="Sptgl" id="c_com_melawai_ppuc_model_hakapprove_sptgl"  object="${hakapprove}"  date="true" dateTimePattern="${hakapprove_sptgl_date_format}"/>
+       <field:display field="user_create" label="User Create" id="c_com_melawai_ppuc_model_hakapprove_user_create"  object="${hakapprove}" />
+       <field:display field="tgl_create" label="Tgl Create" id="c_com_melawai_ppuc_model_hakapprove_tgl_create"  object="${hakapprove}"  date="true" dateTimePattern="${hakapprove_tgl_create_date_format}"/>
+       <field:display field="jam_create" label="Jam Create" id="c_com_melawai_ppuc_model_hakapprove_jam_create"  object="${hakapprove}" />
+       <field:display field="user_nonaktif" label="User Nonaktif" id="c_com_melawai_ppuc_model_hakapprove_user_nonaktif"  object="${hakapprove}" />
+       <field:display field="tgl_nonaktif" label="Tgl Nonaktif" id="c_com_melawai_ppuc_model_hakapprove_tgl_nonaktif"  object="${hakapprove}"  date="true" dateTimePattern="${hakapprove_tgl_nonaktif_date_format}"/>
+       <field:display field="jam_nonaktif" label="Jam Nonaktif" id="c_com_melawai_ppuc_model_hakapprove_jam_nonaktif"  object="${hakapprove}" />
+    </page:show>
+</div>
+

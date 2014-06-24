@@ -1,0 +1,16 @@
+<?xml version="1.0" encoding="UTF-8" standalone="no"?>
+<div xmlns:field="urn:jsptagdir:/WEB-INF/tags/form/fields" xmlns:jsp="http://java.sun.com/JSP/Page" xmlns:page="urn:jsptagdir:/WEB-INF/tags/form" version="2.0">
+    <jsp:directive.page contentType="text/html;charset=UTF-8"/>
+    <jsp:output omit-xml-declaration="yes"/>
+    <page:show id="ps_com_melawai_ppuc_model_subdivisi" object="${subdivisi}" path="/master/subdivisi">
+       <field:display field="subdiv_kd" label="Subdiv Kd" id="c_com_melawai_ppuc_model_subdivisi_subdiv_kd"  object="${subdivisi}" />
+       <field:display field="divisi_kd" label="Divisi Kd" id="c_com_melawai_ppuc_model_subdivisi_divisi_kd"  object="${subdivisi}" />
+       <field:display field="subdiv_nm" label="Subdiv Nm" id="c_com_melawai_ppuc_model_subdivisi_subdiv_nm"  object="${subdivisi}" />
+       <field:display field="user_update" label="User Update" id="c_com_melawai_ppuc_model_subdivisi_user_update"  object="${subdivisi}" />
+       <field:display field="tgl_update" label="Tgl Update" id="c_com_melawai_ppuc_model_subdivisi_tgl_update"  object="${subdivisi}"  date="true" dateTimePattern="${subdivisi_tgl_update_date_format}"/>
+       <field:display field="jam_update" label="Jam Update" id="c_com_melawai_ppuc_model_subdivisi_jam_update"  object="${subdivisi}" />
+       <field:display field="user_create" label="User Create" id="c_com_melawai_ppuc_model_subdivisi_user_create"  object="${subdivisi}" />
+       <field:display field="tgl_create" label="Tgl Create" id="c_com_melawai_ppuc_model_subdivisi_tgl_create"  object="${subdivisi}"  date="true" dateTimePattern="${subdivisi_tgl_create_date_format}"/>
+    </page:show>
+</div>
+

@@ -1,0 +1,17 @@
+<?xml version="1.0" encoding="UTF-8" standalone="no"?>
+<div xmlns:jsp="http://java.sun.com/JSP/Page" xmlns:page="urn:jsptagdir:/WEB-INF/tags/form" xmlns:table="urn:jsptagdir:/WEB-INF/tags/form/fields" version="2.0">
+    <jsp:directive.page contentType="text/html;charset=UTF-8"/>
+    <jsp:output omit-xml-declaration="yes"/>
+    <page:list id="pl_com_melawai_ppuc_model_departmen"  items="${departmenList}" >
+        <table:table data="${departmenList}" id="l_com_melawai_ppuc_model_Departmen" typeIdFieldName="itemId" path="/master/departmen" >
+       <table:column id="c_com_melawai_ppuc_model_departmen_dept_kd" property="dept_kd" label="Dept Kd" />
+       <table:column id="c_com_melawai_ppuc_model_departmen_divisi_kd" property="divisi_kd" label="Divisi Kd" />
+       <table:column id="c_com_melawai_ppuc_model_departmen_subdiv_kd" property="subdiv_kd" label="Subdiv Kd" />
+       <table:column id="c_com_melawai_ppuc_model_departmen_dept_nm" property="dept_nm" label="Dept Nm" />
+       <table:column id="c_com_melawai_ppuc_model_departmen_user_update" property="user_update" label="User Update" />
+       <table:column id="c_com_melawai_ppuc_model_departmen_jam_update" property="jam_update" label="Jam Update" />
+       <table:column id="c_com_melawai_ppuc_model_departmen_user_create" property="user_create" label="User Create" />
+        </table:table>
+    </page:list>
+</div>
+

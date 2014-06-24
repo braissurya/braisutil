@@ -1,0 +1,17 @@
+<?xml version="1.0" encoding="UTF-8" standalone="no"?>
+<!DOCTYPE tiles-definitions PUBLIC "-//Apache Software Foundation//DTD Tiles Configuration 2.1//EN" "http://tiles.apache.org/dtds/tiles-config_2_1.dtd">
+<tiles-definitions>
+    <definition extends="default" name="audittraildetail/list">
+        <put-attribute name="body" value="/WEB-INF/views/audittraildetail/list.jspx"/>
+    </definition>
+	<definition extends="default" name="audittraildetail/show">
+        <put-attribute name="body" value="/WEB-INF/views/audittraildetail/show.jspx"/>
+    </definition>
+	<definition extends="default" name="audittraildetail/create">
+        <put-attribute name="body" value="/WEB-INF/views/audittraildetail/create.jspx"/>
+    </definition>
+	<definition extends="default" name="audittraildetail/update">
+        <put-attribute name="body" value="/WEB-INF/views/audittraildetail/update.jspx"/>
+    </definition>
+</tiles-definitions>
+

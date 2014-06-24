@@ -1,0 +1,33 @@
+<?xml version="1.0" encoding="UTF-8" standalone="no"?>
+<div xmlns:field="urn:jsptagdir:/WEB-INF/tags/form/fields" xmlns:jsp="http://java.sun.com/JSP/Page" xmlns:page="urn:jsptagdir:/WEB-INF/tags/form" version="2.0">
+    <jsp:directive.page contentType="text/html;charset=UTF-8"/>
+    <jsp:output omit-xml-declaration="yes"/>
+    <page:show id="ps_com_melawai_ppuc_model_ppucd" object="${ppucd}" path="/master/ppucd">
+       <field:display field="divisi_kd" label="Divisi Kd" id="c_com_melawai_ppuc_model_ppucd_divisi_kd"  object="${ppucd}" />
+       <field:display field="subdiv_kd" label="Subdiv Kd" id="c_com_melawai_ppuc_model_ppucd_subdiv_kd"  object="${ppucd}" />
+       <field:display field="dept_kd" label="Dept Kd" id="c_com_melawai_ppuc_model_ppucd_dept_kd"  object="${ppucd}" />
+       <field:display field="lok_kd" label="Lok Kd" id="c_com_melawai_ppuc_model_ppucd_lok_kd"  object="${ppucd}" />
+       <field:display field="no_ppuc" label="No Ppuc" id="c_com_melawai_ppuc_model_ppucd_no_ppuc"  object="${ppucd}" />
+       <field:display field="tgl_ppuc" label="Tgl Ppuc" id="c_com_melawai_ppuc_model_ppucd_tgl_ppuc"  object="${ppucd}"  date="true" dateTimePattern="${ppucd_tgl_ppuc_date_format}"/>
+       <field:display field="kd_group" label="Kd Group" id="c_com_melawai_ppuc_model_ppucd_kd_group"  object="${ppucd}" />
+       <field:display field="kd_biaya" label="Kd Biaya" id="c_com_melawai_ppuc_model_ppucd_kd_biaya"  object="${ppucd}" />
+       <field:display field="no_batch" label="No Batch" id="c_com_melawai_ppuc_model_ppucd_no_batch"  object="${ppucd}" />
+       <field:display field="qty" label="Qty" id="c_com_melawai_ppuc_model_ppucd_qty"  object="${ppucd}" />
+       <field:display field="harga" label="Harga" id="c_com_melawai_ppuc_model_ppucd_harga"  object="${ppucd}" />
+       <field:display field="total" label="Total" id="c_com_melawai_ppuc_model_ppucd_total"  object="${ppucd}" />
+       <field:display field="qty_old" label="Qty Old" id="c_com_melawai_ppuc_model_ppucd_qty_old"  object="${ppucd}" />
+       <field:display field="harga_old" label="Harga Old" id="c_com_melawai_ppuc_model_ppucd_harga_old"  object="${ppucd}" />
+       <field:display field="total_old" label="Total Old" id="c_com_melawai_ppuc_model_ppucd_total_old"  object="${ppucd}" />
+       <field:display field="keterangan" label="Keterangan" id="c_com_melawai_ppuc_model_ppucd_keterangan"  object="${ppucd}" />
+       <field:display field="qty_real_cbg" label="Qty Real Cbg" id="c_com_melawai_ppuc_model_ppucd_qty_real_cbg"  object="${ppucd}" />
+       <field:display field="harga_real_cbg" label="Harga Real Cbg" id="c_com_melawai_ppuc_model_ppucd_harga_real_cbg"  object="${ppucd}" />
+       <field:display field="total_real_cbg" label="Total Real Cbg" id="c_com_melawai_ppuc_model_ppucd_total_real_cbg"  object="${ppucd}" />
+       <field:display field="qty_real_oc" label="Qty Real Oc" id="c_com_melawai_ppuc_model_ppucd_qty_real_oc"  object="${ppucd}" />
+       <field:display field="harga_real_oc" label="Harga Real Oc" id="c_com_melawai_ppuc_model_ppucd_harga_real_oc"  object="${ppucd}" />
+       <field:display field="total_real_oc" label="Total Real Oc" id="c_com_melawai_ppuc_model_ppucd_total_real_oc"  object="${ppucd}" />
+       <field:display field="nilai_charge" label="Nilai Charge" id="c_com_melawai_ppuc_model_ppucd_nilai_charge"  object="${ppucd}" />
+       <field:display field="user_create" label="User Create" id="c_com_melawai_ppuc_model_ppucd_user_create"  object="${ppucd}" />
+       <field:display field="tgl_create" label="Tgl Create" id="c_com_melawai_ppuc_model_ppucd_tgl_create"  object="${ppucd}"  date="true" dateTimePattern="${ppucd_tgl_create_date_format}"/>
+    </page:show>
+</div>
+

@@ -1,0 +1,148 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+"http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.melawai.ppuc.persistence.AudittrailMapper">
+
+	<cache />
+
+	<!-- result map-->
+	<resultMap type="Audittrail" id="AudittrailMap">
+		<id property="id_audittrail" column="id_audittrail"  />  
+		<result property="id_audittrail" column="id_audittrail" />
+		<result property="type_audit" column="type_audit" />
+		<result property="model" column="model" />
+		<result property="model_id" column="model_id" />
+		<result property="ip" column="ip" />
+		<result property="info" column="info" />
+		<result property="user_create" column="user_create" />
+		<result property="tgl_create" column="tgl_create" />
+	</resultMap>
+
+	<!-- nama kolom yang ingin ditampilkan -->
+	<sql id="defaultColoumn">
+		C.SYS_ID_AUDITTRAIL as id_audittrail,
+		C.SYS_TYPE_AUDIT as type_audit,
+		C.SYS_MODEL as model,
+		C.SYS_MODEL_ID as model_id,
+		C.SYS_IP as ip,
+		C.SYS_INFO as info,
+		C.SYS_USER_CREATE as user_create,
+		C.SYS_TGL_CREATE as tgl_create
+	</sql>
+
+	<!-- query select, dengan kolom yang default di atas, apabila mau ditambahkan join juga bisa disini
+	perubahan query ini akan mempengaruhi select paging dan get di bawah  -->
+	<sql id="selectQuery">
+		select * from (
+			select <include refid="defaultColoumn" /> from sys_audittrail C
+		)T
+	</sql>
+
+	<!-- kolom apa aja yang mau disearching -->
+	<sql id="searchTambahan">
+		Where 1=1
+			<!--!!TAMBAHAN parameter untuk search-->
+	</sql>
+
+	<!-- kolom apa aja yang mau disearching -->
+	<sql id="search">
+		WHERE 1=1 AND (
+			 type_audit like  CONCAT('%', #{search}, '%')
+			 OR model like  CONCAT('%', #{search}, '%')
+			 OR model_id like  CONCAT('%', #{search}, '%')
+			 OR ip like  CONCAT('%', #{search}, '%')
+			 OR info like  CONCAT('%', #{search}, '%')
+			 OR user_create like  CONCAT('%', #{search}, '%')
+		)
+	</sql>
+
+	<!-- insert query untuk table ini -->
+	<insert id="insert" parameterType="Audittrail" useGeneratedKeys="true" keyColumn="SYS_ID_AUDITTRAIL" keyProperty="id_audittrail">
+		INSERT INTO sys_audittrail (
+			SYS_ID_AUDITTRAIL,
+			SYS_TYPE_AUDIT,
+			SYS_MODEL,
+			SYS_MODEL_ID,
+			SYS_IP,
+			SYS_INFO,
+			SYS_USER_CREATE,
+			SYS_TGL_CREATE
+		) values (
+			#{id_audittrail},
+			#{type_audit},
+			#{model},
+			#{model_id},
+			#{ip},
+			#{info},
+			#{user_create},
+			#{tgl_create}
+		)
+	</insert>
+
+	<!-- update query untuk table ini -->
+	<update id="update" parameterType="Audittrail">
+		UPDATE sys_audittrail
+		<set>
+			<if test="id_audittrail != null">SYS_ID_AUDITTRAIL = #{id_audittrail}, </if>
+			<if test="type_audit != null">SYS_TYPE_AUDIT = #{type_audit}, </if>
+			<if test="model != null">SYS_MODEL = #{model}, </if>
+			<if test="model_id != null">SYS_MODEL_ID = #{model_id}, </if>
+			<if test="ip != null">SYS_IP = #{ip}, </if>
+			<if test="info != null">SYS_INFO = #{info}, </if>
+			<if test="user_create != null">SYS_USER_CREATE = #{user_create}, </if>
+			<if test="tgl_create != null">SYS_TGL_CREATE = #{tgl_create} </if>
+		</set>
+		WHERE  
+			SYS_ID_AUDITTRAIL= #{id_audittrail} 
+	</update>
+
+	<!-- remove query untuk table ini -->
+	<delete id="remove" parameterType="Long">
+		delete from sys_audittrail where SYS_ID_AUDITTRAIL=#{value}
+	</delete>
+
+	<!-- get berdasarkan primary key -->
+	<select id="get" parameterType="Long" resultMap="AudittrailMap">
+		<include refid="selectQuery" />	where T.id_audittrail=#{value}
+	</select>
+
+	<!-- get ALL row -->
+	<select id="getAll" resultMap="AudittrailMap">
+		<include refid="selectQuery" />
+	</select>
+
+	<!-- select berdasarkan paging parameter -->
+	<select id="selectPagingList" parameterType="Audittrail" resultMap="AudittrailMap">
+			SELECT x.* from (
+				select * from (
+					<include refid="selectQuery" />
+					<include refid="searchTambahan" />
+				) y
+				<if test="search != null">
+					<include refid="search" />
+				</if>
+				<if test="sort != null">
+					order by ${sort}
+				</if>
+				 LIMIT #{page} , #{rowcount}
+			)x
+	</select>
+
+	<!-- select jumlah seluruh data yang akan di paging -->
+	<select id="selectPagingCount" parameterType="Audittrail" resultType="Integer">
+		select count(*) from(
+			SELECT x.* from (
+				select * from (
+					<include refid="selectQuery" />
+					<include refid="searchTambahan" />
+				) y
+				<if test="search != null">
+					<include refid="search" />
+				</if>
+			)x
+		) z
+	</select>
+
+	<!-- QUERY CUSTOM LAIN-LAIN bisa dimasukkan dibawah ini -->
+
+</mapper>

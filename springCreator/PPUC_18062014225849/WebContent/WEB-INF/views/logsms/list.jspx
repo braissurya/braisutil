@@ -1,0 +1,21 @@
+<?xml version="1.0" encoding="UTF-8" standalone="no"?>
+<div xmlns:jsp="http://java.sun.com/JSP/Page" xmlns:page="urn:jsptagdir:/WEB-INF/tags/form" xmlns:table="urn:jsptagdir:/WEB-INF/tags/form/fields" version="2.0">
+    <jsp:directive.page contentType="text/html;charset=UTF-8"/>
+    <jsp:output omit-xml-declaration="yes"/>
+    <page:list id="pl_com_melawai_ppuc_model_logsms"  items="${logsmsList}" >
+        <table:table data="${logsmsList}" id="l_com_melawai_ppuc_model_LogSms" typeIdFieldName="itemId" path="/master/logsms" >
+       <table:column id="c_com_melawai_ppuc_model_logsms_divisi_kd" property="divisi_kd" label="Divisi Kd" />
+       <table:column id="c_com_melawai_ppuc_model_logsms_subdiv_kd" property="subdiv_kd" label="Subdiv Kd" />
+       <table:column id="c_com_melawai_ppuc_model_logsms_dept_kd" property="dept_kd" label="Dept Kd" />
+       <table:column id="c_com_melawai_ppuc_model_logsms_lok_kd" property="lok_kd" label="Lok Kd" />
+       <table:column id="c_com_melawai_ppuc_model_logsms_no_ppuc" property="no_ppuc" label="No Ppuc" />
+       <table:column id="c_com_melawai_ppuc_model_logsms_send_time" property="send_time" label="Send Time" />
+       <table:column id="c_com_melawai_ppuc_model_logsms_status" property="status" label="Status" />
+       <table:column id="c_com_melawai_ppuc_model_logsms_isi_sms" property="isi_sms" label="Isi Sms" />
+       <table:column id="c_com_melawai_ppuc_model_logsms_hp_maker" property="hp_maker" label="Hp Maker" />
+       <table:column id="c_com_melawai_ppuc_model_logsms_hp_approval" property="hp_approval" label="Hp Approval" />
+       <table:column id="c_com_melawai_ppuc_model_logsms_user_create" property="user_create" label="User Create" />
+        </table:table>
+    </page:list>
+</div>
+

@@ -1,0 +1,14 @@
+<?xml version="1.0" encoding="UTF-8" standalone="no"?>
+<div xmlns:field="urn:jsptagdir:/WEB-INF/tags/form/fields" xmlns:jsp="http://java.sun.com/JSP/Page" xmlns:page="urn:jsptagdir:/WEB-INF/tags/form" version="2.0">
+    <jsp:directive.page contentType="text/html;charset=UTF-8"/>
+    <jsp:output omit-xml-declaration="yes"/>
+    <page:show id="ps_com_melawai_ppuc_model_groupuser" object="${groupuser}" path="/master/groupuser">
+       <field:display field="group_kd" label="Group Kd" id="c_com_melawai_ppuc_model_groupuser_group_kd"  object="${groupuser}" />
+       <field:display field="group_nm" label="Group Nm" id="c_com_melawai_ppuc_model_groupuser_group_nm"  object="${groupuser}" />
+       <field:display field="id_role" label="Id Role" id="c_com_melawai_ppuc_model_groupuser_id_role"  object="${groupuser}" />
+       <field:display field="user_create" label="User Create" id="c_com_melawai_ppuc_model_groupuser_user_create"  object="${groupuser}" />
+       <field:display field="tgl_create" label="Tgl Create" id="c_com_melawai_ppuc_model_groupuser_tgl_create"  object="${groupuser}"  date="true" dateTimePattern="${groupuser_tgl_create_date_format}"/>
+       <field:display field="jam_create" label="Jam Create" id="c_com_melawai_ppuc_model_groupuser_jam_create"  object="${groupuser}" />
+    </page:show>
+</div>
+

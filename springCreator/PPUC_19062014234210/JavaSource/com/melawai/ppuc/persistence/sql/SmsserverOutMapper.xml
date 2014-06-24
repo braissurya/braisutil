@@ -1,0 +1,223 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+"http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.melawai.ppuc.persistence.SmsserverOutMapper">
+
+	<cache />
+
+	<!-- result map-->
+	<resultMap type="SmsserverOut" id="SmsserverOutMap">
+		<id property="id" column="id"  />  
+		<result property="id" column="id" />
+		<result property="type" column="type" />
+		<result property="recipient" column="recipient" />
+		<result property="text" column="text" />
+		<result property="wap_url" column="wap_url" />
+		<result property="wap_expiry_date" column="wap_expiry_date" />
+		<result property="wap_signal" column="wap_signal" />
+		<result property="create_date" column="create_date" />
+		<result property="originator" column="originator" />
+		<result property="encoding" column="encoding" />
+		<result property="status_report" column="status_report" />
+		<result property="flash_sms" column="flash_sms" />
+		<result property="src_port" column="src_port" />
+		<result property="dst_port" column="dst_port" />
+		<result property="sent_date" column="sent_date" />
+		<result property="ref_no" column="ref_no" />
+		<result property="priority" column="priority" />
+		<result property="status" column="status" />
+		<result property="errors" column="errors" />
+		<result property="gateway_id" column="gateway_id" />
+		<result property="user_id" column="user_id" />
+		<result property="id_refrence" column="id_refrence" />
+	</resultMap>
+
+	<!-- nama kolom yang ingin ditampilkan -->
+	<sql id="defaultColoumn">
+		C.ID as id,
+		C.TYPE as type,
+		C.RECIPIENT as recipient,
+		C.TEXT as text,
+		C.WAP_URL as wap_url,
+		C.WAP_EXPIRY_DATE as wap_expiry_date,
+		C.WAP_SIGNAL as wap_signal,
+		C.CREATE_DATE as create_date,
+		C.ORIGINATOR as originator,
+		C.ENCODING as encoding,
+		C.STATUS_REPORT as status_report,
+		C.FLASH_SMS as flash_sms,
+		C.SRC_PORT as src_port,
+		C.DST_PORT as dst_port,
+		C.SENT_DATE as sent_date,
+		C.REF_NO as ref_no,
+		C.PRIORITY as priority,
+		C.STATUS as status,
+		C.ERRORS as errors,
+		C.GATEWAY_ID as gateway_id,
+		C.USER_ID as user_id,
+		C.ID_REFRENCE as id_refrence
+	</sql>
+
+	<!-- query select, dengan kolom yang default di atas, apabila mau ditambahkan join juga bisa disini
+	perubahan query ini akan mempengaruhi select paging dan get di bawah  -->
+	<sql id="selectQuery">
+		select * from (
+			select <include refid="defaultColoumn" /> from smsserver_out C
+		)T
+	</sql>
+
+	<!-- kolom apa aja yang mau disearching -->
+	<sql id="searchTambahan">
+		Where 1=1
+			<!--!!TAMBAHAN parameter untuk search-->
+	</sql>
+
+	<!-- kolom apa aja yang mau disearching -->
+	<sql id="search">
+		WHERE 1=1 AND (
+			 type like  CONCAT('%', #{search}, '%')
+			 OR recipient like  CONCAT('%', #{search}, '%')
+			 OR text like  CONCAT('%', #{search}, '%')
+			 OR wap_url like  CONCAT('%', #{search}, '%')
+			 OR wap_signal like  CONCAT('%', #{search}, '%')
+			 OR originator like  CONCAT('%', #{search}, '%')
+			 OR encoding like  CONCAT('%', #{search}, '%')
+			 OR ref_no like  CONCAT('%', #{search}, '%')
+			 OR status like  CONCAT('%', #{search}, '%')
+			 OR gateway_id like  CONCAT('%', #{search}, '%')
+			 OR user_id like  CONCAT('%', #{search}, '%')
+		)
+	</sql>
+
+	<!-- insert query untuk table ini -->
+	<insert id="insert" parameterType="SmsserverOut" useGeneratedKeys="true" keyColumn="ID" keyProperty="id">
+		INSERT INTO smsserver_out (
+			ID,
+			TYPE,
+			RECIPIENT,
+			TEXT,
+			WAP_URL,
+			WAP_EXPIRY_DATE,
+			WAP_SIGNAL,
+			CREATE_DATE,
+			ORIGINATOR,
+			ENCODING,
+			STATUS_REPORT,
+			FLASH_SMS,
+			SRC_PORT,
+			DST_PORT,
+			SENT_DATE,
+			REF_NO,
+			PRIORITY,
+			STATUS,
+			ERRORS,
+			GATEWAY_ID,
+			USER_ID,
+			ID_REFRENCE
+		) values (
+			#{id},
+			#{type},
+			#{recipient},
+			#{text},
+			#{wap_url},
+			#{wap_expiry_date},
+			#{wap_signal},
+			#{create_date},
+			#{originator},
+			#{encoding},
+			#{status_report},
+			#{flash_sms},
+			#{src_port},
+			#{dst_port},
+			#{sent_date},
+			#{ref_no},
+			#{priority},
+			#{status},
+			#{errors},
+			#{gateway_id},
+			#{user_id},
+			#{id_refrence}
+		)
+	</insert>
+
+	<!-- update query untuk table ini -->
+	<update id="update" parameterType="SmsserverOut">
+		UPDATE smsserver_out
+		<set>
+			<if test="id != null">ID = #{id}, </if>
+			<if test="type != null">TYPE = #{type}, </if>
+			<if test="recipient != null">RECIPIENT = #{recipient}, </if>
+			<if test="text != null">TEXT = #{text}, </if>
+			<if test="wap_url != null">WAP_URL = #{wap_url}, </if>
+			<if test="wap_expiry_date != null">WAP_EXPIRY_DATE = #{wap_expiry_date}, </if>
+			<if test="wap_signal != null">WAP_SIGNAL = #{wap_signal}, </if>
+			<if test="create_date != null">CREATE_DATE = #{create_date}, </if>
+			<if test="originator != null">ORIGINATOR = #{originator}, </if>
+			<if test="encoding != null">ENCODING = #{encoding}, </if>
+			<if test="status_report != null">STATUS_REPORT = #{status_report}, </if>
+			<if test="flash_sms != null">FLASH_SMS = #{flash_sms}, </if>
+			<if test="src_port != null">SRC_PORT = #{src_port}, </if>
+			<if test="dst_port != null">DST_PORT = #{dst_port}, </if>
+			<if test="sent_date != null">SENT_DATE = #{sent_date}, </if>
+			<if test="ref_no != null">REF_NO = #{ref_no}, </if>
+			<if test="priority != null">PRIORITY = #{priority}, </if>
+			<if test="status != null">STATUS = #{status}, </if>
+			<if test="errors != null">ERRORS = #{errors}, </if>
+			<if test="gateway_id != null">GATEWAY_ID = #{gateway_id}, </if>
+			<if test="user_id != null">USER_ID = #{user_id}, </if>
+			<if test="id_refrence != null">ID_REFRENCE = #{id_refrence} </if>
+		</set>
+		WHERE  
+			ID= #{id} 
+	</update>
+
+	<!-- remove query untuk table ini -->
+	<delete id="remove" parameterType="Long">
+		delete from smsserver_out where ID=#{value}
+	</delete>
+
+	<!-- get berdasarkan primary key -->
+	<select id="get" parameterType="Long" resultMap="SmsserverOutMap">
+		<include refid="selectQuery" />	where T.id=#{value}
+	</select>
+
+	<!-- get ALL row -->
+	<select id="getAll" resultMap="SmsserverOutMap">
+		<include refid="selectQuery" />
+	</select>
+
+	<!-- select berdasarkan paging parameter -->
+	<select id="selectPagingList" parameterType="SmsserverOut" resultMap="SmsserverOutMap">
+			SELECT x.* from (
+				select * from (
+					<include refid="selectQuery" />
+					<include refid="searchTambahan" />
+				) y
+				<if test="search != null">
+					<include refid="search" />
+				</if>
+				<if test="sort != null">
+					order by ${sort}
+				</if>
+				 LIMIT #{page} , #{rowcount}
+			)x
+	</select>
+
+	<!-- select jumlah seluruh data yang akan di paging -->
+	<select id="selectPagingCount" parameterType="SmsserverOut" resultType="Integer">
+		select count(*) from(
+			SELECT x.* from (
+				select * from (
+					<include refid="selectQuery" />
+					<include refid="searchTambahan" />
+				) y
+				<if test="search != null">
+					<include refid="search" />
+				</if>
+			)x
+		) z
+	</select>
+
+	<!-- QUERY CUSTOM LAIN-LAIN bisa dimasukkan dibawah ini -->
+
+</mapper>

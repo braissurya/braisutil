@@ -1,0 +1,14 @@
+<?xml version="1.0" encoding="UTF-8" standalone="no"?>
+<div xmlns:field="urn:jsptagdir:/WEB-INF/tags/form/fields" xmlns:form="urn:jsptagdir:/WEB-INF/tags/form" xmlns:jsp="http://java.sun.com/JSP/Page" version="2.0">
+    <jsp:directive.page contentType="text/html;charset=UTF-8"/>
+    <jsp:output omit-xml-declaration="yes"/>
+    <form:update id="fu_com_melawai_ppuc_model_mfungsi" modelAttribute="mfungsi" path="/master/mfungsi" idField="itemId" versionField="none" >
+       <field:input field="kd_fungsi" label="Kd Fungsi" id="c_com_melawai_ppuc_model_mfungsi_kd_fungsi" required="true" />
+       <field:input field="nm_fungsi" label="Nm Fungsi" id="c_com_melawai_ppuc_model_mfungsi_nm_fungsi"  />
+       <field:input field="mail_seq" label="Mail Seq" id="c_com_melawai_ppuc_model_mfungsi_mail_seq"  validationMessageCode="field_invalid_integer" />
+       <field:input field="user_create" label="User Create" id="c_com_melawai_ppuc_model_mfungsi_user_create" readonly="true" validationMessageCode="field_invalid_number" />
+       <field:input field="tgl_create" label="Tgl Create" id="c_com_melawai_ppuc_model_mfungsi_tgl_create" readonly="true" validationMessageCode="field_invalid_number" />
+       <field:input field="jam_create" label="Jam Create" id="c_com_melawai_ppuc_model_mfungsi_jam_create" readonly="true" validationMessageCode="field_invalid_number" />
+	</form:update>
+</div>
+

@@ -1,0 +1,16 @@
+<?xml version="1.0" encoding="UTF-8" standalone="no"?>
+<div xmlns:jsp="http://java.sun.com/JSP/Page" xmlns:page="urn:jsptagdir:/WEB-INF/tags/form" xmlns:table="urn:jsptagdir:/WEB-INF/tags/form/fields" version="2.0">
+    <jsp:directive.page contentType="text/html;charset=UTF-8"/>
+    <jsp:output omit-xml-declaration="yes"/>
+    <page:list id="pl_com_melawai_ppuc_model_detailbiaya"  items="${detailbiayaList}" >
+        <table:table data="${detailbiayaList}" id="l_com_melawai_ppuc_model_DetailBiaya" typeIdFieldName="itemId" path="/master/detailbiaya" >
+       <table:column id="c_com_melawai_ppuc_model_detailbiaya_kd_biaya" property="kd_biaya" label="Kd Biaya" />
+       <table:column id="c_com_melawai_ppuc_model_detailbiaya_kd_group" property="kd_group" label="Kd Group" />
+       <table:column id="c_com_melawai_ppuc_model_detailbiaya_biaya_description" property="biaya_description" label="Biaya Description" />
+       <table:column id="c_com_melawai_ppuc_model_detailbiaya_acc_no" property="acc_no" label="Acc No" />
+       <table:column id="c_com_melawai_ppuc_model_detailbiaya_user_create" property="user_create" label="User Create" />
+       <table:column id="c_com_melawai_ppuc_model_detailbiaya_jam_create" property="jam_create" label="Jam Create" />
+        </table:table>
+    </page:list>
+</div>
+

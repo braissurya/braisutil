@@ -1,0 +1,74 @@
+package $packageParent.web.controller;
+
+import org.apache.commons.codec.binary.Base64;
+import org.springframework.core.convert.converter.Converter;
+import org.springframework.format.FormatterRegistry;
+import org.springframework.format.support.FormattingConversionServiceFactoryBean;
+
+#foreach( $t in $tableList.keySet())
+import $packageParent.model.$t;
+#end
+
+
+/**
+ * A central place to register application converters and formatters. 
+ */
+
+public class ApplicationConversionServiceFactoryBean extends FormattingConversionServiceFactoryBean {
+
+	@Override
+	protected void installFormatters(FormatterRegistry registry) {
+		super.installFormatters(registry);
+		// Register application converters and formatters
+	}
+	
+
+    public Converter<Address, String> getAddressToStringConverter() {
+        return new org.springframework.core.convert.converter.Converter<com.maibro.domain.Address, java.lang.String>() {
+            public String convert(Address address) {
+                return new StringBuilder().append(address.getTipe()).append(' ').append(address.getAlamatKantor()).append(' ').append(address.getKotaKantor()).append(' ').append(address.getKodeposKantor()).toString();
+            }
+        };
+    }
+    
+    public Converter<Integer, Address> getIdToAddressConverter() {
+        return new org.springframework.core.convert.converter.Converter<java.lang.Integer, com.maibro.domain.Address>() {
+            public com.maibro.domain.Address convert(java.lang.Integer id) {
+                return Address.findAddress(id);
+            }
+        };
+    }
+    
+    public Converter<String, Address> getStringToAddressConverter() {
+        return new org.springframework.core.convert.converter.Converter<java.lang.String, com.maibro.domain.Address>() {
+            public com.maibro.domain.Address convert(String id) {
+                return getObject().convert(getObject().convert(id, Integer.class), Address.class);
+            }
+        };
+    }
+    
+   
+    
+    /*public Converter<String, GroupMenuPK> getJsonToGroupMenuPKConverter() {
+        return new org.springframework.core.convert.converter.Converter<java.lang.String, com.maibro.domain.GroupMenuPK>() {
+            public GroupMenuPK convert(String encodedJson) {
+                return GroupMenuPK.fromJsonToGroupMenuPK(new String(Base64.decodeBase64(encodedJson)));
+            }
+        };
+    }*/
+    
+    public void installLabelConverters(FormatterRegistry registry) {
+        registry.addConverter(getAddressToStringConverter());
+        registry.addConverter(getIdToAddressConverter());
+        registry.addConverter(getStringToAddressConverter());
+        
+        //registry.addConverter(getJsonToGroupMenuPKConverter());
+    }
+    
+    public void afterPropertiesSet() {
+        super.afterPropertiesSet();
+        installLabelConverters(getObject());
+    }
+    
+
+}

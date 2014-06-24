@@ -1,0 +1,16 @@
+<?xml version="1.0" encoding="UTF-8" standalone="no"?>
+<div xmlns:jsp="http://java.sun.com/JSP/Page" xmlns:page="urn:jsptagdir:/WEB-INF/tags/form" xmlns:table="urn:jsptagdir:/WEB-INF/tags/form/fields" version="2.0">
+    <jsp:directive.page contentType="text/html;charset=UTF-8"/>
+    <jsp:output omit-xml-declaration="yes"/>
+    <page:list id="pl_com_melawai_ppuc_model_subdivisi"  items="${subdivisiList}" >
+        <table:table data="${subdivisiList}" id="l_com_melawai_ppuc_model_Subdivisi" typeIdFieldName="itemId" path="/master/subdivisi" >
+       <table:column id="c_com_melawai_ppuc_model_subdivisi_subdiv_kd" property="subdiv_kd" label="Subdiv Kd" />
+       <table:column id="c_com_melawai_ppuc_model_subdivisi_divisi_kd" property="divisi_kd" label="Divisi Kd" />
+       <table:column id="c_com_melawai_ppuc_model_subdivisi_subdiv_nm" property="subdiv_nm" label="Subdiv Nm" />
+       <table:column id="c_com_melawai_ppuc_model_subdivisi_user_update" property="user_update" label="User Update" />
+       <table:column id="c_com_melawai_ppuc_model_subdivisi_jam_update" property="jam_update" label="Jam Update" />
+       <table:column id="c_com_melawai_ppuc_model_subdivisi_user_create" property="user_create" label="User Create" />
+        </table:table>
+    </page:list>
+</div>
+

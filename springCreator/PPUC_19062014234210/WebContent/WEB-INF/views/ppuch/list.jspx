@@ -1,0 +1,51 @@
+<?xml version="1.0" encoding="UTF-8" standalone="no"?>
+<div xmlns:jsp="http://java.sun.com/JSP/Page" xmlns:page="urn:jsptagdir:/WEB-INF/tags/form" xmlns:table="urn:jsptagdir:/WEB-INF/tags/form/fields" version="2.0">
+    <jsp:directive.page contentType="text/html;charset=UTF-8"/>
+    <jsp:output omit-xml-declaration="yes"/>
+    <page:list id="pl_com_melawai_ppuc_model_ppuch"  items="${ppuchList}" >
+        <table:table data="${ppuchList}" id="l_com_melawai_ppuc_model_PpucH" typeIdFieldName="itemId" path="/master/ppuch" >
+       <table:column id="c_com_melawai_ppuc_model_ppuch_divisi_kd" property="divisi_kd" label="Divisi Kd" />
+       <table:column id="c_com_melawai_ppuc_model_ppuch_subdiv_kd" property="subdiv_kd" label="Subdiv Kd" />
+       <table:column id="c_com_melawai_ppuc_model_ppuch_dept_kd" property="dept_kd" label="Dept Kd" />
+       <table:column id="c_com_melawai_ppuc_model_ppuch_lok_kd" property="lok_kd" label="Lok Kd" />
+       <table:column id="c_com_melawai_ppuc_model_ppuch_no_ppuc" property="no_ppuc" label="No Ppuc" />
+       <table:column id="c_com_melawai_ppuc_model_ppuch_no_batch" property="no_batch" label="No Batch" />
+       <table:column id="c_com_melawai_ppuc_model_ppuch_user_create" property="user_create" label="User Create" />
+       <table:column id="c_com_melawai_ppuc_model_ppuch_jam_create" property="jam_create" label="Jam Create" />
+       <table:column id="c_com_melawai_ppuc_model_ppuch_user_confirm" property="user_confirm" label="User Confirm" />
+       <table:column id="c_com_melawai_ppuc_model_ppuch_jam_confirm" property="jam_confirm" label="Jam Confirm" />
+       <table:column id="c_com_melawai_ppuc_model_ppuch_hp_asal_create" property="hp_asal_create" label="Hp Asal Create" />
+       <table:column id="c_com_melawai_ppuc_model_ppuch_hp_tujuan_create" property="hp_tujuan_create" label="Hp Tujuan Create" />
+       <table:column id="c_com_melawai_ppuc_model_ppuch_email_asal_create" property="email_asal_create" label="Email Asal Create" />
+       <table:column id="c_com_melawai_ppuc_model_ppuch_email_tujuan_create" property="email_tujuan_create" label="Email Tujuan Create" />
+       <table:column id="c_com_melawai_ppuc_model_ppuch_divisi_kd_apprv" property="divisi_kd_apprv" label="Divisi Kd Apprv" />
+       <table:column id="c_com_melawai_ppuc_model_ppuch_subdiv_kd_apprv" property="subdiv_kd_apprv" label="Subdiv Kd Apprv" />
+       <table:column id="c_com_melawai_ppuc_model_ppuch_dept_kd_apprv" property="dept_kd_apprv" label="Dept Kd Apprv" />
+       <table:column id="c_com_melawai_ppuc_model_ppuch_user_approve" property="user_approve" label="User Approve" />
+       <table:column id="c_com_melawai_ppuc_model_ppuch_jam_approve" property="jam_approve" label="Jam Approve" />
+       <table:column id="c_com_melawai_ppuc_model_ppuch_hp_asal_approve" property="hp_asal_approve" label="Hp Asal Approve" />
+       <table:column id="c_com_melawai_ppuc_model_ppuch_hp_tujuan_approve" property="hp_tujuan_approve" label="Hp Tujuan Approve" />
+       <table:column id="c_com_melawai_ppuc_model_ppuch_email_asal_approve" property="email_asal_approve" label="Email Asal Approve" />
+       <table:column id="c_com_melawai_ppuc_model_ppuch_email_tujuan_approve" property="email_tujuan_approve" label="Email Tujuan Approve" />
+       <table:column id="c_com_melawai_ppuc_model_ppuch_no_realisasi" property="no_realisasi" label="No Realisasi" />
+       <table:column id="c_com_melawai_ppuc_model_ppuch_user_realisasi" property="user_realisasi" label="User Realisasi" />
+       <table:column id="c_com_melawai_ppuc_model_ppuch_jam_realisasi" property="jam_realisasi" label="Jam Realisasi" />
+       <table:column id="c_com_melawai_ppuc_model_ppuch_user_conf_real" property="user_conf_real" label="User Conf Real" />
+       <table:column id="c_com_melawai_ppuc_model_ppuch_jam_conf_real" property="jam_conf_real" label="Jam Conf Real" />
+       <table:column id="c_com_melawai_ppuc_model_ppuch_user_conf_oc" property="user_conf_oc" label="User Conf Oc" />
+       <table:column id="c_com_melawai_ppuc_model_ppuch_jam_conf_oc" property="jam_conf_oc" label="Jam Conf Oc" />
+       <table:column id="c_com_melawai_ppuc_model_ppuch_hp_asal_conf_oc" property="hp_asal_conf_oc" label="Hp Asal Conf Oc" />
+       <table:column id="c_com_melawai_ppuc_model_ppuch_hp_tujuan_conf_oc" property="hp_tujuan_conf_oc" label="Hp Tujuan Conf Oc" />
+       <table:column id="c_com_melawai_ppuc_model_ppuch_email_asal_conf_oc" property="email_asal_conf_oc" label="Email Asal Conf Oc" />
+       <table:column id="c_com_melawai_ppuc_model_ppuch_email_tujuan_conf_oc" property="email_tujuan_conf_oc" label="Email Tujuan Conf Oc" />
+       <table:column id="c_com_melawai_ppuc_model_ppuch_user_batal" property="user_batal" label="User Batal" />
+       <table:column id="c_com_melawai_ppuc_model_ppuch_jam_batal" property="jam_batal" label="Jam Batal" />
+       <table:column id="c_com_melawai_ppuc_model_ppuch_alasan_batal" property="alasan_batal" label="Alasan Batal" />
+       <table:column id="c_com_melawai_ppuc_model_ppuch_hp_asal_batal" property="hp_asal_batal" label="Hp Asal Batal" />
+       <table:column id="c_com_melawai_ppuc_model_ppuch_hp_tujuan_batal" property="hp_tujuan_batal" label="Hp Tujuan Batal" />
+       <table:column id="c_com_melawai_ppuc_model_ppuch_email_asal_batal" property="email_asal_batal" label="Email Asal Batal" />
+       <table:column id="c_com_melawai_ppuc_model_ppuch_email_tujuan_batal" property="email_tujuan_batal" label="Email Tujuan Batal" />
+        </table:table>
+    </page:list>
+</div>
+
